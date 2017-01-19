@@ -48,3 +48,156 @@ textarea {
     display: none
   }
 }
+
+/* PCPrincess CSS */
+
+.bg-color1 {
+    background-color: #cfc;
+}
+
+.bg-color2 {
+    background-color: #E6EBE6;
+}
+
+.bg-color-moz {
+    background-color: hsl(0,0%,95%);
+}
+
+.hr-color1 {
+    border-bottom: 1px solid #E8E8E8; /* Border Top or Bottom of any CONTAINER */
+}
+
+.pcprincess-header {
+    background-image: linear-gradient(to bottom, white 20%, aliceblue);
+    background-repeat: no-repeat;
+    border: 1px solid lightgray;
+    height: 125px;
+    font: inherit;
+    color: darkgray;
+}
+
+.logo-box {
+    height: 100%;
+    width: 150px;
+    border-right: 1px solid lightgray;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.nav-box {
+    height: 2rem;
+    width: 100px;
+    font-size: 1rem;
+    border-top: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+}
+
+/*  position: relative/absolute/fixed  -  opacity: 0.X  */
+.stack-1 {
+    z-index: 1;
+}
+
+.stack-2 {
+    z-index: 2;
+}
+
+.stack-3 {
+    z-index: 3;
+}
+
+.stack-4 {
+    z-index: 4;
+}
+
+.stack-5 {
+    z-index: 5;
+}
+
+.dropdown-divider {
+    height: 1px;
+    margin: 1rem 0 -1rem 0;
+    overflow: hidden;
+    background-color: #e5e5e5;
+}
+
+.vert-divider {
+    height: inherit;
+    width: 1px;
+    background-color: white;
+    background-image: linear-gradient(to bottom, lightgray, white);
+}
+
+.tabbed-content-box {
+    width: 500px;
+    height: 300px;
+    margin-bottom: 2em;
+    margin-top: -1rem;
+}
+
+.tabbed-content-box ul { /*  Change the Default Padding-Left and Margin-Top From the ul  */
+    padding-left: 0;
+}
+
+.tabbed-content-box li {
+    float: left; /*  All Floated Left to Sit in Line  */
+    list-style-type: none; /*  Remove Default Bullets  */
+    width: 100px; /*  Parent Container Width Divided by Three  */
+}
+
+.tabbed-content-box li a {
+    display: inline-block; /*  Sit in Line, but Stylable  */
+    text-decoration: none; /*  No Anchor Link Underline  */
+    width: 100%; /*  Width of Container  */
+    line-height: 2.5; /*  Height of Container (with anchors)  */
+    background-color: aliceblue;
+    color: black;
+    text-align: center;
+    border-bottom: 3px solid white;
+    border-top: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+}
+
+.tabbed-content-box li a:hover, .tabbed-content-box li a:focus { /*  Color Change - Tab  */
+    background-color: gainsboro;
+}
+
+.tabbed-content-box li a.active { /*  a.active points to JavaScript  */
+    background-color: lightcyan;
+}
+
+.tabbed-content-box .panels {
+    height: 262px; /*  Panel Height Should 'Fit' Snugly in .tabbed-content-box  */
+    position: relative; /*  This is NOW the NEW POSITION CONTEXT  */
+    clear: both; /*  Always CLEAR after using FLOATS (above in li) */
+}
+
+.tabbed-content-box article {
+    position: absolute; /* Every 'article' will be absolutely positioned to its ancestor with
+                        relative positioning (panels). This will stack them on top of each other in each case. */
+    top: 0;
+    left: 0; /*  No Need to 'Push' the 'Box'  */
+    height: 262px; /*  Same as 'Panels'  */
+    padding: 10px; /*  Content padding  */
+    color: black; /*  Font color  */
+    background-color: aliceblue;
+    border: 1px solid lightgray;
+}
+
+.tabbed-content-box .active-panel {
+    z-index: 1;
+}
+
+.container-transition {
+    -webkit-transition: background-color 0.4s, color 0.4s, transform 0.4s, opacity 0.4s ease-in-out;
+    -moz-transition: background-color 0.4s, color 0.4s, transform 0.4s, opacity 0.4s ease-in-out;
+    transition: background-color 0.4s, color 0.4s, transform 0.4s, opacity 0.4s ease-in-out;
+}
+
+.shadow-box {
+    -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
