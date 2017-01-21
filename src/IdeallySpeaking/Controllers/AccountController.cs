@@ -442,6 +442,9 @@ namespace IdeallySpeaking.Controllers
             }
         }
 
+        /*
+         * IMPORTANT - MOVE INTO AN 'ISUserController.cs'
+         * 
         // GET: /Account/ProfileAvatar
         [AllowAnonymous]
         public ActionResult ProfileAvatar()
@@ -468,6 +471,7 @@ namespace IdeallySpeaking.Controllers
             }
             return View();
         }
+        */
 
         #region Helpers
 

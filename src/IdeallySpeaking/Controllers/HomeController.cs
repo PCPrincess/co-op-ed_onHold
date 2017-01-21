@@ -13,9 +13,9 @@ namespace IdeallySpeaking.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult Profile()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "User Profile";
 
             return View();
         }
