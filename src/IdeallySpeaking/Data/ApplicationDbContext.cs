@@ -23,6 +23,6 @@ namespace IdeallySpeaking.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
-        public DbSet<IdeallySpeaking.Models.Article> Article { get; set; }
+        public DbSet<IdeallySpeaking.Models.Article> Articles { get; set; }
     }
 }

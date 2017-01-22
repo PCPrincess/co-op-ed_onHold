@@ -20,9 +20,15 @@ namespace IdeallySpeaking.Controllers
         }
 
         // GET: Articles
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Article.ToListAsync());
+            var articles = from a in _context.Articles
+                           select a;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                articles = articles.Where(s => s.Headline.Contains(searchString));
+            }
+            return View(await _context.Articles.ToListAsync());
         }
 
         // GET: Articles/Details/5
@@ -33,7 +39,7 @@ namespace IdeallySpeaking.Controllers
                 return NotFound();
             }
 
-            var article = await _context.Article
+            var article = await _context.Articles
                 .SingleOrDefaultAsync(m => m.ArticleId == id);
             if (article == null)
             {
@@ -73,7 +79,7 @@ namespace IdeallySpeaking.Controllers
                 return NotFound();
             }
 
-            var article = await _context.Article.SingleOrDefaultAsync(m => m.ArticleId == id);
+            var article = await _context.Articles.SingleOrDefaultAsync(m => m.ArticleId == id);
             if (article == null)
             {
                 return NotFound();
@@ -124,7 +130,7 @@ namespace IdeallySpeaking.Controllers
                 return NotFound();
             }
 
-            var article = await _context.Article
+            var article = await _context.Articles
                 .SingleOrDefaultAsync(m => m.ArticleId == id);
             if (article == null)
             {
@@ -139,15 +145,15 @@ namespace IdeallySpeaking.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var article = await _context.Article.SingleOrDefaultAsync(m => m.ArticleId == id);
-            _context.Article.Remove(article);
+            var article = await _context.Articles.SingleOrDefaultAsync(m => m.ArticleId == id);
+            _context.Articles.Remove(article);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
         private bool ArticleExists(int id)
         {
-            return _context.Article.Any(e => e.ArticleId == id);
+            return _context.Articles.Any(e => e.ArticleId == id);
         }
     }
 }

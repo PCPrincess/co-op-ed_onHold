@@ -16,7 +16,7 @@ namespace IdeallySpeaking.Models
         public string Content { get; set; }
 
         [StringLength(240)]
-        [RegularExpression(@"")]
+        //[RegularExpression(@"")]
         public string Teaser { get; set; }
 
         public byte[] ArticlePhoto { get; set; }
