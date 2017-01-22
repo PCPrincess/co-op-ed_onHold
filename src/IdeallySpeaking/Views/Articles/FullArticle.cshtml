@@ -1,0 +1,36 @@
+@model IdeallySpeaking.Models.Article
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <h4>Article</h4>
+    <hr />
+    
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                @Html.Partial("ArticleDetailsPartial")
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @Html.Partial("ArticleContentPartial")
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.ArticleId">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</body>
+</html>

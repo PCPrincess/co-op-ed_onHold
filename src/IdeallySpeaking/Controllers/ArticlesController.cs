@@ -31,8 +31,8 @@ namespace IdeallySpeaking.Controllers
             return View(await _context.Articles.ToListAsync());
         }
 
-        // GET: Articles/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: Articles/FullArticle/5
+        public async Task<IActionResult> FullArticle(int? id)
         {
             if (id == null)
             {
