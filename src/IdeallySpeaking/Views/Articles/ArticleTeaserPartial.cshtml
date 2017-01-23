@@ -5,6 +5,9 @@
 @{
 }
 
-@Html.Partial("~/Views/Articles/ArticleContentPartial.cshtml")
-@Html.DisplayFor(model => model.Teaser)
+@Html.Partial("~/Views/Articles/ArticleDetailsPartial.cshtml")
+
+<p class="card-text">@Html.DisplayFor(model => model.Teaser)</p>
+<div class="dropdown-divider"></div>
+
 

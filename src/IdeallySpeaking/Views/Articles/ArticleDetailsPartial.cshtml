@@ -5,12 +5,42 @@
 @{
 }
        
-   
-@Html.DisplayFor(model => model.Headline)    
+  
+<div class="card-block">
+    <img class="img-thumbnail mt-1" src="~/images/Article_Images/016952-barack-obama-061615.jpg" height="80" width="160">
+    <a asp-controller="Articles" asp-action="FullArticle"><h5 class="mt-1">@Html.DisplayFor(model => model.Headline)</h5></a>
+    <small>@Html.DisplayFor(model => model.AuthorUserId)</small>
+    <small>@Html.DisplayFor(model => model.Date)</small>    
+</div>
 
-@Html.DisplayFor(model => model.ArticlePhoto)
-      
-@Html.DisplayFor(model => model.AuthorUserId)
+@*
+    <img src= "@Url.Content("~/uploads/FileUpload12011_03_02_11_49_22.jpg")" alt="IMAGES" />
 
-@Html.DisplayFor(model => model.Date)
+    -OR-
+    (in controller)
+    public async Task<ActionResult> RenderArticlePhoto(int id)
+    {
+    Item item = await db.Items.FindAsync(id);
 
+    byte[] renderedPhoto = item.ArticlePhoto;
+
+    return File(renderedPhoto, "image/png");
+    }
+    (in view)
+    <img src="@Url.Action("RenderImage", new { id = Model.ID})" />
+
+    -OR-
+    (in new class)
+    public static class HtmlExtensions
+    {
+        public static MvcHtmlString Image(this HtmlHelper html, byte[] image)
+        {
+            var img = String.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(image));
+            return new MvcHtmlString("<img src='" + img + "' />");
+        }
+    }
+    (in view)
+    @Html.Image(Model.ImgBytes)
+
+
+*@
