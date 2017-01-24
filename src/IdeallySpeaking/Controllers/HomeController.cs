@@ -11,14 +11,7 @@ namespace IdeallySpeaking.Controllers
         public IActionResult Index()
         {
             return View();
-        }
-
-        public IActionResult Profile()
-        {
-            ViewData["Message"] = "User Profile";
-
-            return View();
-        }
+        }        
 
         public IActionResult Contact()
         {

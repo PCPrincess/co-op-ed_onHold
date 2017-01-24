@@ -14,7 +14,7 @@
 </div>
 
 @*
-    <img src= "@Url.Content("~/uploads/FileUpload12011_03_02_11_49_22.jpg")" alt="IMAGES" />
+    <img src= "@Url.Content("~/uploads/imageName.jpg")" alt="IMAGES" />
 
     -OR-
     (in controller)
@@ -27,7 +27,7 @@
     return File(renderedPhoto, "image/png");
     }
     (in view)
-    <img src="@Url.Action("RenderImage", new { id = Model.ID})" />
+    <img src="@Url.Action("RenderArticlePhoto", new { id = Model.ID})" />
 
     -OR-
     (in new class)
@@ -41,6 +41,4 @@
     }
     (in view)
     @Html.Image(Model.ImgBytes)
-
-
 *@

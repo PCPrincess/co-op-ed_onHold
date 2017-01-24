@@ -443,7 +443,7 @@ namespace IdeallySpeaking.Controllers
         }
 
         /*
-         * IMPORTANT - MOVE INTO AN 'ISUserController.cs'
+           IMPORTANT - MOVE INTO AN 'ISUserController.cs'
          * 
         // GET: /Account/ProfileAvatar
         [AllowAnonymous]
