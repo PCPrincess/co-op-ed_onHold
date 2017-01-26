@@ -40,6 +40,8 @@ namespace IdeallySpeaking.Controllers
             }*/
 
             var article = await _context.Articles
+                //.Include(a => a.CommentList)
+                //Including due to its being a 'List' or 'Collection'
                 .SingleOrDefaultAsync(m => m.ArticleId == id);
             /*if (article == null)
             {
@@ -60,16 +62,17 @@ namespace IdeallySpeaking.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ArticleId,Headline,Content,Teaser,ArticlePhoto,Date,AuthorUserId")] Article article)
+        public async Task<IActionResult> Create([Bind("ArticleId,Headline,Content,Teaser,Date,AuthorUserId")] Article article)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(article);
+                _context.Add(article);                
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction("FullArticle");
             }
             return View(article);
-        }
+        }        
 
         // GET: Articles/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -92,7 +95,7 @@ namespace IdeallySpeaking.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ArticleId,Headline,Content,Teaser,ArticlePhoto,Date,AuthorUserId")] Article article)
+        public async Task<IActionResult> Edit(int id, [Bind("ArticleId,Headline,Content,Teaser,Date,AuthorUserId")] Article article)
         {
             if (id != article.ArticleId)
             {
@@ -158,33 +161,4 @@ namespace IdeallySpeaking.Controllers
     }
 }
 
-/*
-           IMPORTANT - Possible For Article Photo Upload'
-         * 
-        // GET: /Article/ArticlePhoto
-        [AllowAnonymous]
-        public ActionResult PhotoUpload()
-        {
-            return View();
-        }
 
-        // POST: /Account/ProfileAvatar
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> PhotoUpload(ICollection<IFormFile> files)
-        {
-            var uploads = Path.Combine(_environment.WebRootPath, "uploads");
-            foreach (var file in files)
-            {
-                if (file.Length > 0)
-                {
-                    using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
-                    {
-                        await file.CopyToAsync(fileStream);
-                    }
-                }
-            }
-            return View();
-        }
-        */

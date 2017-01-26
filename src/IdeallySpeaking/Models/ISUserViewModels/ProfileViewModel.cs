@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -21,7 +22,7 @@ namespace IdeallySpeaking.Models.ISUserViewModels
 
         public string Url { get; set; }
 
-        public byte[] Avatar { get; set; }
+        public IFormFile Avatar { get; set; }        
 
         [InverseProperty("Author")]
         public List<Article> AuthoredArticles { get; }
@@ -31,3 +32,33 @@ namespace IdeallySpeaking.Models.ISUserViewModels
         public List<Badge> Badges { get; }
     }
 }
+/*
+        IMPORTANT - Possible For Avatar Upload [in: ISUserController.cs]
+        
+        // GET: /ISUser/Avatar
+        [AllowAnonymous]
+        public ActionResult PhotoUpload()
+        {
+            return View();
+        }
+
+        // POST: /ISUser/Avatar
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> PhotoUpload(ICollection<IFormFile> files)
+        {
+            var uploads = Path.Combine(_environment.WebRootPath, "uploads");
+            foreach (var file in files)
+            {
+                if (file.Length > 0)
+                {
+                    using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
+                    {
+                        await file.CopyToAsync(fileStream);
+                    }
+                }
+            }
+            return View();
+        }
+ */

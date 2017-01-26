@@ -14,20 +14,7 @@
 </div>
 
 @*
-    <img src= "@Url.Content("~/uploads/imageName.jpg")" alt="IMAGES" />
-
-    -OR-
-    (in controller)
-    public async Task<ActionResult> RenderArticlePhoto(int id)
-    {
-    Item item = await db.Items.FindAsync(id);
-
-    byte[] renderedPhoto = item.ArticlePhoto;
-
-    return File(renderedPhoto, "image/png");
-    }
-    (in view)
-    <img src="@Url.Action("RenderArticlePhoto", new { id = Model.ID})" />
+    <img src= "@Url.Content("~/uploads/imageName.jpg")" alt="IMAGES" />   
 
     -OR-
     (in new class)
@@ -39,6 +26,7 @@
             return new MvcHtmlString("<img src='" + img + "' />");
         }
     }
+
     (in view)
     @Html.Image(Model.ImgBytes)
 *@

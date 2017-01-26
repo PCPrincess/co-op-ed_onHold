@@ -18,9 +18,7 @@ namespace IdeallySpeaking.Models
         [StringLength(240)]
         //[RegularExpression(@"")]
         public string Teaser { get; set; }
-
-        public byte[] ArticlePhoto { get; set; }
-
+        
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
