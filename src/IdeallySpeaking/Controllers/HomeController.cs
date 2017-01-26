@@ -20,6 +20,11 @@ namespace IdeallySpeaking.Controllers
             return View();
         }
 
+        public IActionResult Supporters()
+        {
+            return View();
+        }
+
         public IActionResult Error()
         {
             return View();

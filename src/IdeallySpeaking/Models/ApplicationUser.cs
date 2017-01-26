@@ -22,7 +22,6 @@ namespace IdeallySpeaking.Models
         public DateTime JoinDate { get; private set; }
 
         public string Url { get; set; }
-
-        public byte[] Avatar { get; set; }
+        
     }
 }

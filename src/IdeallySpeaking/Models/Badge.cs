@@ -7,9 +7,7 @@ namespace IdeallySpeaking.Models
 {
     public class Badge
     {
-        public int BadgeId { get; set; }
-
-        public byte[] BadgeImage { get; set; }
+        public int BadgeId { get; set; }        
 
         public string Caption { get; set; }
 
