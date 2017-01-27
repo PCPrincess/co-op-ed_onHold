@@ -8,6 +8,8 @@ namespace IdeallySpeaking.Models.CommentViewModels
     public class PopularCommentsViewModel
     {
         //public int Rating { get; set; }
+        //Create Partial View in Views/Comments - PopularCommentsPartial
+        //Partial Will Render in Home/Index.cshtml
 
         public class CommentsRating
         {

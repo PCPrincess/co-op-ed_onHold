@@ -28,17 +28,17 @@ namespace IdeallySpeaking.Controllers
         // GET: Comments/ArticleComment/5
         public async Task<IActionResult> ArticleComment(int? id)
         {
-            if (id == null)
+            /*if (id == null)
             {
                 return NotFound();
-            }
+            }*/
 
             var comment = await _context.Comment
                 .SingleOrDefaultAsync(m => m.CommentId == id);
-            if (comment == null)
+            /*if (comment == null)
             {
                 return NotFound();
-            }
+            }*/
 
             return View(comment);
         }
