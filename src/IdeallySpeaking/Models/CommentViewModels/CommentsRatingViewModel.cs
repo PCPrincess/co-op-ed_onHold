@@ -5,11 +5,9 @@ using System.Threading.Tasks;
 
 namespace IdeallySpeaking.Models.CommentViewModels
 {
-    public class PopularCommentsViewModel
+    public class CommentsRatingViewModel
     {
-        //public int Rating { get; set; }
-        //Create Partial View in Views/Comments - PopularCommentsPartial
-        //Partial Will Render in Home/Index.cshtml
+        public int Rating { get; set; }        
 
         public class CommentsRating
         {
@@ -26,7 +24,7 @@ namespace IdeallySpeaking.Models.CommentViewModels
             public void RatingDown(Comment comment)
             {
                 comment.Rating -= 1;
-            }
+            }            
 
         } 
         

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using IdeallySpeaking.Data;
 using IdeallySpeaking.Models;
+using IdeallySpeaking.Models.CommentViewModels;
 
 namespace IdeallySpeaking.Controllers
 {
@@ -184,14 +185,14 @@ namespace IdeallySpeaking.Controllers
         public async Task<IActionResult> PopularCommentsList(int num)
         {
             var items = await GetItemsAsync(num);
-            return View(items);
+            return View(items); //
         }
 
         private async Task<List<Comment>> GetItemsAsync(int num)
-        {
+        {             
             IQueryable<Comment> comments = from c in _context.Comment
             .OrderByDescending(r => r.Rating).Take(num)
-                                           select c;
+                                           select c;            
             return await comments.ToListAsync();
         }
 

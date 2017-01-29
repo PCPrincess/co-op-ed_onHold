@@ -2,6 +2,7 @@
 
 @{
     Layout = "_Layout";
+    ViewData["Title"] = "Full Article";
 }
 
 <!DOCTYPE html>
@@ -9,12 +10,19 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
+    <title>Title</title>
 </head>
 <body>
+    <a name="top" id="top"></a>
+    <div class="">
+        <a href="/~PCPrincess" class="">PCPrincess</a> | <a href="/?com=profile&amp;uid=249111">My Profile</a> | <a href=""></a> | <a href=""></a> | <a href=""></a> | <a href="">Help</a> | <a href="">Log out</a>
+    </div>
+    <div class="">
+        <a href="" id="" class="">Home</a><a href="" id="" class="">Latest Threads</a><a href="" id="" class="">Greatest Threads</a><a href="" id="" class=" ">Forums</a><a href="" id="" class="">My Posts</a>
+    </div>
+
     <h4>Article</h4>
     <hr />
-    
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -24,15 +32,37 @@
         <tbody>
             <tr>
                 @Html.Partial("ArticleContentPartial")
-            </tr>            
+            </tr>
         </tbody>
     </table>
-    <div class="">
-       @* <a asp-action="Create" asp-controller="CommentsController">Reply to Article</a>*@
-    </div>
+    <hr />
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr></tr>
+        </thead>
+        <tbody>
+
+            @*
+            @foreach (var item in Model.CommentList)
+            {
+                <a name="op" id="op"></a>
+                @Html.Partial("CommentPartial", item);
+            }*@
+            <tr>
+                <td>
+                    <div class="">
+                        @* <a asp-action="Create" asp-controller="CommentsController">Reply to Article</a>*@
+                    </div>
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <div>
-        @*<a asp-action="Edit" asp-route-id="@Model.ArticleId">Edit</a> |*@
         <a asp-action="Index">Back to List</a>
     </div>
+
 </body>
 </html>
