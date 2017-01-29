@@ -32,9 +32,15 @@
         <tbody>
             <tr>
                 @Html.Partial("ArticleContentPartial")
+                <td class="" valign="bottom">
+                    <a href="https://twitter.com/share" class="" data-url="" data-counturl="" data-count="" data-via="" data-size="" data-dnt="true">Tweet</a>
+                </td>
             </tr>
         </tbody>
     </table>
+    <p class="">
+        <a href="">Reply to this article</a>
+    </p>
     <hr />
     <table class="table table-striped table-bordered">
         <thead>
@@ -61,6 +67,11 @@
         </tbody>
     </table>
     <div>
+        <a href="" class="">Thread info</a>
+        <span id="bookmark">
+            <a href="#" class="">Bookmark<span>this thread</span></a>
+        </span> 
+        <p class=""><a href="#top">Back to top</a></p>       
         <a asp-action="Index">Back to List</a>
     </div>
 

@@ -85,6 +85,12 @@ textarea {
     left: 0;
 }
 
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+}
+
 .nav-box {
     height: 2rem;
     width: 100px;
