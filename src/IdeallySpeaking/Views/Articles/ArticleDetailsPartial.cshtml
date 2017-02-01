@@ -5,10 +5,9 @@
 @{
 }
        
-  
 
-<img class="img-thumbnail mt-1" src="~/images/Article_Images/016952-barack-obama-061615.jpg" height="80" width="160">
-<a asp-controller="Articles" asp-action="FullArticle"><h5 class="mt-1">@Html.DisplayFor(model => model.Headline)</h5></a>
+<img class="card-img" src="~/images/Article_Images/016952-barack-obama-061615.jpg" height="80" width="160">
+<a asp-controller="Articles"><h5 class="mt-1">@Html.DisplayFor(model => model.Headline)</h5></a>
 <small>@Html.DisplayFor(model => model.AuthorUserId)</small>
 <small>@Html.DisplayFor(model => model.Date)</small>    
 
