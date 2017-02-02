@@ -23,31 +23,23 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <ul class="list-inline d-flex justify-content-end">
-                    <li class="list-inline-item p-2"><a asp-controller="Home" asp-action="Index"><img src="~/images/Simply/Home.png" height="32" width="32" />Home</a></li>
-                    <li class="list-inline-item p-2"><a asp-controller="" asp-action=""><img src="~/images/Simply/Text.png" height="32" width="32" />Profile</a></li>
-                    <li class="list-inline-item p-2"><a asp-controller="Home" asp-action="Contact"><img src="~/images/Simply/Skype.png" height="32" width="32" />Contact</a></li>
+                <ul class="nav nav-tabs justify-content-end"> @* list-inline d-flex *@  @* list-inline-item p-2 *@
+                    <li class="nav-item"><a class="nav-link border-bottom-0" asp-controller="Home" asp-action="Index"><img src="~/images/Simply/Home.png" height="24" width="24" />Home</a></li>
+                    <li class="nav-item"><a class="nav-link border-bottom-0" asp-controller="" asp-action=""><img src="~/images/Simply/Text.png" height="24" width="24" />Profile</a></li>
+                    <li class="nav-item"><a class="nav-link border-bottom-0" asp-area="" asp-controller="Articles" asp-action="Index">Recent</a></li>
+                    <li class="nav-item"><a class="nav-link border-bottom-0" asp-area="" asp-controller="Articles" asp-action="Create">Create-Art Test</a></li>
+                    <li class="nav-item"><a class="nav-link border-bottom-0" asp-area="" asp-controller="Articles" asp-action="FullArticle">Full-Art Test</a></li>
                     @await Html.PartialAsync("_LoginPartial")
                 </ul>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12">
-                <ul class="nav nav-tabs border-bottom-0">
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Articles" asp-action="Index">Recent</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Articles" asp-action="Create">Create Article Test</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Articles" asp-action="FullArticle">Full Article Test</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Comments" asp-action="Create">Create Comment Test</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="" asp-action="">Placeholder(Don't Click!)</a></li>
-                    
-
-                </ul>
-                <div class="pcprincess-header d-flex mb-3 ">
+            <div class="col-sm-12">                
+                <div class="pcprincess-header d-flex mb-3 mt-3 ">
                     <div class="logo-box">
                         <img class="logo" src="~/images/Miscellaneous/Megaphone.png" height="75" width="75">
                     </div>
-                    <div class="nav-box text-center align-self-end"><a href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" /></a>Events</div>
+                    <div class="nav-box text-center align-self-end"><a href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Events</a></div>
                     <div class="nav-box text-center align-self-end">Flex item 2</div>
                     <div class="nav-box text-center align-self-end">Flex item 3</div>
                     <div class="nav-box text-center align-self-end">Flex item 1</div>
@@ -55,7 +47,7 @@
                     <div class="nav-box text-center align-self-end">Flex item 3</div>
                     <div class="nav-box text-center align-self-end">Flex item 1</div>
                     <div class="nav-box text-center align-self-end">Flex item 2</div>
-                    <div class="nav-box text-center align-self-end">Flex item 3</div>
+                    <div class="nav-box text-center align-self-end"><a asp-controller="Home" asp-action="Contact"><img src="~/images/Simply/Skype.png" height="24" width="24" />Contact</a></div>
                 </div>
             </div>
         </div>

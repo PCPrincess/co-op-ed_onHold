@@ -15,8 +15,7 @@ namespace IdeallySpeaking.Models
         [Display(Name = "Article Content")]
         public string Content { get; set; }
 
-        [StringLength(240)]
-        //[RegularExpression(@"")]
+        //[RegularExpression(@"^(\w+)\s\.]{1,100}$")] Note: 'set' not required in this use scenario.
         public string Teaser { get; set; }
         
         [DataType(DataType.Date)]
