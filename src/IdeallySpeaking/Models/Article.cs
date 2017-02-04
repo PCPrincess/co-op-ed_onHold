@@ -15,8 +15,11 @@ namespace IdeallySpeaking.Models
         [Display(Name = "Article Content")]
         public string Content { get; set; }
 
-        //[RegularExpression(@"^(\w+)\s\.]{1,100}$")] Note: 'set' not required in this use scenario.
-        public string Teaser { get; set; }
+        [RegularExpression(@"^(\w+)\s\.]{1,100}$")] 
+        public string Teaser
+        {
+            get { return Content; }
+        }
         
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
