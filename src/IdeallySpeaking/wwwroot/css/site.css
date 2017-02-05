@@ -1,5 +1,17 @@
-﻿body {
-    padding-top: 50px;
+﻿@import url(http://fonts.googleapis.com/css?family=Josefin+Sans);
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+
+.raleway {
+    font-family: 'Raleway', sans-serif;
+}
+
+.josefin {
+    font-family: 'Josefin Sans', sans-serif;
+    text-transform: uppercase;
+}
+
+body {
+    padding-top: 40px;
     padding-bottom: 20px;
 }
 
@@ -51,6 +63,14 @@ textarea {
 
 /* PCPrincess CSS */
 
+/*a {
+    color: #c52d2f;
+    -webkit-transition: color 300ms, background-color 300ms;
+    -moz-transition: color 300ms, background-color 300ms;
+    -o-transition: color 300ms, background-color 300ms;
+    transition: color 300ms, background-color 300ms;
+}*/
+
 .bg-color1 {
     background-color: #cfc;
 }
@@ -72,8 +92,8 @@ textarea {
     border-bottom: 1px solid #E8E8E8; /* Border Top or Bottom of any CONTAINER */
 }
 
-/* Nav-Tabs Border Bottom aka: ntbb */
-.ntbb {
+/* Button/Tab/Pill Border Bottom aka: bbb */
+.bbb {
     border-bottom: 1.5px solid #5bc0de;
 }
 

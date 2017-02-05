@@ -19,22 +19,24 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
-<body>
+<body> 
+    <div class="container">
+        <nav class="navbar navbar-light" role="navigation" style="background-color: #e3f2fd;">
+            <ul class="nav flex-column flex-sm-row justify-content-end">
+                <li class="nav-item"><a class="flex-sm-fill text-sm-center nav-link active" asp-controller="Home" asp-action="Index"><img src="~/images/Simply/Home.png" height="24" width="24" />Home</a></li>
+                <li class="nav-item"><a class="flex-sm-fill text-sm-center nav-link" asp-controller="" asp-action=""><img src="~/images/Simply/Text.png" height="24" width="24" />Profile</a></li>
+
+                <li class="nav-item"><a class="flex-sm-fill text-sm-center nav-link" asp-area="" asp-controller="Articles" asp-action="Index">Recent</a></li>
+                <li class="nav-item"><a class="flex-sm-fill text-sm-center nav-link" asp-area="" asp-controller="Articles" asp-action="Create">Create-Art Test</a></li>
+                <li class="nav-item"><a class="flex-sm-fill text-sm-center nav-link" asp-area="" asp-controller="Articles" asp-action="FullArticle">Full-Art Test</a></li>
+                @await Html.PartialAsync("_LoginPartial")
+            </ul>
+        </nav>
+    </div>
+                       
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <ul class="nav nav-tabs justify-content-end">
-                    <li class="nav-item ntbb"><a class="nav-link border-bottom-0" asp-controller="Home" asp-action="Index"><img src="~/images/Simply/Home.png" height="24" width="24" />Home</a></li>
-                    <li class="nav-item"><a class="nav-link border-bottom-0" asp-controller="" asp-action=""><img src="~/images/Simply/Text.png" height="24" width="24" />Profile</a></li>
-                    <li class="nav-item"><a class="nav-link border-bottom-0" asp-area="" asp-controller="Articles" asp-action="Index">Recent</a></li>
-                    <li class="nav-item"><a class="nav-link border-bottom-0" asp-area="" asp-controller="Articles" asp-action="Create">Create-Art Test</a></li>
-                    <li class="nav-item"><a class="nav-link border-bottom-0" asp-area="" asp-controller="Articles" asp-action="FullArticle">Full-Art Test</a></li>
-                    @await Html.PartialAsync("_LoginPartial")
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">                
                 <div class="pcprincess-header d-flex mb-3 mt-3 ">
                     <div class="logo-box">
                         <img class="logo" src="~/images/Miscellaneous/Megaphone.png" height="75" width="75">
@@ -44,12 +46,13 @@
                     <div class="nav-box text-center align-self-end">Flex item 3</div>
                     <div class="nav-box text-center align-self-end">Flex item 1</div>
                     <div class="nav-box text-center align-self-end">Flex item 2</div>
-                    <div class="nav-box text-center align-self-end">Flex item 3</div>                    
+                    <div class="nav-box text-center align-self-end">Flex item 3</div>
                     <div class="nav-box text-center align-self-end border-right-0"><a asp-controller="Home" asp-action="Contact"><img src="~/images/Simply/Skype.png" height="24" width="24" />Contact</a></div>
                 </div>
             </div>
         </div>
-    </div><br />
+    </div>
+    <br />
 
     <div class="container body-content">
         @RenderBody()
