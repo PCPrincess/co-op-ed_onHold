@@ -63,12 +63,27 @@ textarea {
     background-color: hsl(0,0%,95%);
 }
 
+/* Info: The Colors Used by Bootstrap For
+    info >   background-color: #5bc0de;
+    danger > background-color: #d9534f;
+*/
+
 .hr-color1 {
     border-bottom: 1px solid #E8E8E8; /* Border Top or Bottom of any CONTAINER */
 }
 
+/* Nav-Tabs Border Bottom aka: ntbb */
+.ntbb {
+    border-bottom: 1.5px solid #5bc0de;
+}
+
+/* Card Border Top aka: cbt */
+.cbt {
+    border-top: 1.5px solid #5bc0de;
+}
+
 .pcprincess-header {
-    background-image: linear-gradient(to bottom, white 20%, aliceblue);
+    background-image: linear-gradient(to bottom, white 70%, hsl(0,0%,95%)); /* white 20%, aliceblue */
     background-repeat: no-repeat;
     border: 1px solid lightgray;
     height: 125px;
@@ -93,10 +108,109 @@ textarea {
 
 .nav-box {
     height: 2rem;
-    width: 100px;
+    width: 150px;
     font-size: 1rem;
     border-top: 1px solid lightgray;
     border-right: 1px solid lightgray;
+}
+
+/*  Text Entry Box - Comments, Article Creation  */
+.text-entry-row {
+    margin-top: 20px;
+}
+
+.fa-lg {
+    vertical-align: 0;
+}
+
+.text-entry-box {
+    border-color: #DBDEE0;
+    border-width: 1px;
+    border-style: solid;
+    margin: 0 0 30px 0;
+    float: left;
+    width: 100%;
+    font-size: 14px;
+    background-color: #FFFFFF;
+}
+
+.text-entry-box-header {
+    background-color: #F4F5F5;
+    color: #34383C;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    min-height: 40px;
+    border-bottom-color: #DBDEE0;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
+.text-entry-box-header i {
+    color: #CED1D4;
+    border-right-color: #DBDEE0;
+    border-right-width: 1px;
+    border-right-style: solid;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    padding-top: 10px;
+    line-height: 20px;
+    text-align: center;
+}
+
+.text-entry-box-title p {
+    color: #7C848D;
+    display: inline-block;
+    margin: 0 0 0 0;
+}
+
+.text-entry-box-title p + p {
+    margin-left: 5px;
+}
+
+.text-entry-box-icon i {
+    border-right: none;
+    color: inherit;
+    background-color: inherit;
+}
+
+.text-entry-box-icon a,
+.text-entry-box-icon a:link,
+.text-entry-box-icon a:visited {
+    border-left-color: #DBDEE0;
+    border-left-width: 1px;
+    border-left-style: solid;
+    color: #7C848D;
+    text-decoration: none;
+    display: inline-block;
+    width: 40px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    float: left;
+    background-color: transparent;
+}
+
+.text-entry-box-icon a:hover,
+.text-entry-box-icon a:focus {
+    background-color: #7C848D;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom-width: 0;
+    color: #F4F5F5;
+}
+
+.text-entry-box-content {
+    color: #000000;
+    background-color: #FFFFFF;
+    padding: 10px;
 }
 
 /*  position: relative/absolute/fixed  -  opacity: 0.X  */
