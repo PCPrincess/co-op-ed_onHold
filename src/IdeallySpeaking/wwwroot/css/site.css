@@ -11,7 +11,7 @@
 }
 
 body {
-    padding-top: 40px;
+    padding-top: 30px;
     padding-bottom: 20px;
 }
 
@@ -71,6 +71,14 @@ textarea {
     transition: color 300ms, background-color 300ms;
 }*/
 
+div > nav > ul > li > a {
+    color: dimgray;
+    -webkit-transition: color 300ms, background-color 300ms;
+    -moz-transition: color 300ms, background-color 300ms;
+    -o-transition: color 300ms, background-color 300ms;
+    transition: color 300ms, background-color 300ms;
+}
+
 .bg-color1 {
     background-color: #cfc;
 }
@@ -102,36 +110,73 @@ textarea {
     border-top: 1.5px solid #5bc0de;
 }
 
+.outer-container {
+    border: 1px solid #E8E8E8;    
+}
+
 .pcprincess-header {
-    background-image: linear-gradient(to bottom, white 70%, hsl(0,0%,95%)); /* white 20%, aliceblue */
-    background-repeat: no-repeat;
+    background-color: inherit;
     border: 1px solid lightgray;
-    height: 125px;
+    height: 175px;
     font: inherit;
     color: darkgray;
 }
 
 .logo-box {
     height: 100%;
-    width: 150px;
+    width: 175px;
     border-right: 1px solid lightgray;
     position: relative;
     top: 0;
     left: 0;
 }
 
-.logo {
-    position: absolute;
-    top: 20px;
-    left: 25px;
+.logo {    
+    border: 2px solid white;
 }
 
-.nav-box {
-    height: 2rem;
+.nav-box {    
     width: 150px;
-    font-size: 1rem;
-    border-top: 1px solid lightgray;
-    border-right: 1px solid lightgray;
+    height: 2.5rem;
+    font-size: 1rem;    
+    border-top: 1px dotted lightgray;
+    border-right: 1px solid lightgray;    
+}
+
+div.nav-box a {
+    color: dimgray;
+}
+
+/* Social-Networking Navi */
+.social {
+    text-align: right;
+}
+
+.social-share {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.social-share li {
+    display: inline-block;
+}
+
+ul.social-share li a {
+    display: inline-block;
+    color: #fff;
+    background: #404040;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    border-radius: 2px;
+}
+
+ul.social-share li a:hover {
+    background: #c52d2f;
+    color: #fff;
 }
 
 /*  Text Entry Box - Comments, Article Creation  */
