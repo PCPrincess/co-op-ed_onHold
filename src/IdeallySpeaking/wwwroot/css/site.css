@@ -137,9 +137,9 @@ div > nav > ul > li > a {
 
 .nav-box {    
     width: 150px;
-    height: 2.5rem;
+    height: 2rem;
     font-size: 1rem;    
-    border-top: 1px dotted lightgray;
+    border-top: 1px solid lightgray;
     border-right: 1px solid lightgray;    
 }
 
