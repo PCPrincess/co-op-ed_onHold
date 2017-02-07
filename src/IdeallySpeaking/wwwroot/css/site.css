@@ -63,13 +63,13 @@ textarea {
 
 /* PCPrincess CSS */
 
-/*a {
-    color: #c52d2f;
+a {
+    color: dimgray;
     -webkit-transition: color 300ms, background-color 300ms;
     -moz-transition: color 300ms, background-color 300ms;
     -o-transition: color 300ms, background-color 300ms;
     transition: color 300ms, background-color 300ms;
-}*/
+}
 
 div > nav > ul > li > a {
     color: dimgray;
@@ -96,11 +96,25 @@ div > nav > ul > li > a {
     danger > background-color: #d9534f;
 */
 
-.hr-color1 {
-    border-bottom: 1px solid #E8E8E8; /* Border Top or Bottom of any CONTAINER */
+.bt {
+    border-top: 1px solid #E8E8E8;
 }
 
-/* Button/Tab/Pill Border Bottom aka: bbb */
+.br {
+    border-right: 1px solid #E8E8E8;
+}
+
+.bb {
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.bl {
+    border-left: 1px solid #E8E8E8;
+}
+
+
+
+/* Button/Tab/Pill Border Bottom Button aka: bbb */
 .bbb {
     border-bottom: 1.5px solid #5bc0de;
 }
@@ -108,10 +122,6 @@ div > nav > ul > li > a {
 /* Card Border Top aka: cbt */
 .cbt {
     border-top: 1.5px solid #5bc0de;
-}
-
-.outer-container {
-    border: 1px solid #E8E8E8;    
 }
 
 .pcprincess-header {
