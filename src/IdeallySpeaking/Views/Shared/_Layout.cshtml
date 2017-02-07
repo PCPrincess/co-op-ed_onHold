@@ -19,9 +19,9 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
-<body> 
+<body>    
     <div class="container">
-        <nav class="navbar navbar-light" role="navigation" style="background-color: #e3f2fd;">
+        <nav class="navbar navbar-light mb-0" style="background-color: #e6e7e8; border: 1px solid lightgray;">
             <ul class="nav flex-column flex-sm-row justify-content-end">
                 <li class="nav-item"><a class="flex-sm-fill text-sm-center nav-link active" asp-controller="Home" asp-action="Index"><img src="~/images/Simply/Home.png" height="24" width="24" />Home</a></li>
                 <li class="nav-item"><a class="flex-sm-fill text-sm-center nav-link" asp-controller="" asp-action=""><img src="~/images/Simply/Text.png" height="24" width="24" />Profile</a></li>
@@ -33,13 +33,13 @@
             </ul>
         </nav>
     </div>
-                       
+
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <div class="pcprincess-header d-flex mb-3 mt-3 ">
+                <div class="pcprincess-header d-flex mb-1 mt-1 ">
                     <div class="logo-box">
-                        <img class="logo" src="~/images/Miscellaneous/Megaphone.png" height="75" width="75">
+                        <img class="logo" src="~/images/Miscellaneous/The-Background.png" height="170" width="170">
                     </div>
                     <div class="nav-box text-center align-self-end"><a href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Events</a></div>
                     <div class="nav-box text-center align-self-end">Flex item 2</div>
@@ -51,18 +51,30 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
     <br />
 
     <div class="container body-content">
         @RenderBody()
+
         <hr />
-        <footer>
-            <p>&copy; 2017 - IdeallySpeaking</p>
-        </footer>
         <div class="alert alert-info" role="alert">
             <strong>Thanks Readers!</strong> There are some awesome new additions coming to the site. <a asp-controller="Home" asp-action="Supporters" class="alert-link">Can you help by donating?</a>
         </div>
+        <br />
+        <div class="bt br bb bl">
+            <footer>
+                <ul>
+                    <li class="d-inline">&copy; 2017 - IdeallySpeaking</li>
+                    <li class="d-inline-block">
+                        <a title="DMCA.com Protection Status" class="dmca-badge" href="http://www.dmca.com/Protection/Status.aspx?ID=cb632dcf-d7b0-4283-bed2-e9a99b014cff">
+                            <img alt="DMCA.com Protection Status" src="//images.dmca.com/Badges/dmca-badge-w200-5x1-11.png?ID=cb632dcf-d7b0-4283-bed2-e9a99b014cff">
+                        </a>
+                        <script src="//images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
+                    </li>
+                </ul>                
+            </footer>
+        </div>        
     </div>
 
     <environment names="Development">

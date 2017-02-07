@@ -11,7 +11,7 @@
 }
 
 body {
-    padding-top: 40px;
+    padding-top: 30px;
     padding-bottom: 20px;
 }
 
@@ -63,13 +63,13 @@ textarea {
 
 /* PCPrincess CSS */
 
-/*a {
-    color: #c52d2f;
+a {
+    color: dimgray;
     -webkit-transition: color 300ms, background-color 300ms;
     -moz-transition: color 300ms, background-color 300ms;
     -o-transition: color 300ms, background-color 300ms;
     transition: color 300ms, background-color 300ms;
-}*/
+}
 
 .bg-color1 {
     background-color: #cfc;
@@ -88,11 +88,7 @@ textarea {
     danger > background-color: #d9534f;
 */
 
-.hr-color1 {
-    border-bottom: 1px solid #E8E8E8; /* Border Top or Bottom of any CONTAINER */
-}
-
-/* Button/Tab/Pill Border Bottom aka: bbb */
+/* Button/Tab/Pill Border Bottom Button aka: bbb */
 .bbb {
     border-bottom: 1.5px solid #5bc0de;
 }
@@ -103,35 +99,94 @@ textarea {
 }
 
 .pcprincess-header {
-    background-image: linear-gradient(to bottom, white 70%, hsl(0,0%,95%)); /* white 20%, aliceblue */
-    background-repeat: no-repeat;
+    background-color: inherit;
     border: 1px solid lightgray;
-    height: 125px;
+    height: 175px;
     font: inherit;
     color: darkgray;
 }
 
 .logo-box {
     height: 100%;
-    width: 150px;
+    width: 175px;
     border-right: 1px solid lightgray;
     position: relative;
     top: 0;
     left: 0;
 }
 
-.logo {
-    position: absolute;
-    top: 20px;
-    left: 25px;
+.logo {    
+    border: 2px solid white;
 }
 
-.nav-box {
-    height: 2rem;
+.nav-box {    
     width: 150px;
-    font-size: 1rem;
+    height: 2rem;
+    font-size: 1rem;    
     border-top: 1px solid lightgray;
-    border-right: 1px solid lightgray;
+    border-right: 1px solid lightgray;    
+}
+
+/* Social-Networking Navi */
+.social {
+    text-align: right;
+}
+
+.social-share {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.social-share li {
+    display: inline-block;
+}
+
+ul.social-share li a {
+    display: inline-block;
+    color: #fff;
+    background: #404040;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    border-radius: 2px;
+}
+
+ul.social-share li a:hover {
+    background: #c52d2f;
+    color: #fff;
+}
+
+/* Stacked-Tab Media Box */
+
+.stacked-tab-media {
+    height: 280px;
+    width: 560px;    
+    /*border: 1px solid #E8E8E8;*/
+}
+
+.stacked-tab-media li a {    
+    display: inline-block;
+    width: 180px;
+    border: 1px solid #E8E8E8
+}
+
+.stacked-tab-media .tab-content {
+    height: 260px;
+    position: absolute;
+    top: 0;
+    left: 193px;
+}
+
+.stacked-tab-media .tab-pane {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 260px;
+    width: 360px;
+    border: 1px solid #E8E8E8;
 }
 
 /*  Text Entry Box - Comments, Article Creation  */
@@ -268,6 +323,8 @@ textarea {
     background-image: linear-gradient(to bottom, lightgray, white);
 }
 
+/* Tabbed-Content Box  */
+
 .tabbed-content-box {
     width: 500px;
     height: 300px;
@@ -315,7 +372,7 @@ textarea {
 
 .tabbed-content-box article {
     position: absolute; /* Every 'article' will be absolutely positioned to its ancestor with
-                        relative positioning (panels). This will stack them on top of each other in each case. */
+                relative positioning (panels). This will stack them on top of each other in each case. */
     top: 0;
     left: 0; /*  No Need to 'Push' the 'Box'  */
     height: 262px; /*  Same as 'Panels'  */
