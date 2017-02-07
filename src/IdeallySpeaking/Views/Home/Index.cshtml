@@ -27,37 +27,59 @@
         </div>
     </div>
 
-    <div class="col-sm-6">
-        <section class="tabbed-content-box">
-            <ul>
-                <li><a href="#" class="active">Tab 1</a></li>
-                <li><a href="#">Tab 2</a></li>
-                <li><a href="#">Tab 3</a></li>
-            </ul>
-            <div class="panels">
-                <article class="active-panel">
-                    <h2>The first tab</h2>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque turpis nibh, porttitor nec venenatis eu, pulvinar in augue. Vestibulum et orci scelerisque, vulputate tellus quis, lobortis dui. Vivamus varius libero at ipsum mattis efficitur ut nec nisl. Aliquam ut porttitor urna. Nulla facilisi.</p>
-                </article>
-                <article>
-                    <h2>The second tab</h2>
-
-                    <p>This tab hasn't got any Lorem Ipsum in it. But the content isn't very exciting all the same.</p>
-                </article>
-                <article>
-                    <h2>The third tab</h2>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque turpis nibh, porttitor nec venenatis eu, pulvinar in augue. And now an ordered list: how exciting!</p>
-
-                    <ol>
-                        <li>dui neque eleifend lorem, a auctor libero turpis at sem.</li>
-                        <li>Aliquam ut porttitor urna.</li>
-                        <li>Nulla facilisi</li>
-                    </ol>
-                </article>
+    <div class="col-sm-6">        
+        <div class="row">
+            <div class="col-sm-4">
+                <ul class="nav nav-tab flex-column" role="tablist">
+                    <li class="nav-item"><a href="#tab1" data-toggle="tab" class="nav-link active" role="tab">Something Goes Here</a></li>
+                    <li class="nav-item"><a href="#tab2" data-toggle="tab" class="nav-link" role="tab">Missing A Plug-In?</a></li>
+                    <li class="nav-item"><a href="#tab3" data-toggle="tab" class="nav-link" role="tab">Predefine Layout</a></li>
+                    <li class="nav-item"><a href="#tab4" data-toggle="tab" class="nav-link" role="tab">Our Philosopy</a></li>
+                </ul>
             </div>
-        </section>
+
+            <div class="col-sm-8">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab1" role="tabpanel">
+                        <div class="media">
+                            <img class="d-flex mr-3" src="~/images/Miscellaneous/Placeholder.png" alt="Generic placeholder image">
+                            <div class="media-body">
+                                <h5 class="mt-0 mb-1">List-based media object</h5>
+                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab2">
+                        <div class="media">
+                            <img class="d-flex mr-3" src="~/images/Miscellaneous/Placeholder.png" alt="Generic placeholder image">
+                            <div class="media-body">
+                                <h5 class="mt-0 mb-1">List-based media object</h5>
+                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab3">
+                        <div class="media">
+                            <img class="d-flex mr-3" src="~/images/Miscellaneous/Placeholder.png" alt="Generic placeholder image">
+                            <div class="media-body">
+                                <h5 class="mt-0 mb-1">List-based media object</h5>
+                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab4">
+                        <div class="media">
+                            <img class="d-flex mr-3" src="~/images/Miscellaneous/Placeholder.png" alt="Generic placeholder image">
+                            <div class="media-body">
+                                <h5 class="mt-0 mb-1">List-based media object</h5>
+                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="card text-center mb-3">
             <div class="card-header">Text</div>
             <div class="card-block">

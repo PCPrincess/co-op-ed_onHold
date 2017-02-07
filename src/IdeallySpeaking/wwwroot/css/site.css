@@ -360,7 +360,7 @@ ul.social-share li a:hover {
 
 .tabbed-content-box article {
     position: absolute; /* Every 'article' will be absolutely positioned to its ancestor with
-                        relative positioning (panels). This will stack them on top of each other in each case. */
+                relative positioning (panels). This will stack them on top of each other in each case. */
     top: 0;
     left: 0; /*  No Need to 'Push' the 'Box'  */
     height: 262px; /*  Same as 'Panels'  */
