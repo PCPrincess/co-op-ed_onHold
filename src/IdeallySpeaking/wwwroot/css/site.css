@@ -71,14 +71,6 @@ a {
     transition: color 300ms, background-color 300ms;
 }
 
-div > nav > ul > li > a {
-    color: dimgray;
-    -webkit-transition: color 300ms, background-color 300ms;
-    -moz-transition: color 300ms, background-color 300ms;
-    -o-transition: color 300ms, background-color 300ms;
-    transition: color 300ms, background-color 300ms;
-}
-
 .bg-color1 {
     background-color: #cfc;
 }
@@ -95,24 +87,6 @@ div > nav > ul > li > a {
     info >   background-color: #5bc0de;
     danger > background-color: #d9534f;
 */
-
-.bt {
-    border-top: 1px solid #E8E8E8;
-}
-
-.br {
-    border-right: 1px solid #E8E8E8;
-}
-
-.bb {
-    border-bottom: 1px solid #E8E8E8;
-}
-
-.bl {
-    border-left: 1px solid #E8E8E8;
-}
-
-
 
 /* Button/Tab/Pill Border Bottom Button aka: bbb */
 .bbb {
@@ -153,10 +127,6 @@ div > nav > ul > li > a {
     border-right: 1px solid lightgray;    
 }
 
-div.nav-box a {
-    color: dimgray;
-}
-
 /* Social-Networking Navi */
 .social {
     text-align: right;
@@ -187,6 +157,36 @@ ul.social-share li a {
 ul.social-share li a:hover {
     background: #c52d2f;
     color: #fff;
+}
+
+/* Stacked-Tab Media Box */
+
+.stacked-tab-media {
+    height: 280px;
+    width: 560px;    
+    /*border: 1px solid #E8E8E8;*/
+}
+
+.stacked-tab-media li a {    
+    display: inline-block;
+    width: 180px;
+    border: 1px solid #E8E8E8
+}
+
+.stacked-tab-media .tab-content {
+    height: 260px;
+    position: absolute;
+    top: 0;
+    left: 193px;
+}
+
+.stacked-tab-media .tab-pane {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 260px;
+    width: 360px;
+    border: 1px solid #E8E8E8;
 }
 
 /*  Text Entry Box - Comments, Article Creation  */
@@ -322,6 +322,8 @@ ul.social-share li a:hover {
     background-color: white;
     background-image: linear-gradient(to bottom, lightgray, white);
 }
+
+/* Tabbed-Content Box  */
 
 .tabbed-content-box {
     width: 500px;
