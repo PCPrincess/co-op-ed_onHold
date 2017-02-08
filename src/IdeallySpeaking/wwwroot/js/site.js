@@ -32,5 +32,7 @@ function setTabHandler(tab, tabPos) {
     }
 }
 
+
+
 // Bootstrap Alert
-// $(".alert").alert('close')
+$(".alert").alert('close')

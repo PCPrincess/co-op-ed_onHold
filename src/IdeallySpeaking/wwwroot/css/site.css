@@ -162,19 +162,20 @@ ul.social-share li a:hover {
 /* Stacked-Tab Media Box */
 
 .stacked-tab-media {
-    height: 280px;
+    height: 247px;
     width: 560px;    
     /*border: 1px solid #E8E8E8;*/
 }
 
-.stacked-tab-media li a {    
+.stacked-tab-media li a {
     display: inline-block;
     width: 180px;
-    border: 1px solid #E8E8E8
+    border-top: 1px solid #E8E8E8;
+    border-left: 1px solid #E8E8E8;
 }
 
 .stacked-tab-media .tab-content {
-    height: 260px;
+    height: 247px;
     position: absolute;
     top: 0;
     left: 193px;
@@ -184,9 +185,13 @@ ul.social-share li a:hover {
     position: absolute;
     top: 0;
     left: 0;
-    height: 260px;
+    height: 247px;
     width: 360px;
     border: 1px solid #E8E8E8;
+}
+
+.stacked-tab-media .tab-content .active {
+    z-index: 2;
 }
 
 /*  Text Entry Box - Comments, Article Creation  */
@@ -288,41 +293,6 @@ ul.social-share li a:hover {
     padding: 10px;
 }
 
-/*  position: relative/absolute/fixed  -  opacity: 0.X  */
-.stack-1 {
-    z-index: 1;
-}
-
-.stack-2 {
-    z-index: 2;
-}
-
-.stack-3 {
-    z-index: 3;
-}
-
-.stack-4 {
-    z-index: 4;
-}
-
-.stack-5 {
-    z-index: 5;
-}
-
-.dropdown-divider {
-    height: 1px;
-    margin: 2rem 0 0 0;
-    overflow: hidden;
-    background-color: #e5e5e5;
-}
-
-.vert-divider {
-    height: inherit;
-    width: 1px;
-    background-color: white;
-    background-image: linear-gradient(to bottom, lightgray, white);
-}
-
 /* Tabbed-Content Box  */
 
 .tabbed-content-box {
@@ -386,6 +356,29 @@ ul.social-share li a:hover {
     z-index: 1;
 }
 
+.dropdown-divider {
+    height: 1px;
+    margin: 2rem 0 0 0;
+    overflow: hidden;
+    background-color: #e5e5e5;
+}
+
+.vert-divider {
+    height: inherit;
+    width: 1px;
+    background-color: white;
+    background-image: linear-gradient(to bottom, lightgray, white);
+}
+
+/* Hover */
+.grow {
+    transition: all .2s ease-in-out;
+}
+
+.grow:hover {
+    transform: scale(1.1);
+}
+
 .container-transition {
     -webkit-transition: background-color 0.4s, color 0.4s, transform 0.4s, opacity 0.4s ease-in-out;
     -moz-transition: background-color 0.4s, color 0.4s, transform 0.4s, opacity 0.4s ease-in-out;
@@ -396,5 +389,27 @@ ul.social-share li a:hover {
     -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+/*  position: relative/absolute/fixed  -  opacity: 0.X  */
+
+.stack-1 {
+    z-index: 1;
+}
+
+.stack-2 {
+    z-index: 2;
+}
+
+.stack-3 {
+    z-index: 3;
+}
+
+.stack-4 {
+    z-index: 4;
+}
+
+.stack-5 {
+    z-index: 5;
 }
 
