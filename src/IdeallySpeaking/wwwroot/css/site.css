@@ -72,11 +72,15 @@ a {
 }
 
 .bg-color1 {
-    background-color: #cfc;
+    background-color: #E6EBE6;
 }
 
 .bg-color2 {
-    background-color: #E6EBE6;
+    background-color: #F7F7F7;
+}
+
+.bg-color3 {
+    background-color: #E7EFF7;
 }
 
 .bg-color-moz {
@@ -106,6 +110,14 @@ a {
     color: darkgray;
 }
 
+.pcprincess-footer {
+    background-color: #E7EFF7;    
+    height: 175px;
+    width: 100%;
+    font: inherit;
+    color: darkgray;
+}
+
 .logo-box {
     height: 100%;
     width: 175px;
@@ -119,12 +131,13 @@ a {
     border: 2px solid white;
 }
 
-.nav-box {    
+.nav-box {
     width: 150px;
     height: 2rem;
-    font-size: 1rem;    
+    background-color: #E7EFF7;
+    font-size: 1rem;
     border-top: 1px solid lightgray;
-    border-right: 1px solid lightgray;    
+    border-right: 1px solid lightgray;
 }
 
 /* Social-Networking Navi */
@@ -162,19 +175,20 @@ ul.social-share li a:hover {
 /* Stacked-Tab Media Box */
 
 .stacked-tab-media {
-    height: 280px;
+    height: 247px;
     width: 560px;    
     /*border: 1px solid #E8E8E8;*/
 }
 
-.stacked-tab-media li a {    
+.stacked-tab-media li a {
     display: inline-block;
     width: 180px;
-    border: 1px solid #E8E8E8
+    border-top: 1px solid #E8E8E8;
+    border-left: 1px solid #E8E8E8;
 }
 
 .stacked-tab-media .tab-content {
-    height: 260px;
+    height: 247px;
     position: absolute;
     top: 0;
     left: 193px;
@@ -184,9 +198,13 @@ ul.social-share li a:hover {
     position: absolute;
     top: 0;
     left: 0;
-    height: 260px;
+    height: 247px;
     width: 360px;
     border: 1px solid #E8E8E8;
+}
+
+.stacked-tab-media .tab-content .active {
+    z-index: 2;
 }
 
 /*  Text Entry Box - Comments, Article Creation  */
@@ -288,41 +306,6 @@ ul.social-share li a:hover {
     padding: 10px;
 }
 
-/*  position: relative/absolute/fixed  -  opacity: 0.X  */
-.stack-1 {
-    z-index: 1;
-}
-
-.stack-2 {
-    z-index: 2;
-}
-
-.stack-3 {
-    z-index: 3;
-}
-
-.stack-4 {
-    z-index: 4;
-}
-
-.stack-5 {
-    z-index: 5;
-}
-
-.dropdown-divider {
-    height: 1px;
-    margin: 2rem 0 0 0;
-    overflow: hidden;
-    background-color: #e5e5e5;
-}
-
-.vert-divider {
-    height: inherit;
-    width: 1px;
-    background-color: white;
-    background-image: linear-gradient(to bottom, lightgray, white);
-}
-
 /* Tabbed-Content Box  */
 
 .tabbed-content-box {
@@ -342,19 +325,19 @@ ul.social-share li a:hover {
     width: 100px; /*  Parent Container Width Divided by Three  */
 }
 
-.tabbed-content-box li a {
-    display: inline-block; /*  Sit in Line, but Stylable  */
-    text-decoration: none; /*  No Anchor Link Underline  */
-    width: 100%; /*  Width of Container  */
-    line-height: 2.5; /*  Height of Container (with anchors)  */
-    background-color: aliceblue;
-    color: black;
-    text-align: center;
-    border-bottom: 3px solid white;
-    border-top: 1px solid lightgray;
-    border-right: 1px solid lightgray;
-    border-left: 1px solid lightgray;
-}
+    .tabbed-content-box li a {
+        display: inline-block; /*  Sit in Line, but Stylable  */
+        text-decoration: none; /*  No Anchor Link Underline  */
+        width: 100%; /*  Width of Container  */
+        line-height: 2.5; /*  Height of Container (with anchors)  */
+        background-color: #E7EFF7;
+        color: black;
+        text-align: center;
+        border-bottom: 3px solid white;
+        border-top: 1px solid lightgray;
+        border-right: 1px solid lightgray;
+        border-left: 1px solid lightgray;
+    }
 
 .tabbed-content-box li a:hover, .tabbed-content-box li a:focus { /*  Color Change - Tab  */
     background-color: gainsboro;
@@ -370,20 +353,43 @@ ul.social-share li a:hover {
     clear: both; /*  Always CLEAR after using FLOATS (above in li) */
 }
 
-.tabbed-content-box article {
-    position: absolute; /* Every 'article' will be absolutely positioned to its ancestor with
+    .tabbed-content-box article {
+        position: absolute; /* Every 'article' will be absolutely positioned to its ancestor with
                 relative positioning (panels). This will stack them on top of each other in each case. */
-    top: 0;
-    left: 0; /*  No Need to 'Push' the 'Box'  */
-    height: 262px; /*  Same as 'Panels'  */
-    padding: 10px; /*  Content padding  */
-    color: black; /*  Font color  */
-    background-color: aliceblue;
-    border: 1px solid lightgray;
-}
+        top: 0;
+        left: 0; /*  No Need to 'Push' the 'Box'  */
+        height: 262px; /*  Same as 'Panels'  */
+        padding: 10px; /*  Content padding  */
+        color: black; /*  Font color  */
+        background-color: #E7EFF7;
+        border: 1px solid lightgray;
+    }
 
 .tabbed-content-box .active-panel {
     z-index: 1;
+}
+
+.dropdown-divider {
+    height: 1px;
+    margin: 2rem 0 0 0;
+    overflow: hidden;
+    background-color: #e5e5e5;
+}
+
+.vert-divider {
+    height: inherit;
+    width: 1px;
+    background-color: white;
+    background-image: linear-gradient(to bottom, lightgray, white);
+}
+
+/* Hover */
+.grow {
+    transition: all .2s ease-in-out;
+}
+
+.grow:hover {
+    transform: scale(1.1);
 }
 
 .container-transition {
@@ -396,5 +402,27 @@ ul.social-share li a:hover {
     -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+/*  position: relative/absolute/fixed  -  opacity: 0.X  */
+
+.stack-1 {
+    z-index: 1;
+}
+
+.stack-2 {
+    z-index: 2;
+}
+
+.stack-3 {
+    z-index: 3;
+}
+
+.stack-4 {
+    z-index: 4;
+}
+
+.stack-5 {
+    z-index: 5;
 }
 
