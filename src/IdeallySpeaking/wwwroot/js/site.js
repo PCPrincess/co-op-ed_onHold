@@ -32,7 +32,31 @@ function setTabHandler(tab, tabPos) {
     }
 }
 
+// Stacked-Tab Media Box - Not Working Properly, Do From Scratch!
 
+
+var stackTabs = document.querySelectorAll('.stacked-tab-media li a');
+var panes = document.querySelectorAll('stacked-tab-media .tab-pane');
+
+for (i = 0; i < stackTabs.length; i++) {
+    var tabChoice = stackTabs[i];
+    stackTabHandler(tabChoice, i);
+}
+
+function stackTabHandler(tabChoice, position) {
+    tabChoice.onclick = function () {
+        var tabNum = stackTabs[i].getAttribute('href');        
+
+        for (i = 0; i < panes.length; i++) {
+            if (panes[i].getAttribute('id') === tabNum) {
+                panes[position].setAttribute('class', 'pane-active');
+            }
+        }        
+
+    }
+
+}
 
 // Bootstrap Alert
 $(".alert").alert('close')
+

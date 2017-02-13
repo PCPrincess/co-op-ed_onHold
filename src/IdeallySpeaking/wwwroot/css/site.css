@@ -203,9 +203,11 @@ ul.social-share li a:hover {
     border: 1px solid #E8E8E8;
 }
 
-.stacked-tab-media .tab-content .active {
-    z-index: 2;
+/*
+.stacked-tab-media  {
+    z-index: 1;
 }
+*/
 
 /*  Text Entry Box - Comments, Article Creation  */
 .text-entry-row {
@@ -279,15 +281,9 @@ ul.social-share li a:hover {
     text-decoration: none;
     display: inline-block;
     width: 40px;
-    margin-top: 0;
-    margin-right: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-    padding-top: 0;
-    padding-right: 0;
-    padding-bottom: 0;
-    padding-left: 0;
-    float: left;
+    margin: 0;    
+    padding: 0;    
+    /*float: left;*/
     background-color: transparent;
 }
 

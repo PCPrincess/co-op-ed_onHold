@@ -14,11 +14,10 @@ namespace IdeallySpeaking.Models
 
         [Display(Name = "Article Content")]
         public string Content { get; set; }
-
-        [RegularExpression(@"^(\w+)\s\.]{1,100}$")] 
+        
         public string Teaser
         {
-            get { return Content; }
+            get { return Content.ArticleShortener(100); }
         }
         
         [DataType(DataType.Date)]
@@ -29,5 +28,6 @@ namespace IdeallySpeaking.Models
         public int AuthorUserId { get; set; }
 
         public ApplicationUser Author { get; set; }
+
     }
 }

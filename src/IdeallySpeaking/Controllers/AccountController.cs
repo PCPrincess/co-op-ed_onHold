@@ -442,37 +442,7 @@ namespace IdeallySpeaking.Controllers
             }
         }
 
-        /*
-           IMPORTANT - MOVE INTO AN 'ISUserController.cs'
-         * 
-        // GET: /Account/ProfileAvatar
-        [AllowAnonymous]
-        public ActionResult ProfileAvatar()
-        {
-            return View();
-        }
-
-        // POST: /Account/ProfileAvatar
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ProfileAvatar(ICollection<IFormFile> files)
-        {
-            var uploads = Path.Combine(_environment.WebRootPath, "uploads");
-            foreach (var file in files)
-            {
-                if (file.Length > 0)
-                {
-                    using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
-                    {
-                        await file.CopyToAsync(fileStream);
-                    }
-                }
-            }
-            return View();
-        }
-        */
-
+        
         #region Helpers
 
         private void AddErrors(IdentityResult result)

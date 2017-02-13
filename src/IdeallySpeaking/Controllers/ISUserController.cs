@@ -1,38 +1,34 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using IdeallySpeaking.Models;
+using Microsoft.AspNetCore.Identity;
 
-namespace IdeallySpeaking.Models.ISUserViewModels
+// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+namespace IdeallySpeaking.Controllers
 {
-    public class ProfileViewModel
+    public class ISUserController : Controller
     {
-        [Display(Name = "First name")]
-        [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "First name must be alpha characters only.")]
-        public string FirstName { get; set; }
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        [Display(Name = "Last name")]
-        [RegularExpression(@"^[a-zA-Z0-9\s]*$", ErrorMessage = "Last name must be alpha characters only.")]
-        public string LastName { get; set; }
+        public ISUserController(UserManager<ApplicationUser> userManager)
+        {
+            _userManager = userManager;
+        }
 
-        public DateTime JoinDate { get; private set; }
 
-        public string Url { get; set; }
+        // GET: /<controller>/
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-        public IFormFile Avatar { get; set; }        
 
-        [InverseProperty("Author")]
-        public List<Article> AuthoredArticles { get; }
 
-        public List<Comment> AuthoredComments { get; }
-
-        public List<Badge> Badges { get; }
-    }
-}
-/*
+        /*
         IMPORTANT - Possible For Avatar Upload [in: ProfileController.cs]
         
         // GET: /Account/Profile/Avatar
@@ -62,3 +58,5 @@ namespace IdeallySpeaking.Models.ISUserViewModels
             return View();
         }
  */
+    }
+}
