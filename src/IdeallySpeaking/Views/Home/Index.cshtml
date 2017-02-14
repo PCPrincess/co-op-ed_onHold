@@ -12,7 +12,7 @@
                 <a href="#" class="btn btn-secondary">Go somewhere</a>
             </div>  
             <div class="card-block">
-                <img class="card-img" src="~/images/Article_Images/016952-barack-obama-061615.jpg" height="70" width="147">            
+                <img class="card-img" src="~/images/Article_Images/barack-obama_Example.jpg" height="70" width="147">            
                 <p><h6>Special title treatment</h6></p>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                 <div class="dropdown-divider"></div>
@@ -20,9 +20,36 @@
             <div class="card-block">
                 <h6 class="card-title">Special title treatment</h6>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-warning">Not Obama!</a>
+                <a href="#" class="btn btn-warning">Go Bernie!</a>
+                <div class="dropdown-divider"></div>                
+            </div>
+            <div class="card-block">
+                <p>
+                    @Html.Partial("~/Views/Articles/ArticleTeaserPartial.cshtml")
+                </p>
+            </div>           
+        </div>
+
+        <div class="card cbt-default">
+            <div class="card-block">
+                <img class="card-img" src="~/images/Miscellaneous/Starbux.png" height="50" width="50">
+            </div>
+            <div class="card-block">
+                <h6 class="card-title">Special title treatment</h6>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                 <div class="dropdown-divider"></div>
-                @Html.Partial("~/Views/Articles/ArticleTeaserPartial.cshtml")
+            </div>
+            <div class="card-block">
+                <h6 class="card-title">Special title treatment</h6>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-secondary">Get Coffee</a>
+            </div>
+            <div class="card-block">
+                <ul class="list-group">
+                    <li class="list-group-item">Testing List Groups</li>
+                    <li class="list-group-item">Yeah, I'm Testing</li>
+                    <li class="list-group-item">Wanna Fight About It?</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -85,7 +112,7 @@
                 <a href="#" class="btn btn-danger">Go somewhere</a>
             </div>
         </div>
-        <div class="card cbt">
+        <div class="card cbt-default">
             <div class="card-block">
                 <div class="media">
                     <img class="d-flex mr-3" src="~/images/Blawb/mdpi/calendar_mdpi.png">
@@ -139,7 +166,23 @@
                 <a href="http://www.huffingtonpost.com/2014/02/13/leo-hindery-ceo-pay_n_4784162.html#conversation-4784162-307181537" class="btn btn-secondary">Read &raquo</a>
             </div>
         </div>
-        <div class="card cbt">
+
+        <div class="card text-center mb-3">
+            <div class="card-header">Gift Of Gab</div>
+            <div class="card-block">
+                <h6 class="card-title">Popular Comments</h6>
+                <p class="card-text">"I truly believe that the vast majority of those who..."</p>
+                <a href="#" class="btn btn-sm btn-secondary">Read &raquo</a>
+            </div>            
+            <div class="card-block">
+                <h6 class="card-title">Special title treatment</h6>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-warning">More Comments</a>
+                <div class="dropdown-divider"></div>
+            </div>            
+        </div>
+
+        <div class="card cbt-default">
             <div class="card-block">
                 <img class="img-thumbnail" src="~/images/Miscellaneous/GaiaJunkie.jpg" height="100" width="100">
             </div>

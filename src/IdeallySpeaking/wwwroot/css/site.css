@@ -12,7 +12,7 @@
 
 body {
     padding-top: 30px;
-    padding-bottom: 20px;
+    padding-bottom: 20px;    
 }
 
 /* Wrapping element */
@@ -98,7 +98,10 @@ a {
 }
 
 /* Card Border Top aka: cbt */
-.cbt {
+.cbt-default {
+    border-top: 1.5px solid #87a465;
+}
+.cbt-info {
     border-top: 1.5px solid #5bc0de;
 }
 
@@ -113,6 +116,7 @@ a {
 
 .pcprincess-footer {
     background-color: #E6EBE6;
+    border: 1px solid lightgray;
     height: 175px;
     width: 100%;
     font: inherit;
@@ -143,8 +147,7 @@ a {
     padding-bottom: .5rem;
     padding-right: 1rem;
     padding-left: 1rem;
-    border: 1px solid lightgray;
-    border-bottom: none;
+    border: 1px solid lightgray;    
     border-left: none;
     line-height: 1.5rem;
     margin-bottom: 0.1rem;
