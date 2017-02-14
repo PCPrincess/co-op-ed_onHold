@@ -80,7 +80,7 @@ a {
 }
 
 .bg-color3 {
-    background-color: #E7EFF7;
+    background-color: #E6E7E8;
 }
 
 .bg-color-moz {
@@ -103,6 +103,7 @@ a {
 }
 
 .pcprincess-header {
+    display: flex;
     background-color: inherit;
     border: 1px solid lightgray;
     height: 175px;
@@ -111,7 +112,7 @@ a {
 }
 
 .pcprincess-footer {
-    background-color: #E7EFF7;    
+    background-color: #E6EBE6;
     height: 175px;
     width: 100%;
     font: inherit;
@@ -122,9 +123,9 @@ a {
     height: 100%;
     width: 175px;
     border-right: 1px solid lightgray;
-    position: relative;
+    /*position: relative;
     top: 0;
-    left: 0;
+    left: 0;*/
 }
 
 .logo {    
@@ -132,12 +133,21 @@ a {
 }
 
 .nav-box {
-    width: 150px;
-    height: 2rem;
-    background-color: #E7EFF7;
-    font-size: 1rem;
-    border-top: 1px solid lightgray;
-    border-right: 1px solid lightgray;
+    height: 175px;
+    margin: 0;    
+}
+
+.nav-box a {
+    background-color: #E6EBE6;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border: 1px solid lightgray;
+    border-bottom: none;
+    border-left: none;
+    line-height: 1.5rem;
+    margin-bottom: 0.1rem;
 }
 
 /* Social-Networking Navi */

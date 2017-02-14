@@ -62,7 +62,7 @@
 </head>
 <body>    
     <div class="container">
-        <nav class="navbar navbar-light mb-0 bg-color3" style="border: 1px solid lightgray;">
+        <nav class="navbar navbar-light mb-0 bg-color1" style="border: 1px solid lightgray;">
             <ul class="nav flex-column flex-sm-row justify-content-end">
                 <li class="nav-item"><a class="flex-sm-fill text-sm-center nav-link active" asp-controller="Home" asp-action="Index"><img src="~/images/Simply/Home.png" height="24" width="24" />Home</a></li>
                 <li class="nav-item"><a class="flex-sm-fill text-sm-center nav-link" asp-controller="" asp-action=""><img src="~/images/Simply/Text.png" height="24" width="24" />Profile(constructing)</a></li>
@@ -76,6 +76,25 @@
     </div>
 
     <div class="container">
+        <div class="pcprincess-header mb-1 mt-1">
+            <div class="logo-box">
+                <img class="logo" src="~/images/Miscellaneous/Header-Logo.png" height="170" width="170">
+            </div>
+            <div class="nav-box d-flex align-items-end">
+                <div class="d-flex">
+                    <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Ethics</a>
+                    <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Justice</a>
+                    <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Government</a>
+                    <a class=""  href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Fillers</a>                    
+                    <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Building</a>
+                    <a class="" asp-controller="Home" asp-action="Contact"><img src="~/images/Simply/Skype.png" height="24" width="24" />Contact</a>
+                    <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Events</a> 
+                    <a class="" asp-controller="Home" asp-action="Contact"><img src="~/images/Simply/Skype.png" height="24" width="24" />Discuss</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <div class="pcprincess-header d-flex mb-1 mt-1 ">
@@ -93,9 +112,9 @@
                 </div>
            </div>
         </div>
-    </div>    
+    </div>*@
+    
     <br />
-
     <div class="container body-content">
         @RenderBody()
 
