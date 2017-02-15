@@ -7,10 +7,20 @@
 }
 
 @*
-    @foreach (var index in pList){
-            <div class="card-block">
-                <h3 class="card-title">Title/h3>
-                <p class="card-text">Teaser</p>
-                <div class="dropdown-divider"></div>
-            </div>
+
+    @foreach (var index in Model.CommentList) {
+        while (var num < 6) {
+            if (Comment.Rating > current) {
+                tempList.Add(comment);
+            {
+        {
+    }
+
+    foreach (var comm in tempList) {
+        <div class="card-block">
+                    <h3 class="card-title">comm.Title/h3>
+                    <p class="card-text">comm.StringChop(25);</p>
+                    <div class="dropdown-divider"></div>
+        </div>
+    }
 *@

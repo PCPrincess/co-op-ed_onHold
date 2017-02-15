@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="PCPrincess">
+    <meta name="keywords" content="Politics,News,Progressive,Independents">
     <meta name="description" content="">
     <!-- Open Graph protocol for Facebook links - More Properties http://ogp.me/ -->
     <meta name="og:title" content="">
@@ -62,40 +63,40 @@
 </head>
 <body>    
     <div class="container">
-        <nav class="navbar navbar-light mb-0 bg-color3" style="border: 1px solid lightgray;">
+        <nav class="navbar navbar-light mb-0 bg-color1" style="border: 1px solid lightgray;">
             <ul class="nav flex-column flex-sm-row justify-content-end">
-                <li class="nav-item"><a class="flex-sm-fill text-sm-center nav-link active" asp-controller="Home" asp-action="Index"><img src="~/images/Simply/Home.png" height="24" width="24" />Home</a></li>
-                <li class="nav-item"><a class="flex-sm-fill text-sm-center nav-link" asp-controller="" asp-action=""><img src="~/images/Simply/Text.png" height="24" width="24" />Profile(constructing)</a></li>
+                <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link active" asp-controller="Home" asp-action="Index"><img src="~/images/Simply/Home.png" height="24" width="24" />Home</a></li>
+                <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link" asp-controller="" asp-action=""><img src="~/images/Simply/Text.png" height="24" width="24" />Profile(constructing)</a></li>
 
-                <li class="nav-item"><a class="flex-sm-fill text-sm-center nav-link" asp-area="" asp-controller="Articles" asp-action="Index">Recent</a></li>
-                <li class="nav-item"><a class="flex-sm-fill text-sm-center nav-link" asp-area="" asp-controller="Articles" asp-action="Create">Create-Art Test</a></li>
-                <li class="nav-item"><a class="flex-sm-fill text-sm-center nav-link" asp-area="" asp-controller="Articles" asp-action="FullArticle">Full-Art Test</a></li>
+                <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link" asp-area="" asp-controller="Articles" asp-action="Index">Recent</a></li>
+                <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link" asp-area="" asp-controller="Articles" asp-action="Create">Create-Art Test</a></li>
+                <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link" asp-area="" asp-controller="Articles" asp-action="FullArticle">Full-Art Test</a></li>
                 @await Html.PartialAsync("_LoginPartial")
             </ul>
         </nav>
     </div>
 
     <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="pcprincess-header d-flex mb-1 mt-1 ">
-                    <div class="logo-box">
-                        <img class="logo" src="~/images/Miscellaneous/The-Background.png" height="170" width="170">
-                    </div>
-                    <div class="row"></div>                    
-                    <div class="nav-box text-center align-self-end"><a href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Hmm..</a></div>
-                    <div class="nav-box text-center align-self-end">We</div>
-                    <div class="nav-box text-center align-self-end">Will</div>
-                    <div class="nav-box text-center align-self-end">Be</div>
-                    <div class="nav-box text-center align-self-end">Filled</div>
-                    <div class="nav-box text-center align-self-end">Soon</div>
-                    <div class="nav-box text-center align-self-end border-right-0"><a asp-controller="Home" asp-action="Contact"><img src="~/images/Simply/Skype.png" height="24" width="24" />Contact</a></div>                    
+        <div class="pcprincess-header mb-1 mt-1">
+            <div class="logo-box">
+                <img class="logo" src="~/images/Miscellaneous/Header-Logo.png" height="170" width="170">
+            </div>
+            <div class="nav-box d-flex align-items-end">
+                <div class="d-flex">
+                    <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Ethics</a>
+                    <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Justice</a>
+                    <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Government</a>
+                    <a class=""  href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Fillers</a>                    
+                    <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Building</a>
+                    <a class="" asp-controller="Home" asp-action="Contact"><img src="~/images/Simply/Skype.png" height="24" width="24" />Contact</a>
+                    <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Events</a> 
+                    <a class="" asp-controller="Home" asp-action="Contact"><img src="~/images/Simply/Skype.png" height="24" width="24" />Discuss</a>
                 </div>
-           </div>
+            </div>
         </div>
     </div>    
+    
     <br />
-
     <div class="container body-content">
         @RenderBody()
 
@@ -106,17 +107,19 @@
         <br />             
     </div>
     
-    <footer class="pcprincess-footer">
-        <ul class="nav d-sm-flex">
-            <li class="nav-item p-3">&copy; 2017 - IdeallySpeaking</li>
-            <li class="nav-item">
-                <a title="DMCA.com Protection Status" class="dmca-badge nav-link" href="http://www.dmca.com/Protection/Status.aspx?ID=cb632dcf-d7b0-4283-bed2-e9a99b014cff">
-                    <img alt="DMCA.com Protection Status" src="//images.dmca.com/Badges/dmca-badge-w200-5x1-11.png?ID=cb632dcf-d7b0-4283-bed2-e9a99b014cff">
-                </a>
-                <script src="//images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
-            </li>
-        </ul>
-    </footer>
+    <div class="container">
+        <footer class="pcprincess-footer">
+            <ul class="nav d-sm-flex justify-content-center">
+                <li class="nav-item p-3">&copy; 2017 - IdeallySpeaking</li>
+                <li class="nav-item">
+                    <a title="DMCA.com Protection Status" class="dmca-badge nav-link" href="http://www.dmca.com/Protection/Status.aspx?ID=cb632dcf-d7b0-4283-bed2-e9a99b014cff">
+                        <img alt="DMCA.com Protection Status" src="//images.dmca.com/Badges/dmca-badge-w200-5x1-11.png?ID=cb632dcf-d7b0-4283-bed2-e9a99b014cff">
+                    </a>
+                    <script src="//images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
+                </li>
+            </ul>
+        </footer>
+    </div>
 
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
