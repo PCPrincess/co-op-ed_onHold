@@ -15,7 +15,7 @@ namespace IdeallySpeaking.Controllers
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Ideally Speaking is owned and created by: Lori Overholtzer, a.k.a., PCPrincess.";
 
             return View();
         }
