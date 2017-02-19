@@ -71,6 +71,10 @@ a {
     transition: color 300ms, background-color 300ms;
 }
 
+.bg-color {
+    background-color: hsl(225, 20%, 90%);    
+}
+
 .bg-color1 {
     background-color: #E6EBE6;
 }
@@ -81,6 +85,10 @@ a {
 
 .bg-color3 {
     background-color: #E6E7E8;
+}
+
+.bg-color4 {
+    background-color: hsla(1, 90%, 42%, 0.25);
 }
 
 .bg-color-moz {
@@ -99,7 +107,7 @@ a {
 
 /* Card Border Top aka: cbt */
 .cbt-default {
-    border-top: 1.5px solid #87a465;
+    border-top: 1.5px solid hsl(225, 20%, 50%);
 }
 .cbt-info {
     border-top: 1.5px solid #5bc0de;
@@ -115,7 +123,7 @@ a {
 }
 
 .pcprincess-footer {
-    background-color: #E6EBE6;
+    background-color: hsl(225, 20%, 90%);
     border: 1px solid lightgray;
     height: 175px;
     width: 100%;
@@ -141,17 +149,17 @@ a {
     margin: 0;    
 }
 
-.nav-box a {
-    background-color: #E6EBE6;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    border: 1px solid lightgray;    
-    border-left: none;
-    line-height: 1.5rem;
-    margin-bottom: 0.1rem;
-}
+    .nav-box a {
+        background-color: hsl(225, 20%, 90%);        
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        border: 1px solid lightgray;
+        border-left: none;
+        line-height: 1.5rem;
+        margin-bottom: 0.1rem;
+    }
 
 /* Social-Networking Navi */
 .social {

@@ -5,16 +5,16 @@
     <!-- Meta Formatting and Parsing http://microformats.org/wiki/Main_Page -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="PCPrincess">
-    <meta name="keywords" content="Politics,News,Progressive,Independents">
-    <meta name="description" content="">
+    <meta name="author" content="Lori Overholtzer, PCPrincess">
+    <meta name="keywords" content="Articles, Comments, Politics, Community, Progressive">
+    <meta name="description" content="Original and Aggregated Articles and Comments, Progressive Community">
     <!-- Open Graph protocol for Facebook links - More Properties http://ogp.me/ -->
-    <meta name="og:title" content="">
+    <meta name="og:title" content="Ideally Speaking">
     <meta name="og:type" content="">
     <meta name="og:image" content="">
-    <meta name="og:url" content="">
-    <meta name="og:site_name" content="">
-    <meta name="og:description" content="">
+    <meta name="og:url" content="www.ideallyspeaking.net">
+    <meta name="og:site_name" content="Ideally Speaking">
+    <meta name="og:description" content="Original and Aggregated Articles and Comments, Progressive Community">
     <!-- Twitter's' proprietary metadata for links -->
     <meta name="twitter:title" content="">
 
@@ -63,14 +63,13 @@
 </head>
 <body>    
     <div class="container">
-        <nav class="navbar navbar-light mb-0 bg-color1" style="border: 1px solid lightgray;">
+        <nav class="navbar navbar-light mb-0 bg-color" style="border: 1px solid lightgray;">
             <ul class="nav flex-column flex-sm-row justify-content-end">
                 <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link active" asp-controller="Home" asp-action="Index"><img src="~/images/Simply/Home.png" height="24" width="24" />Home</a></li>
-                <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link" asp-controller="" asp-action=""><img src="~/images/Simply/Text.png" height="24" width="24" />Profile(constructing)</a></li>
-
-                <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link" asp-area="" asp-controller="Articles" asp-action="Index">Recent</a></li>
+                <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link" asp-area="" asp-controller="Articles" asp-action="Index"><img src="~/images/Simply/Calendar.png" height="24" width="24" />Recent</a></li>
                 <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link" asp-area="" asp-controller="Articles" asp-action="Create">Create-Art Test</a></li>
                 <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link" asp-area="" asp-controller="Articles" asp-action="FullArticle">Full-Art Test</a></li>
+                <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link" asp-controller="" asp-action=""><img src="~/images/Simply/Text.png" height="24" width="24" />Profile(constructing)</a></li>
                 @await Html.PartialAsync("_LoginPartial")
             </ul>
         </nav>
@@ -87,10 +86,10 @@
                     <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Justice</a>
                     <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Government</a>
                     <a class=""  href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Fillers</a>                    
-                    <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Building</a>
+                    <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Building</a>                    
+                    <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Events</a>
                     <a class="" asp-controller="Home" asp-action="Contact"><img src="~/images/Simply/Skype.png" height="24" width="24" />Contact</a>
-                    <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Events</a> 
-                    <a class="" asp-controller="Home" asp-action="Contact"><img src="~/images/Simply/Skype.png" height="24" width="24" />Discuss</a>
+                    <a class="" asp-controller="Home" asp-action="Contact"><img src="~/images/Simply/Skype.png" height="24" width="24" />About</a>
                 </div>
             </div>
         </div>
@@ -99,13 +98,15 @@
     <br />
     <div class="container body-content">
         @RenderBody()
-
         
-        <div class="alert alert-info" role="alert">
-            <strong>Thanks Readers!</strong> There are some awesome new additions coming to the site. <a asp-controller="Home" asp-action="Supporters" class="alert-link">Can you help by donating?</a>
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Thanks Readers!</strong> There are some awesome new additions coming to the site. Can you help by   <a asp-controller="Home" asp-action="Supporters" class="alert-link btn btn-warning">donating?</a>
         </div>
         <br />             
-    </div>
+    </div>    
     
     <div class="container">
         <footer class="pcprincess-footer">
@@ -117,7 +118,7 @@
                     </a>
                     <script src="//images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
                 </li>
-            </ul>
+            </ul>            
         </footer>
     </div>
 

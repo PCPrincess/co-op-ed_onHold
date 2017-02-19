@@ -57,6 +57,5 @@ function stackTabHandler(tabChoice, position) {
 
 }
 
-// Bootstrap Alert
-$(".alert").alert('close')
+
 
