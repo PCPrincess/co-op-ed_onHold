@@ -15,6 +15,9 @@
     <PackageTags>Politics, News, Community, User</PackageTags>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="wwwroot/images\Miscellaneous\The-Background.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Properties\PublishProfiles\IdeallySpeaking - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
