@@ -7,16 +7,17 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using IdeallySpeaking.Data;
 using IdeallySpeaking.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace IdeallySpeaking.Controllers
 {
     public class ArticlesController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;        
 
         public ArticlesController(ApplicationDbContext context)
         {
-            _context = context;    
+            _context = context;            
         }
 
         // GET: Articles
@@ -46,7 +47,7 @@ namespace IdeallySpeaking.Controllers
             /*if (article == null)
             {
                 return NotFound();
-            }*/
+            }*/            
 
             return View(article);
         }
@@ -158,6 +159,7 @@ namespace IdeallySpeaking.Controllers
         {
             return _context.Articles.Any(e => e.ArticleId == id);
         }
+        
     }
 }
 
