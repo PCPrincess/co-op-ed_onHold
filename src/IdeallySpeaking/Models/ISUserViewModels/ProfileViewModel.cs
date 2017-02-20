@@ -18,6 +18,8 @@ namespace IdeallySpeaking.Models.ISUserViewModels
         [RegularExpression(@"^[a-zA-Z0-9\s]*$", ErrorMessage = "Last name must be alpha characters only.")]
         public string LastName { get; set; }
 
+        public string FullName { get { return (FirstName + " " + LastName); } }
+
         public DateTime JoinDate { get; private set; }
 
         public string Url { get; set; }

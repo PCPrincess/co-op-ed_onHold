@@ -144,22 +144,22 @@ a {
     border: 2px solid white;
 }
 
-.nav-box {
+.nav-box {    
     height: 175px;
     margin: 0;    
 }
 
-    .nav-box a {
-        background-color: hsl(225, 20%, 90%);        
-        padding-top: .5rem;
-        padding-bottom: .5rem;
-        padding-right: 1rem;
-        padding-left: 1rem;
-        border: 1px solid lightgray;
-        border-left: none;
-        line-height: 1.5rem;
-        margin-bottom: 0.1rem;
-    }
+.nav-box a {
+    background-color: hsl(225, 20%, 90%);        
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border: 1px solid lightgray;
+    border-left: none;
+    line-height: 1.5rem;
+    margin-bottom: 0.1rem;
+}
 
 /* Social-Networking Navi */
 .social {
