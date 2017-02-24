@@ -8,9 +8,10 @@ using IdeallySpeaking.Data;
 namespace IdeallySpeaking.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170223032944_ISUser_To_ApplicationUser")]
+    partial class ISUser_To_ApplicationUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -82,6 +83,8 @@ namespace IdeallySpeaking.Data.Migrations
 
                     b.Property<string>("AuthorId");
 
+                    b.Property<int>("AuthorUserId");
+
                     b.Property<string>("Content");
 
                     b.Property<DateTime>("Date");
@@ -134,6 +137,8 @@ namespace IdeallySpeaking.Data.Migrations
 
                     b.Property<DateTime>("CommentDate");
 
+                    b.Property<int?>("CommentId1");
+
                     b.Property<int>("Rating");
 
                     b.Property<string>("Title")
@@ -142,6 +147,10 @@ namespace IdeallySpeaking.Data.Migrations
                     b.HasKey("CommentId");
 
                     b.HasIndex("ApplicationUserId1");
+
+                    b.HasIndex("ArticleId");
+
+                    b.HasIndex("CommentId1");
 
                     b.ToTable("Comment");
                 });
@@ -272,6 +281,15 @@ namespace IdeallySpeaking.Data.Migrations
                     b.HasOne("IdeallySpeaking.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("UserCommentList")
                         .HasForeignKey("ApplicationUserId1");
+
+                    b.HasOne("IdeallySpeaking.Models.Article")
+                        .WithMany("ArticleCommentList")
+                        .HasForeignKey("ArticleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("IdeallySpeaking.Models.Comment")
+                        .WithMany("UserCommentList")
+                        .HasForeignKey("CommentId1");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

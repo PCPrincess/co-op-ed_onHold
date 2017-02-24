@@ -8,40 +8,43 @@ using Microsoft.EntityFrameworkCore;
 using IdeallySpeaking.Data;
 using IdeallySpeaking.Models;
 using IdeallySpeaking.Models.CommentViewModels;
+using Microsoft.AspNetCore.Identity;
 
 namespace IdeallySpeaking.Controllers
 {
     public class CommentsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;                
 
         public CommentsController(ApplicationDbContext context)
         {
-            _context = context;    
+            _context = context;            
         }
 
         // GET: Comments
+        // NO VIEW - Store in ArticleCommentList
         public async Task<IActionResult> Index()
         {
             return View(await _context.Comment.ToListAsync());
         }
 
         // GET: Comments/ArticleComment/5
-        public async Task<IActionResult> ArticleComment(int? id)
+        public async Task<IActionResult> ArticleComment(int id)
         {
             /*if (id == null)
             {
                 return NotFound();
             }*/
 
-            var comment = await _context.Comment
-                .SingleOrDefaultAsync(m => m.CommentId == id);
+            var comments = await _context.Comment.ToListAsync();
+            /* (m => m.ArticleId == id); */
+            /* var artId = id; Comment.ArticleId = artId */
             /*if (comment == null)
             {
                 return NotFound();
             }*/
 
-            return View(comment);
+            return View(comments);
         }
 
         // GET: Comments/Create
@@ -59,11 +62,9 @@ namespace IdeallySpeaking.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(comment);
-                //var user = ApplicationUserId; -OR-
-                //var user = GetCurrentUserAsync();
-                //_context.UsersComments(user).Add(comment);
+                _context.Add(comment);                                
                 //_context.ArticleCommentsList(article).Add(comment);
+                // Next: Add comment to UserCommentsList
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -200,6 +201,6 @@ namespace IdeallySpeaking.Controllers
         {
             return _context.Comment.Any(e => e.CommentId == id);
         }
-        
+
     }
 }

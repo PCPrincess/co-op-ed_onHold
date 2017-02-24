@@ -64,36 +64,32 @@
 <body>    
     <div class="container">
         <nav class="navbar navbar-light mb-0 bg-color" style="border: 1px solid lightgray;">
-            <ul class="nav flex-column flex-sm-row justify-content-end">
-                <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link active" asp-controller="Home" asp-action="Index"><img src="~/images/Simply/Home.png" height="24" width="24" />Home</a></li>
-                <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link" asp-area="" asp-controller="Articles" asp-action="Index"><img src="~/images/Simply/Calendar.png" height="24" width="24" />Recent</a></li>
+            <ul class="nav flex-sm-row justify-content-end">
+                <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link active a-1" asp-controller="Home" asp-action="Index"><img src="~/images/Simply/Home.png" height="24" width="24" />Home</a></li>
+                <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link a-1" asp-area="" asp-controller="Articles" asp-action="Index"><img src="~/images/Simply/Calendar.png" height="24" width="24" />Recent</a></li>
                 <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link" asp-area="" asp-controller="Articles" asp-action="Create">Create-Art Test</a></li>
                 <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link" asp-area="" asp-controller="Articles" asp-action="FullArticle">Full-Art Test</a></li>
-                <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link" asp-controller="ISUser" asp-action="Profile"><img src="~/images/Simply/Text.png" height="24" width="24" />Profile(constructing)</a></li>
+                <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link a-1" asp-controller="ISUser" asp-action="Profile"><img src="~/images/Simply/Text.png" height="24" width="24" />Profile(constructing)</a></li>
                 @await Html.PartialAsync("_LoginPartial")
             </ul>
-        </nav>
-    </div>
-
-    <div class="container">
+        </nav>    
+    
         <div class="pcprincess-header mb-1 mt-1">
             <div class="logo-box">
                 <img class="logo" src="~/images/Miscellaneous/Header-Logo_Color.png" height="170" width="170">
             </div>            
-            <div class="nav-box d-flex align-items-end">
-                <div class="d-flex">
-                    <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Ethics</a>
-                    <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Justice</a>
-                    <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Government</a>
-                    <a class=""  href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Fillers</a>                    
-                    <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Building</a>                    
-                    <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Events</a>
-                    <a class="" asp-controller="Home" asp-action="Contact"><img src="~/images/Simply/Skype.png" height="24" width="24" />Contact</a>
-                    <a class="" asp-controller="Home" asp-action="Contact"><img src="~/images/Simply/Skype.png" height="24" width="24" />About</a>
-                </div>
+            <div class="nav-box d-flex"> 
+                <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Ethics</a>
+                <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Justice</a>
+                <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Government</a>
+                <a class=""  href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Fillers</a>                    
+                <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Building</a>                    
+                <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Events</a>
+                <a class="" asp-controller="Home" asp-action="Contact"><img src="~/images/Simply/Skype.png" height="24" width="24" />Contact</a>
+                <a class="" asp-controller="Home" asp-action="Contact"><img src="~/images/Simply/Skype.png" height="24" width="24" />About</a>                
             </div>
-        </div>
-    </div>    
+        </div> 
+    </div>
     
     <br />
     <div class="container body-content">
@@ -109,18 +105,31 @@
     </div>    
     
     <div class="container">
-        <footer class="pcprincess-footer">
-            <ul class="nav d-sm-flex justify-content-center">
-                <li class="nav-item p-3">&copy; 2017 - IdeallySpeaking</li>
-                <li class="nav-item">
-                    <a title="DMCA.com Protection Status" class="dmca-badge nav-link" href="http://www.dmca.com/Protection/Status.aspx?ID=cb632dcf-d7b0-4283-bed2-e9a99b014cff">
-                        <img alt="DMCA.com Protection Status" src="//images.dmca.com/Badges/dmca-badge-w200-5x1-11.png?ID=cb632dcf-d7b0-4283-bed2-e9a99b014cff">
-                    </a>
-                    <script src="//images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
-                </li>
-            </ul>            
+        <footer class="pcprincess-footer-back">
+            <section class="pcprincess-footer-front shadow-box">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Active</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>                    
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>
+                <ul class="nav justify-content-center">
+                    <li class="nav-item p-3">&copy; 2017 - IdeallySpeaking</li>
+                    <li class="nav-item">
+                        <a title="DMCA.com Protection Status" class="dmca-badge nav-link" href="http://www.dmca.com/Protection/Status.aspx?ID=cb632dcf-d7b0-4283-bed2-e9a99b014cff">
+                            <img alt="DMCA.com Protection Status" src="//images.dmca.com/Badges/dmca-badge-w200-5x1-11.png?ID=cb632dcf-d7b0-4283-bed2-e9a99b014cff">
+                        </a>
+                        <script src="//images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
+                    </li>
+                </ul>                
+            </section>
         </footer>
-    </div>
+    </div>    
 
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>

@@ -21,13 +21,27 @@ namespace IdeallySpeaking.Models
         }
         
         [DataType(DataType.Date)]
-        public DateTime Date { get; set; }
-
-        public List<Comment> CommentList { get; set; }
-
-        public int AuthorUserId { get; set; }
+        public DateTime Date { get; set; } 
 
         public ApplicationUser Author { get; set; }
+
+        public class ArticleCommentsList
+        {
+            public ArticleCommentsList(Article article)
+            {
+                this.ArticleCommentsListId = article.ArticleId;
+            }
+
+            public void AddCommentToList(Comment comment)
+            {                
+                ArtCommList.Add(comment);
+            }
+
+            public int ArticleCommentsListId { get; set; }
+
+            public IList<Comment> ArtCommList { get; set; }
+
+        }
 
     }
 }

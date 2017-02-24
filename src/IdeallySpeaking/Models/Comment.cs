@@ -26,26 +26,5 @@ namespace IdeallySpeaking.Models
 
         public int Rating { get; set; }
 
-        public class ArticleCommentsList
-        {
-            public ArticleCommentsList(Article article, Comment comment)
-            {
-                comment.ArticleId = article.ArticleId;
-                CommentList.Add(comment);
-            }
-
-            public IList<Comment> CommentList { get; set; }
-        }
-
-        public class UsersComments
-        {
-            public UsersComments(ApplicationUser applicationUser, Comment comment)
-            {
-                //comment.ApplicationUserId = applicationUser.ApplicationUserId;
-                AuthoredComments.Add(comment);
-            }
-
-            public List<Comment> AuthoredComments { get; set; }
-        }
     }
 }

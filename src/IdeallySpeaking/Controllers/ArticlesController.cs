@@ -63,11 +63,12 @@ namespace IdeallySpeaking.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ArticleId,Headline,Content,Teaser,Date,AuthorUserId")] Article article)
+        public async Task<IActionResult> Create([Bind("ArticleId,Headline,Content, Teaser, Date, Author")] Article article)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(article);                
+                _context.Add(article);
+                
                 await _context.SaveChangesAsync();
 
                 return RedirectToAction("FullArticle");
