@@ -4,14 +4,14 @@
     ViewData["Title"] = "Comment";
 }
  
-
+@* Add 'Foreach' to handle a List<Comment> *@
 <tr>
     <td class="post-avatar"><a href=""><img src="" width="48" height="48" border="0" /></a></td>
     <td id="item.CommentId"></td>
-    <td>item.Title</td>
-    <td>item.ApplicationUser</td>
-    <td>item.CommentDate</td>
-    <td>item.CommentContent</td>
+    <td>@Html.DisplayFor(model => model.Title)</td>
+    <td>@Html.DisplayFor(model => model.ApplicationUser)</td>
+    <td>@Html.DisplayFor(model => model.CommentDate)</td>
+    <td>@Html.DisplayFor(model => model.CommentContent)</td>
     <td><a href="" class="" alt="View Profile" title="View Profile"></a></td>
     <td><span class="">(18,327 posts)</span></td>
 </tr>

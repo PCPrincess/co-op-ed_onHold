@@ -22,7 +22,7 @@
 <body>
     <a name="top" id="top"></a>
     <div class="">
-        <a asp-for="" href="" class="">Current-User</a> | <a asp-controller="ISUser" asp-action="Profile">My Profile</a> | <a href="">Oh, my</a> | <a href="">Goodness:</a> | <a href="">Facepalm!</a> | <a href="">Help</a> | <a href="">Log out</a>
+        <a asp-for="" href="" class="">Current-User</a> | <a asp-controller="ApplicationUser" asp-action="Profile">My Profile</a> | <a href="">Oh, my</a> | <a href="">Goodness:</a> | <a href="">Facepalm!</a> | <a href="">Help</a> | <a href="">Log out</a>
     </div>
     <div class="">
         <a href="" id="" class="">Home</a>  &raquo  <a href="" id="" class="">Latest Threads</a>  &raquo  <a href="" id="" class="">Greatest Threads</a>  &raquo  <a href="" id="" class=" ">Forums</a>  &raquo  <a href="" id="" class="">My Posts</a>
@@ -55,10 +55,10 @@
         <tbody>
 
             @*
-            @foreach (var item in Model.CommentList)
+            @foreach (var item in Model.ArtCommList)
             {
                 <a name="op" id="op"></a>
-                @Html.Partial("CommentPartial", item);
+                @Html.Partial("CommentsPartial", item);
             }*@
             <tr>
                 <td>

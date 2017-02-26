@@ -21,15 +21,27 @@ namespace IdeallySpeaking.Controllers
             _context = context;            
         }
 
-        // GET: Comments
-        // NO VIEW - Store in ArticleCommentList
-        public async Task<IActionResult> Index()
+        // GET: Comments For ArticleId to be used @FullArticle        
+        //[Attribute to NOT Route] Research for the Attribute BELOW
+        [NonAction]
+        public async Task<IActionResult> Comments(int id)
         {
-            return View(await _context.Comment.ToListAsync());
+            var items = await GetAllCommentsAsync(id);
+            return PartialView(items);
         }
 
-        // GET: Comments/ArticleComment/5
-        public async Task<IActionResult> ArticleComment(int id)
+        private async Task<List<Comment>> GetAllCommentsAsync(int id)
+        {
+            IQueryable<Comment> comments = from c in _context.Comment
+                                           .Include(i => i.ArticleId == id)
+                                           select c;
+
+            return await comments.ToListAsync();
+        }
+
+        // GET: Comments/CommentsOnly/5
+        // For viewing on a separate comment-only page
+        public async Task<IActionResult> CommentsOnly(int id)
         {
             /*if (id == null)
             {
@@ -37,8 +49,7 @@ namespace IdeallySpeaking.Controllers
             }*/
 
             var comments = await _context.Comment.ToListAsync();
-            /* (m => m.ArticleId == id); */
-            /* var artId = id; Comment.ArticleId = artId */
+            /* (m => m.ArticleId == id); */            
             /*if (comment == null)
             {
                 return NotFound();
@@ -185,11 +196,11 @@ namespace IdeallySpeaking.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> PopularCommentsList(int num)
         {
-            var items = await GetItemsAsync(num);
+            var items = await GetPopularItemsAsync(num);
             return View(items); //
         }
 
-        private async Task<List<Comment>> GetItemsAsync(int num)
+        private async Task<List<Comment>> GetPopularItemsAsync(int num)
         {             
             IQueryable<Comment> comments = from c in _context.Comment
             .OrderByDescending(r => r.Rating).Take(num)
