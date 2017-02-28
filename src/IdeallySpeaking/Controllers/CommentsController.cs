@@ -8,67 +8,72 @@ using Microsoft.EntityFrameworkCore;
 using IdeallySpeaking.Data;
 using IdeallySpeaking.Models;
 using IdeallySpeaking.Models.CommentViewModels;
+using Microsoft.AspNetCore.Identity;
 
 namespace IdeallySpeaking.Controllers
 {
     public class CommentsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;                
 
         public CommentsController(ApplicationDbContext context)
         {
-            _context = context;    
+            _context = context;            
         }
 
-        // GET: Comments
-        public async Task<IActionResult> Index()
+        // GET: Comments/id
+        // All Comments for an Article w/ArticleId = id
+        // For Display w/"Index" PartialView @ FullArticle
+        [Route("ArticleComments")]
+        public async Task<IActionResult> IndexPartial(int id)
         {
-            return View(await _context.Comment.ToListAsync());
+            var items = await GetAllCommentsAsync(id);
+            return PartialView(items);
         }
 
-        // GET: Comments/ArticleComment/5
-        public async Task<IActionResult> ArticleComment(int? id)
+        private async Task<List<Comment>> GetAllCommentsAsync(int id)
+        {
+            IQueryable<Comment> comments = from c in _context.Comment
+                                           .Include(i => i.ArticleId == id)
+                                           select c;
+
+            return await comments.ToListAsync();
+        }
+
+        // GET: Comments/SingleComment/id
+        // Single Comment for an Article w/Current CommentId
+        // CommentsPartial 
+        public async Task<IActionResult> SingleComment(int id)
         {
             /*if (id == null)
             {
                 return NotFound();
             }*/
-
             var comment = await _context.Comment
-                .SingleOrDefaultAsync(m => m.CommentId == id);
+                .SingleOrDefaultAsync(c => c.CommentId == id);                        
             /*if (comment == null)
             {
                 return NotFound();
             }*/
-
             return View(comment);
         }
 
-        // GET: Comments/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
         // POST: Comments/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CommentId,CommentDate,Title,CommentContent,ArticleId,ApplicationUserId,Rating")] Comment comment)
+        [ActionName("CreatePartial")]
+        public async Task<IActionResult> Create([Bind("CommentId, CommentDate, Title, CommentContent,ArticleId, ApplicationUserId, Rating")] Comment comment)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(comment);
-                //var user = ApplicationUserId; -OR-
-                //var user = GetCurrentUserAsync();
-                //_context.UsersComments(user).Add(comment);
-                //_context.ArticleCommentsList(article).Add(comment);
+
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+
+                return RedirectToAction("FullArticle");
             }
-            return View(comment);
-        }
+            return PartialView(comment);
+        } 
 
         // GET: Comments/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -178,17 +183,17 @@ namespace IdeallySpeaking.Controllers
             _context.Comment.Remove(comment);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
-        }
+        }        
 
         // GET: Comments/PopularCommentsList/5
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> PopularCommentsList(int num)
         {
-            var items = await GetItemsAsync(num);
+            var items = await GetPopularItemsAsync(num);
             return View(items); //
         }
 
-        private async Task<List<Comment>> GetItemsAsync(int num)
+        private async Task<List<Comment>> GetPopularItemsAsync(int num)
         {             
             IQueryable<Comment> comments = from c in _context.Comment
             .OrderByDescending(r => r.Rating).Take(num)
@@ -200,6 +205,6 @@ namespace IdeallySpeaking.Controllers
         {
             return _context.Comment.Any(e => e.CommentId == id);
         }
-        
+
     }
 }
