@@ -7,84 +7,68 @@
 }
 @* Check Facebook Meta Tags At: https://developers.facebook.com/tools/debug/  *@
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <meta property="og:url" content="" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="" />
-    <meta property="og:description" content="" />
-    <meta property="og:image" content="" />
-    <title>Title</title>
-</head>
-<body>
-    <a name="top" id="top"></a>
-    <div class="">
-        <a asp-for="" href="" class="">Current-User</a> | <a asp-controller="ApplicationUser" asp-action="Profile">My Profile</a> | <a href="">Oh, my</a> | <a href="">Goodness:</a> | <a href="">Facepalm!</a> | <a href="">Help</a> | <a href="">Log out</a>
-    </div>
-    <div class="">
-        <a href="" id="" class="">Home</a>  &raquo  <a href="" id="" class="">Latest Threads</a>  &raquo  <a href="" id="" class="">Greatest Threads</a>  &raquo  <a href="" id="" class=" ">Forums</a>  &raquo  <a href="" id="" class="">My Posts</a>
-    </div>
-    <br />
-    <hr />
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                @Html.Partial("ArticleDetailsPartial")
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                @Html.Partial("ArticleContentPartial")
-                <td class="" valign="bottom">
-                    <a href="https://twitter.com/share" class="" data-url="" data-counturl="" data-count="" data-via="" data-size="" data-dnt="true">Tweet</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <p class="">
-        <a href="">Reply to this article</a>
+<a name="top" id="top"></a>
+<div class="">
+    <a asp-for="" href="" class="">Current-User</a> | <a asp-controller="ApplicationUser" asp-action="Profile">My Profile</a> | <a href="">Oh, my</a> | <a href="">Goodness:</a> | <a href="">Facepalm!</a> | <a href="">Help</a> | <a href="">Log out</a>
+</div>
+<div class="">
+    <a href="" id="" class="">Home</a>  &raquo  <a href="" id="" class="">Latest Threads</a>  &raquo  <a href="" id="" class="">Greatest Threads</a>  &raquo  <a href="" id="" class=" ">Forums</a>  &raquo  <a href="" id="" class="">My Posts</a>
+</div>
+<br />
+<hr />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            @Html.Partial("ArticleDetailsPartial")
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @Html.Partial("ArticleContentPartial")
+            <td class="" valign="bottom">
+                <a href="https://twitter.com/share" class="" data-url="" data-counturl="" data-count="" data-via="" data-size="" data-dnt="true">Tweet</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p class="">
+    <a href="">Reply to this article</a>
+</p>
+<hr />
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr></tr>
+    </thead>
+    <tbody>
+        @*
+        @foreach (var item in Model)
+        {
+            
+            @Html.Partial("IndexPartial", item);
+        }*@
+        <tr>
+            <td>
+                <div class="">
+                    @* <a asp-action="Create" asp-controller="CommentsController">Reply to Article</a>*@
+                </div>
+            </td>           
+        </tr>
+    </tbody>
+</table>
+<div class="">
+    @Html.Partial("CreatePartial")
+</div>
+<div>
+    <p>
+        <a href="" class="">Thread info</a>  |
+        <span id="bookmark">
+            <a href="#" class="">Bookmark <span>this thread</span></a>
+        </span>
     </p>
-    <hr />
-    <table class="table table-striped table-bordered">
-        <thead>
-            <tr></tr>
-        </thead>
-        <tbody>
-
-            @*
-            @foreach (var item in Model.ArtCommList)
-            {
-                <a name="op" id="op"></a>
-                @Html.Partial("CommentsPartial", item);
-            }*@
-            <tr>
-                <td>
-                    <div class="">
-                        @* <a asp-action="Create" asp-controller="CommentsController">Reply to Article</a>*@
-                    </div>
-                </td>
-                <td>
-                    
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <div>
-        <p>
-            <a href="" class="">Thread info</a>  |
-            <span id="bookmark">
-                <a href="#" class="">Bookmark <span>this thread</span></a>
-            </span>
-        </p>
-        <br />
-        <p class="">
-            <a href="#top" class="btn-sm btn-warning">Back to top</a>  |
-            <a asp-action="Index" class="btn-sm btn-warning">Back to List</a>
-        </p>
-    </div>
-
-</body>
-</html>
+    <br />
+    <p class="">
+        <a href="#top" class="btn-sm btn-warning">Back to top</a>  |
+        <a asp-controller="Home" asp-action="Index" class="btn-sm btn-warning">Home</a>
+    </p>
+</div>

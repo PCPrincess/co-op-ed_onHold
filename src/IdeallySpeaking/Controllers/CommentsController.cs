@@ -21,10 +21,11 @@ namespace IdeallySpeaking.Controllers
             _context = context;            
         }
 
-        // GET: Comments For ArticleId to be used @FullArticle        
-        //[Attribute to NOT Route] Research for the Attribute BELOW
-        [NonAction]
-        public async Task<IActionResult> Comments(int id)
+        // GET: Comments/id
+        // All Comments for an Article w/ArticleId = id
+        // For Display w/"Index" PartialView @ FullArticle
+        [Route("ArticleComments")]
+        public async Task<IActionResult> IndexPartial(int id)
         {
             var items = await GetAllCommentsAsync(id);
             return PartialView(items);
@@ -39,48 +40,40 @@ namespace IdeallySpeaking.Controllers
             return await comments.ToListAsync();
         }
 
-        // GET: Comments/CommentsOnly/5
-        // For viewing on a separate comment-only page
-        public async Task<IActionResult> CommentsOnly(int id)
+        // GET: Comments/SingleComment/id
+        // Single Comment for an Article w/Current CommentId
+        // CommentsPartial 
+        public async Task<IActionResult> SingleComment(int id)
         {
             /*if (id == null)
             {
                 return NotFound();
             }*/
-
-            var comments = await _context.Comment.ToListAsync();
-            /* (m => m.ArticleId == id); */            
+            var comment = await _context.Comment
+                .SingleOrDefaultAsync(c => c.CommentId == id);                        
             /*if (comment == null)
             {
                 return NotFound();
             }*/
-
-            return View(comments);
-        }
-
-        // GET: Comments/Create
-        public IActionResult Create()
-        {
-            return View();
+            return View(comment);
         }
 
         // POST: Comments/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CommentId,CommentDate,Title,CommentContent,ArticleId,ApplicationUserId,Rating")] Comment comment)
+        [ActionName("CreatePartial")]
+        public async Task<IActionResult> Create([Bind("CommentId, CommentDate, Title, CommentContent,ArticleId, ApplicationUserId, Rating")] Comment comment)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(comment);                                
-                //_context.ArticleCommentsList(article).Add(comment);
-                // Next: Add comment to UserCommentsList
+                _context.Add(comment);
+
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+
+                return RedirectToAction("FullArticle");
             }
-            return View(comment);
-        }
+            return PartialView(comment);
+        } 
 
         // GET: Comments/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -190,7 +183,7 @@ namespace IdeallySpeaking.Controllers
             _context.Comment.Remove(comment);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
-        }
+        }        
 
         // GET: Comments/PopularCommentsList/5
         [ValidateAntiForgeryToken]
