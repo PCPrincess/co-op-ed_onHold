@@ -117,14 +117,6 @@ a {
     border-top: 1.5px solid hsl(225, 20%, 50%);
 }
 
-.pcprincess-header {
-    display: flex;
-    background-color: inherit;
-    border: 1px solid lightgray;
-    height: 135px;    
-    color: darkgray;
-}
-
 .pcprincess-footer-back {
     background-color: hsl(225, 20%, 90%);    
     height: 200px;
@@ -138,18 +130,6 @@ a {
     height: 100%;
     font: inherit;
     color: darkgray;
-}
-
-.logo-box {
-    height: 100%;
-    width: 135px;
-    border-right: 1px solid lightgray;
-    padding-top: 1px;
-    padding-left: 1px;
-}
-
-.logo {    
-    border: 2px solid white;
 }
 
 /* Stacked-Tab Media Box */
