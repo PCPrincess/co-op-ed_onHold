@@ -70,7 +70,7 @@ namespace IdeallySpeaking.Controllers
 
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction("FullArticle");
+                return Redirect("http://ideallyspeaking.net/articles/fullarticle/?id/");
             }
             return PartialView(comment);
         } 
@@ -147,13 +147,17 @@ namespace IdeallySpeaking.Controllers
         // POST: Comment/Reply/?
         [HttpPost, ActionName("Post Reply")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> PostReply(int? id)
+        public async Task<IActionResult> PostReply([Bind("CommentId, CommentDate, Title, CommentContent,ArticleId, ApplicationUserId, Rating")] Comment reply)
         {
-            var reply = await _context.Comment.SingleOrDefaultAsync(m => m.CommentId == id);
-            _context.Comment.Add(reply);
-            //_context.UsersComments(user).Add(reply);
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Reply");
+            if (ModelState.IsValid)
+            {
+                _context.Comment.Add(reply);
+                //_context.UsersComments(user).Add(reply);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Reply");
+            }
+            return PartialView(reply);
+            
         }
 
         // GET: Comments/Delete/5

@@ -9,12 +9,12 @@
     <span class="vert-divider pt-0 pb-0"></span>
     <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm">
         <ul>
-            <li class="nav-item">
+            <li class="nav-item raleway">
                 <span class="navbar-text">
                     <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
                 </span>
             </li>
-            <li class="nav-item">
+            <li class="nav-item raleway">
                 <button type="submit" class="btn btn-link">Log off</button>
             </li>
         </ul>
@@ -22,6 +22,6 @@
 }
 else
 {
-    <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link a-1" asp-area="" asp-controller="Account" asp-action="Register"><img src="~/images/Simply/User.png" height="24" width="24" />Register</a></li>
-    <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link a-1" asp-area="" asp-controller="Account" asp-action="Login"><img src="~/images/Simply/Heart.png" height="24" width="24" />Log-In</a></li>    
+    <li class="nav-item raleway"><a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register"><img src="~/images/Simply/User.png" height="24" width="24" />Register</a></li>
+    <li class="nav-item raleway"><a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login"><img src="~/images/Simply/Heart.png" height="24" width="24" />Log-In</a></li>    
 }

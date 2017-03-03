@@ -11,7 +11,7 @@
 }
 
 body {
-    padding-top: 30px;
+    padding-top: 20px;
     padding-bottom: 20px;    
 }
 
@@ -63,8 +63,7 @@ textarea {
 
 /* PCPrincess CSS */
 
-a {
-    color: dimgray;
+a {    
     -webkit-transition: color 300ms, background-color 300ms;
     -moz-transition: color 300ms, background-color 300ms;
     -o-transition: color 300ms, background-color 300ms;
@@ -122,7 +121,7 @@ a {
     display: flex;
     background-color: inherit;
     border: 1px solid lightgray;
-    height: 175px;    
+    height: 135px;    
     color: darkgray;
 }
 
@@ -143,7 +142,7 @@ a {
 
 .logo-box {
     height: 100%;
-    width: 175px;
+    width: 135px;
     border-right: 1px solid lightgray;
     padding-top: 1px;
     padding-left: 1px;
@@ -151,57 +150,6 @@ a {
 
 .logo {    
     border: 2px solid white;
-}
-
-.nav-box {
-    /* height: 175px; (MOVE to nav-box a) */
-    flex-flow: row;
-    flex-wrap: wrap-reverse;    
-    margin: 0;
-}
-
-.nav-box a {
-    background-color: hsl(225, 20%, 90%);
-    height: 2.5rem;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    border-top: 1px solid lightgray;
-    border-right: 1px solid lightgray;
-    line-height: 1.2rem;
-}
-
-/* Social-Networking Navi */
-.social {
-    text-align: right;
-}
-
-.social-share {
-    display: inline-block;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-ul.social-share li {
-    display: inline-block;
-}
-
-ul.social-share li a {
-    display: inline-block;
-    color: #fff;
-    background: #404040;
-    width: 25px;
-    height: 25px;
-    line-height: 25px;
-    text-align: center;
-    border-radius: 2px;
-}
-
-ul.social-share li a:hover {
-    background: #c52d2f;
-    color: #fff;
 }
 
 /* Stacked-Tab Media Box */
