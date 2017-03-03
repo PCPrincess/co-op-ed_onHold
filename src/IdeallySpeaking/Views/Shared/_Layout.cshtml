@@ -61,35 +61,38 @@
         <link rel="stylesheet" href="~/css/font-awesome.css" />
     </environment>
 </head>
-<body>    
-    <div class="container">
-        <nav class="navbar navbar-light mb-0 bg-color" style="border: 1px solid lightgray;">
-            <ul class="nav flex-sm-row justify-content-end">
-                <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link active a-1" asp-controller="Home" asp-action="Index"><img src="~/images/Simply/Home.png" height="24" width="24" />Home</a></li>
-                <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link a-1" asp-area="" asp-controller="Articles" asp-action="Index"><img src="~/images/Simply/Calendar.png" height="24" width="24" />Recent</a></li>
-                <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link" asp-area="" asp-controller="Articles" asp-action="Create">Create-Art Test</a></li>
-                <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link" asp-area="" asp-controller="Articles" asp-action="FullArticle">Full-Art Test</a></li>
-                <li class="nav-item raleway"><a class="flex-sm-fill text-sm-center nav-link a-1" asp-controller="ISUser" asp-action="Profile"><img src="~/images/Simply/Text.png" height="24" width="24" />Profile(constructing)</a></li>
+<body>
+
+    <nav class="navbar navbar-toggleable-md navbar-inverse" style="background-color: hsl(225, 20%, 50%);">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img src="~/images/Miscellaneous/NavBarLogo.png" height="48" width="48" />Ideally Speaking</a>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active raleway">
+                    <a class="nav-link" asp-controller="Home" asp-action="Index"><img src="~/images/Simply/Home.png" height="24" width="24" />Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item raleway">
+                    <a class="nav-link" asp-area="" asp-controller="Articles" asp-action="FullArticle">Full-Art Test</a>
+                </li>
+                <li class="nav-item raleway">
+                    <a class="nav-link" asp-controller="ApplicationUser" asp-action="Profile"><img src="~/images/Simply/Text.png" height="24" width="24" />Profile(constructing)</a>
+                </li>
                 @await Html.PartialAsync("_LoginPartial")
+                <li class="nav-item dropdown raleway">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        More
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Democratic Socialism</a>
+                        <a class="dropdown-item" href="#">Events</a>
+                        <a class="dropdown-item" href="#">Prison Radio</a>
+                    </div>
+                </li>
             </ul>
-        </nav>    
-    
-        <div class="pcprincess-header mb-1 mt-1">
-            <div class="logo-box">
-                <img class="logo" src="~/images/Miscellaneous/Header-Logo_Color.png" height="170" width="170">
-            </div>            
-            <div class="nav-box d-flex"> 
-                <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Ethics</a>
-                <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Justice</a>
-                <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Government</a>
-                <a class=""  href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Fillers</a>                    
-                <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Building</a>                    
-                <a class="" href=""><img src="~/images/Simply/Calendar.png" height="24" width="24" />Events</a>
-                <a class="" asp-controller="Home" asp-action="Contact"><img src="~/images/Simply/Skype.png" height="24" width="24" />Contact</a>
-                <a class="" asp-controller="Home" asp-action="Contact"><img src="~/images/Simply/Skype.png" height="24" width="24" />About</a>                
-            </div>
-        </div> 
-    </div>
+        </div>
+    </nav>
     
     <br />
     <div class="container body-content">
