@@ -16,7 +16,8 @@ namespace IdeallySpeaking.Models
         public string Title { get; set; }        
 
         [Required]
-        [StringLength(600)]
+        [MinLength(2)]
+        [MaxLength(600)]
         public string CommentContent { get; set; }
 
         public int ArticleId { get; set; }
