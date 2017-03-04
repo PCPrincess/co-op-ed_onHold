@@ -62,37 +62,38 @@
     </environment>
 </head>
 <body>
-
-    <nav class="navbar navbar-toggleable-md navbar-inverse" style="background-color: hsl(225, 20%, 50%);">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="#"><img src="~/images/Miscellaneous/NavBarLogo.png" height="48" width="48" />Ideally Speaking</a>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item active raleway">
-                    <a class="nav-link" asp-controller="Home" asp-action="Index"><img src="~/images/Simply/Home.png" height="24" width="24" />Home<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item raleway">
-                    <a class="nav-link" asp-area="" asp-controller="Articles" asp-action="FullArticle">Full-Art Test</a>
-                </li>
-                <li class="nav-item raleway">
-                    <a class="nav-link" asp-controller="ApplicationUser" asp-action="Profile"><img src="~/images/Simply/Text.png" height="24" width="24" />Profile(constructing)</a>
-                </li>
-                @await Html.PartialAsync("_LoginPartial")
-                <li class="nav-item dropdown raleway">
-                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        More
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Democratic Socialism</a>
-                        <a class="dropdown-item" href="#">Events</a>
-                        <a class="dropdown-item" href="#">Prison Radio</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <div class="container-fluid" style="padding-right: 0; padding-left: 0;">
+        <nav class="navbar navbar-toggleable-md navbar-inverse" style="background-color: hsl(225, 20%, 50%);">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="~/images/Miscellaneous/NavBarLogo.png" height="48" width="48" />Ideally Speaking</a>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active raleway">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index"><img src="~/images/Simply/Home.png" height="24" width="24" />Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item raleway">
+                        <a class="nav-link" asp-area="" asp-controller="Articles" asp-action="FullArticle">Full-Art Test</a>
+                    </li>
+                    <li class="nav-item raleway">
+                        <a class="nav-link" asp-controller="ApplicationUser" asp-action="Profile"><img src="~/images/Simply/Text.png" height="24" width="24" />Profile(constructing)</a>
+                    </li>
+                    @await Html.PartialAsync("_LoginPartial")
+                    <li class="nav-item dropdown raleway">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            More
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Democratic Socialism</a>
+                            <a class="dropdown-item" href="#">Events</a>
+                            <a class="dropdown-item" href="#">Prison Radio</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
     
     <br />
     <div class="container body-content">
@@ -107,30 +108,30 @@
         <br />             
     </div>    
     
-    <div class="container">
-        <footer class="pcprincess-footer-back">
-            <section class="pcprincess-footer-front shadow-box">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
+    <div class="container-fluid" style="padding-right: 0; padding-left: 0;">
+        <footer class="pcprincess-footer"> 
+            <nav class="navbar navbar-inverse">
+                <ul class="navbar-nav flex-row raleway">
+                    <li class="pr-2">
                         <a class="nav-link active" href="#">Active</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="pr-2">
                         <a class="nav-link" href="#">Link</a>
-                    </li>                    
-                    <li class="nav-item">
+                    </li>
+                    <li class="pr-2">
                         <a class="nav-link disabled" href="#">Disabled</a>
                     </li>
                 </ul>
-                <ul class="nav justify-content-center">
-                    <li class="nav-item p-3">&copy; 2017 - IdeallySpeaking</li>
-                    <li class="nav-item">
-                        <a title="DMCA.com Protection Status" class="dmca-badge nav-link" href="http://www.dmca.com/Protection/Status.aspx?ID=cb632dcf-d7b0-4283-bed2-e9a99b014cff">
-                            <img alt="DMCA.com Protection Status" src="//images.dmca.com/Badges/dmca-badge-w200-5x1-11.png?ID=cb632dcf-d7b0-4283-bed2-e9a99b014cff">
-                        </a>
-                        <script src="//images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
-                    </li>
-                </ul>                
-            </section>
+            </nav>
+            <ul class="nav justify-content-center">
+                <li class="nav-item p-3">&copy; 2017 - IdeallySpeaking</li>
+                <li class="nav-item">
+                    <a title="DMCA.com Protection Status" class="dmca-badge nav-link" href="http://www.dmca.com/Protection/Status.aspx?ID=cb632dcf-d7b0-4283-bed2-e9a99b014cff">
+                        <img alt="DMCA.com Protection Status" src="//images.dmca.com/Badges/dmca-badge-w200-5x1-11.png?ID=cb632dcf-d7b0-4283-bed2-e9a99b014cff">
+                    </a>
+                    <script src="//images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
+                </li>
+            </ul> 
         </footer>
     </div>    
 

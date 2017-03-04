@@ -41,7 +41,7 @@ namespace IdeallySpeaking.Controllers
 
         // GET: Comments/SingleComment/id
         // Single Comment for an Article w/Current CommentId
-        // CommentsPartial 
+        // SingleCommentPartial 
         public async Task<IActionResult> SingleComment(int id)
         {
             /*if (id == null)
@@ -49,11 +49,13 @@ namespace IdeallySpeaking.Controllers
                 return NotFound();
             }*/
             var comment = await _context.ApplicationUser
-                .SingleOrDefaultAsync(c => c.CommentId == id);                        
+                .SingleOrDefaultAsync(c => c.CommentId == id);
             /*if (comment == null)
             {
                 return NotFound();
             }*/
+            ViewData["Request"] = "GET";
+
             return View(comment);
         }
 
@@ -69,9 +71,12 @@ namespace IdeallySpeaking.Controllers
 
                 await _context.SaveChangesAsync();
 
-                return Redirect("http://ideallyspeaking.net/articles/fullarticle/?id/");
+                var id = comment.CommentId;
+                var returnUrl = "http://ideallyspeaking.net/articles/fullarticle/" + id;
+
+                return Redirect(returnUrl);
             }
-            return PartialView(comment);
+            return PartialView("CreatePartial");
         } 
 
         // GET: Comments/Edit/5
