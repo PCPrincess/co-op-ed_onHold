@@ -30,10 +30,9 @@ namespace IdeallySpeaking.Controllers
             var items = await GetAllCommentsAsync(id);
             return PartialView(items);
         }
-
         private async Task<List<Comment>> GetAllCommentsAsync(int id)
         {
-            IQueryable<Comment> comments = from c in _context.Comment
+            IQueryable<Comment> comments = from c in _context.ApplicationUser
                                            .Include(i => i.ArticleId == id)
                                            select c;
 
@@ -49,7 +48,7 @@ namespace IdeallySpeaking.Controllers
             {
                 return NotFound();
             }*/
-            var comment = await _context.Comment
+            var comment = await _context.ApplicationUser
                 .SingleOrDefaultAsync(c => c.CommentId == id);                        
             /*if (comment == null)
             {
@@ -83,7 +82,7 @@ namespace IdeallySpeaking.Controllers
                 return NotFound();
             }
 
-            var comment = await _context.Comment.SingleOrDefaultAsync(m => m.CommentId == id);
+            var comment = await _context.ApplicationUser.SingleOrDefaultAsync(m => m.CommentId == id);
             if (comment == null)
             {
                 return NotFound();
@@ -134,7 +133,7 @@ namespace IdeallySpeaking.Controllers
                 return NotFound();
             }
 
-            var reply = await _context.Comment
+            var reply = await _context.ApplicationUser
                 .SingleOrDefaultAsync(m => m.CommentId == id);
             if (reply == null)
             {
@@ -147,11 +146,11 @@ namespace IdeallySpeaking.Controllers
         // POST: Comment/Reply/?
         [HttpPost, ActionName("Post Reply")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> PostReply([Bind("CommentId, CommentDate, Title, CommentContent,ArticleId, ApplicationUserId, Rating")] Comment reply)
+        public async Task<IActionResult> Reply([Bind("CommentId, CommentDate, Title, CommentContent,ArticleId, ApplicationUserId, Rating")] Comment reply)
         {
             if (ModelState.IsValid)
             {
-                _context.Comment.Add(reply);
+                _context.ApplicationUser.Add(reply);
                 //_context.UsersComments(user).Add(reply);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Reply");
@@ -159,6 +158,9 @@ namespace IdeallySpeaking.Controllers
             return PartialView(reply);
             
         }
+
+        // Researching the Below HTMLHelperPartialExtension
+        // public static Task<IHtmlContent> PartialAsync(this IHtmlHelper htmlHelper, string partialViewName, object model);
 
         // GET: Comments/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -168,7 +170,7 @@ namespace IdeallySpeaking.Controllers
                 return NotFound();
             }
 
-            var comment = await _context.Comment
+            var comment = await _context.ApplicationUser
                 .SingleOrDefaultAsync(m => m.CommentId == id);
             if (comment == null)
             {
@@ -183,8 +185,8 @@ namespace IdeallySpeaking.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var comment = await _context.Comment.SingleOrDefaultAsync(m => m.CommentId == id);
-            _context.Comment.Remove(comment);
+            var comment = await _context.ApplicationUser.SingleOrDefaultAsync(m => m.CommentId == id);
+            _context.ApplicationUser.Remove(comment);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }        
@@ -199,7 +201,7 @@ namespace IdeallySpeaking.Controllers
 
         private async Task<List<Comment>> GetPopularItemsAsync(int num)
         {             
-            IQueryable<Comment> comments = from c in _context.Comment
+            IQueryable<Comment> comments = from c in _context.ApplicationUser
             .OrderByDescending(r => r.Rating).Take(num)
                                            select c;            
             return await comments.ToListAsync();
@@ -207,7 +209,7 @@ namespace IdeallySpeaking.Controllers
 
         private bool CommentExists(int id)
         {
-            return _context.Comment.Any(e => e.CommentId == id);
+            return _context.ApplicationUser.Any(e => e.CommentId == id);
         }
 
     }

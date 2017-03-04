@@ -1,22 +1,27 @@
-﻿@model IdeallySpeaking.Models.Comment
+﻿@model ReplyViewModel
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
 
+@* If GET *@
+<p class="">Response to <a href="#1" id=""></a></p>
+<h4 class="">@Model.Reply.Title</h4>
 
+<tr style="padding-left: 20px;">
+    <td class=""><a href=""><img src="~/images/Miscellaneous/Placeholder.png" width="48" height="48" border="0" /></a></td>
+    <td id="item.CommentId"></td>
+    <td>item.Title</td>    
+    <td>item.CommentDate</td>
+    <td>item.CommentContent</td>
+    <td><a asp-controller="ApplicationUserController" asp-action="Profile(ApplicationUserId)" class="" alt="View Profile" title="View Profile">item.ApplicationUser</a></td>
+    <td><span class="">(18,327 posts)</span></td>
+</tr>
 
-    <p class="">Response to <a href="#1" id=""></a></p>
-    <h3 class="post-title">@Model.Title</h3>
+@* ElseIf POST *@
 
-    <tr style="padding-left: 20px;">
-        <td class="post-avatar"><a href=""><img src="" width="48" height="48" border="0" /></a></td>
-        <td id="item.CommentId"></td>
-        <td>item.Title</td>
-        <td>item.ApplicationUser</td>
-        <td>item.CommentDate</td>
-        <td>item.CommentContent</td>
-        <td><a href="" class="" alt="View Profile" title="View Profile"></a></td>
-        <td><span class="">(18,327 posts)</span></td>
-    </tr>
+<form asp-controller="CommentsController" asp-action="Reply" method="post">
+    <textarea asp-for="Reply"></textarea>
+    <button type="submit">Test</button>
+</form>
