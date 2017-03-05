@@ -61,8 +61,7 @@ namespace IdeallySpeaking.Controllers
 
         // POST: Comments/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        [ActionName("CreatePartial")]
+        [ValidateAntiForgeryToken]        
         public async Task<IActionResult> Create([Bind("CommentId, CommentDate, Title, CommentContent,ArticleId, ApplicationUserId, Rating")] Comment comment)
         {
             if (ModelState.IsValid)

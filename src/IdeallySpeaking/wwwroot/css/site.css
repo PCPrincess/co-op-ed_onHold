@@ -22,12 +22,6 @@ textarea {
     max-width: 280px;
 }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
-}
-
 /* buttons and links extension to use brackets: [ click me ] */
 .btn-bracketed::before {
     display:inline-block;
@@ -40,31 +34,9 @@ textarea {
     padding-left: 0.5em;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"]
-{
-    width: 100%;
-}
-
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-  /* Hide captions */
-  .carousel-caption {
-    display: none
-  }
-}
-
 /* PCPrincess CSS */
 
 a {    
-    -webkit-transition: color 300ms, background-color 300ms;
-    -moz-transition: color 300ms, background-color 300ms;
-    -o-transition: color 300ms, background-color 300ms;
-    transition: color 300ms, background-color 300ms;
-}
-
-.a-1 {
-    color: hsl(225, 20%, 50%);
     -webkit-transition: color 300ms, background-color 300ms;
     -moz-transition: color 300ms, background-color 300ms;
     -o-transition: color 300ms, background-color 300ms;
@@ -76,13 +48,28 @@ a {
     danger > background-color: #d9534f;
 */
 
-/* Button/Tab/Pill Border Bottom Button aka: bbb */
-.bbb {
+.a-1 {
+    color: hsl(225, 20%, 50%);
+    -webkit-transition: color 300ms, background-color 300ms;
+    -moz-transition: color 300ms, background-color 300ms;
+    -o-transition: color 300ms, background-color 300ms;
+    transition: color 300ms, background-color 300ms;
+}
+
+.color-a {
+    color: hsl(225, 20%, 50%);
+}
+
+.color-bb {
     border-bottom: 1.5px solid #5bc0de;
 }
 
 /* Card Border Top aka: cbt */
 .cbt-default {
+    border-top: 1.5px solid hsl(225, 20%, 50%);
+}
+
+.color-bt {
     border-top: 1.5px solid hsl(225, 20%, 50%);
 }
 
