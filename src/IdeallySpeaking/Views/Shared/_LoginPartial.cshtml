@@ -5,8 +5,7 @@
 @inject UserManager<ApplicationUser> UserManager
 
 @if (SignInManager.IsSignedIn(User))
-{
-    <span class="vert-divider pt-0 pb-0"></span>
+{    
     <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm">
         <ul>
             <li class="nav-item raleway">
