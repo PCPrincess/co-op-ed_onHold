@@ -26,9 +26,17 @@
         <div class="form-group">            
             <label asp-for="CommentContent" class="col-sm-2 control-label"></label>
             <div class="col-sm-8">
-                @* EDITS @ #todo Channel/Slack *@
-                <textarea asp-for="CommentContent" class="form-control" rows="8"></textarea>
-                <span asp-validation-for="CommentContent" class="text-danger"></span>
+                <div class="comment-wrapper">
+                    <a class=""><img src="~/images/Miscellaneous/Placeholder.png" class="comment-avatar" height="44" width="44" /></a>
+                    <div class="comment-inner-wrapper">
+                        <div class="comment-interact">
+                            <div class="comment-header">
+                                <textarea asp-for="CommentContent" class="form-control" rows="8"></textarea>
+                                <span asp-validation-for="CommentContent" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="form-group">

@@ -61,8 +61,9 @@ namespace IdeallySpeaking.Controllers
 
         // POST: Comments/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]        
-        public async Task<IActionResult> Create([Bind("CommentId, CommentDate, Title, CommentContent,ArticleId, ApplicationUserId, Rating")] Comment comment)
+        [ValidateAntiForgeryToken]
+        [ActionName("Create")]
+        public async Task<IActionResult> CreatePartial([Bind("CommentId, CommentDate, Title, CommentContent,ArticleId, ApplicationUserId, Rating")] Comment comment)
         {
             if (ModelState.IsValid)
             {
@@ -75,7 +76,7 @@ namespace IdeallySpeaking.Controllers
 
                 return Redirect(returnUrl);
             }
-            return PartialView("CreatePartial");
+            return PartialView();
         } 
 
         // GET: Comments/Edit/5

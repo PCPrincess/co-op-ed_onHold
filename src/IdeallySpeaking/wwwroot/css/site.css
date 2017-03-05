@@ -48,14 +48,6 @@ a {
     danger > background-color: #d9534f;
 */
 
-.a-1 {
-    color: hsl(225, 20%, 50%);
-    -webkit-transition: color 300ms, background-color 300ms;
-    -moz-transition: color 300ms, background-color 300ms;
-    -o-transition: color 300ms, background-color 300ms;
-    transition: color 300ms, background-color 300ms;
-}
-
 .color-a {
     color: hsl(225, 20%, 50%);
 }
@@ -64,13 +56,45 @@ a {
     border-bottom: 1.5px solid #5bc0de;
 }
 
-/* Card Border Top aka: cbt */
-.cbt-default {
+.color-bt {
     border-top: 1.5px solid hsl(225, 20%, 50%);
 }
 
-.color-bt {
-    border-top: 1.5px solid hsl(225, 20%, 50%);
+/* Comment Text Entry */
+
+.comment-wrapper {
+    max-width: 780px;
+    position: relative;
+    padding-left: 3.25rem;
+}
+
+.comment-avatar {
+    float: left;
+    margin-left: -3rem;
+    border-radius: 2px;
+}
+
+.comment-inner-wrapper {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #d1d5da;
+    border-radius: 2px;
+}
+
+.comment-interact {
+    position: relative;
+}
+
+.comment-header {
+    padding: 6px 10px 0;
+    background: #f6f8fa;
+    border-radius: 3px 3px 0 0;
+    margin-bottom: 10px;
+}
+
+.comment-nav {
+    position: relative;
+    border-bottom: 1px solid #d1d5da;
 }
 
 .pcprincess-footer {
@@ -78,8 +102,6 @@ a {
     height: 150px;
     width: 100%;       
 }
-
-
 
 /* Stacked-Tab Media Box */
 

@@ -13,11 +13,13 @@ namespace IdeallySpeaking.Controllers
 {
     public class ArticlesController : Controller
     {
-        private readonly ApplicationDbContext _context;        
+        private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public ArticlesController(ApplicationDbContext context)
+        public ArticlesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
-            _context = context;            
+            _context = context;
+            _userManager = userManager;
         }
 
         // GET: Articles
@@ -160,7 +162,12 @@ namespace IdeallySpeaking.Controllers
         {
             return _context.Articles.Any(e => e.ArticleId == id);
         }
-        
+
+        private Task<ApplicationUser> GetCurrentUserAsync()
+        {
+            return _userManager.GetUserAsync(HttpContext.User);
+        }
+
     }
 }
 
