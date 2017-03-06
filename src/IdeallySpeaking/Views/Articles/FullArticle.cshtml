@@ -3,17 +3,18 @@
 
 @{
     Layout = "_Layout";
-    ViewData["Title"] = "Full Article";    
+    ViewData["Title"] = "Full Article";
+    ViewData["PartialURL"] = "~/Views/Comments/CreatePartial.cshtml";
 }
 @* Check Facebook Meta Tags At: https://developers.facebook.com/tools/debug/  *@
 
 
 <a name="top" id="top"></a>
 <div class="">
-    <a asp-for="" href="" class="">Current-User</a> | <a asp-controller="ApplicationUser" asp-action="Profile">My Profile</a> | <a href="">Oh, my</a> | <a href="">Goodness:</a> | <a href="">Facepalm!</a> | <a href="">Help</a> | <a href="">Log out</a>
+    <a asp-for="" href="" class="">Current-User</a> | <a asp-controller="ApplicationUser" asp-action="Profile">My Profile</a> | <a href="">Oh, my</a> | <a href="">Goodness:</a> | <a href="">Facepalm!</a> | <a asp-controller="Account" asp-action="LogOff">Log out</a>
 </div>
 <div class="">
-    <a href="" id="" class="">Home</a>  &raquo  <a href="" id="" class="">Latest Threads</a>  &raquo  <a href="" id="" class="">Greatest Threads</a>  &raquo  <a href="" id="" class=" ">Forums</a>  &raquo  <a href="" id="" class="">My Posts</a>
+    <a asp-controller="Home" asp-action="Index" class="">Home</a>  &raquo  <a href="" id="" class="">Latest Threads</a>  &raquo  <a href="" id="" class="">Greatest Threads</a>  &raquo  <a href="" id="" class=" ">Forums</a>  &raquo  <a href="" id="" class="">My Posts</a>
 </div>
 <br />
 <hr />
@@ -57,7 +58,7 @@
     </tbody>
 </table>
 <div class="">
-    @Html.Partial("CreatePartial")
+    @Html.Partial((string)ViewData["PartialURL"])
 </div>
 <div>
     <p>

@@ -13,9 +13,9 @@
 <h2>Create</h2>
 
 <form asp-controller="Comments" asp-action="Create">
-    <div class="form-horizontal">        
+    <div class="form-horizontal">
         <hr />
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>        
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
             <label asp-for="Title" class="col-sm-2 control-label"></label>
             <div class="col-sm-8">
@@ -23,26 +23,51 @@
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
         </div>
-        <div class="form-group">            
-            <label asp-for="CommentContent" class="col-sm-2 control-label"></label>
-            <div class="col-sm-8">
-                @* EDITS @ #todo Channel/Slack *@
-                <textarea asp-for="CommentContent" class="form-control" rows="8"></textarea>
-                <span asp-validation-for="CommentContent" class="text-danger"></span>
-            </div>
-        </div>
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-8">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+            <label asp-for="CommentContent" class="col-sm-2 control-label"></label>
         </div>
     </div>
 </form>
-<div>
-    @*<a asp-action="Edit" asp-route-id="@Model.CommentId">Edit</a> |         |
-      <a asp-action="Delete" asp-route-id="@Model.CommentId">Delete</a>*@
+<div class="col-sm-8">
+    <div class="comment-wrapper">
+        <a class=""><img src="~/images/Miscellaneous/Placeholder.png" class="comment-avatar" height="44" width="44" /></a>
+        <div class="comment-inner-wrapper">
+            <div class="card">
+                <div class="card-header p-1">
+                    <div class="btn-group open">
+                        <a class="btn btn-default btn-sm ct-button" href="#">
+                            <span class="fa fa-font fa-fw"></span>
+                        </a>
+                        <a class="btn btn-default btn-sm ct-button dropdown-toggle" data-toggle="dropdown" href="#"></a> 
+                    </div>
+                    <a class="btn btn-default btn-sm ct-button" href="#">
+                        <span class="fa fa-bold fa-fw"></span>
+                    </a>
+                </div>
+                <div class="card-block">
+                    <textarea asp-for="CommentContent" class="form-control" rows="8"></textarea>
+                    <span asp-validation-for="CommentContent" class="text-danger"></span>
+                </div>
+            </div>
+                        
+            @*<textarea asp-for="CommentContent" class="form-control" rows="8"></textarea>
+              <span asp-validation-for="CommentContent" class="text-danger"></span>*@
+        </div>
+    </div>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<form asp-controller="Comments" asp-action="Create">
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-8">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</form>
+    <div>
+        @*<a asp-action="Edit" asp-route-id="@Model.CommentId">Edit</a> |
+        <a asp-action="Delete" asp-route-id="@Model.CommentId">Delete</a>*@
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
