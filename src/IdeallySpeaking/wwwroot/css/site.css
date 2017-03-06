@@ -65,36 +65,26 @@ a {
 .comment-wrapper {
     max-width: 780px;
     position: relative;
-    padding-left: 3.25rem;
+    padding-left: 3.50rem;
+    margin-bottom: 1rem;
 }
 
 .comment-avatar {
     float: left;
-    margin-left: -3rem;
+    margin-left: -3.25rem;
     border-radius: 2px;
 }
 
 .comment-inner-wrapper {
     position: relative;
     background-color: #fff;
-    border: 1px solid #d1d5da;
+    /*border: 1px solid #d1d5da;*/
     border-radius: 2px;
 }
 
-.comment-interact {
-    position: relative;
-}
-
-.comment-header {
-    padding: 6px 10px 0;
-    background: #f6f8fa;
-    border-radius: 3px 3px 0 0;
-    margin-bottom: 10px;
-}
-
-.comment-nav {
-    position: relative;
-    border-bottom: 1px solid #d1d5da;
+.ct-button {
+    border: 1px solid #d1d5da;
+    border-radius: 3px;
 }
 
 .pcprincess-footer {
