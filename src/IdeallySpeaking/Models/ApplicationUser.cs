@@ -34,7 +34,7 @@ namespace IdeallySpeaking.Models
 
         public List<Comment> UserCommentList { get; }
 
-        public List<Badge> Badges { get; }
+        public List<Badge> BadgeList { get; set; }
 
     }
 }
