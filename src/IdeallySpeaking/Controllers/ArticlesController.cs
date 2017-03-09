@@ -99,7 +99,7 @@ namespace IdeallySpeaking.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ArticleId,Headline,Content,Teaser,Date,AuthorUserId")] Article article)
+        public async Task<IActionResult> Edit(int id, [Bind("ArticleId,Headline,Content,Teaser,Date,Author")] Article article)
         {
             if (id != article.ArticleId)
             {
