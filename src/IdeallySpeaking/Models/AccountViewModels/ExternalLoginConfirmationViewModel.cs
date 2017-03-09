@@ -11,5 +11,6 @@ namespace IdeallySpeaking.Models.AccountViewModels
         [Required]
         [EmailAddress]
         public string Email { get; set; }
+        public string UserName { get; internal set; }
     }
 }

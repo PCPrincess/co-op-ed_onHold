@@ -38,16 +38,6 @@ namespace IdeallySpeaking.Controllers
             return View();
         }
 
-        // POST: /Applicationuser/Profile
-        // Next: Add Binds from ApplicationUser.cs
-        [HttpPost]
-        public async Task<IActionResult> Profile([Bind()] ApplicationUser user)
-        {
-            var currUser = await GetCurrentUserAsync();           
-
-            return View();
-        }
-
         // GET: /ApplicationUser/Profile
         [HttpGet]
         [AllowAnonymous]
@@ -67,6 +57,20 @@ namespace IdeallySpeaking.Controllers
             return View(user);
         }
 
+        // POST: /Applicationuser/Profile
+        // Next: Add Binds from ApplicationUser.cs
+        [HttpPost]
+        public async Task<IActionResult> Profile([Bind("ApplicationUserId,UserName,Url,BadgeList")] ApplicationUser user)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(user);
+
+                await _context.SaveChangesAsync();
+            }            
+
+            return View(user);
+        }   
 
         // GET: /ApplicationUser/Edit
         public IActionResult Edit()
@@ -75,7 +79,38 @@ namespace IdeallySpeaking.Controllers
         }
 
         // POST: /ApplicationUser/Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("ApplicationUserId,UserName,Url,BadgeList,Avatar")] ApplicationUser user)
+        {
+            if (id != user.ApplicationUserId)
+            {
+                return NotFound();
+            }
 
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(user);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    var currUser = await _userManager.FindByNameAsync(user.UserName);
+                    if (!UserExists(currUser))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction("Profile");
+            }
+            return View(user);
+        }
 
 
         /*
@@ -108,6 +143,11 @@ namespace IdeallySpeaking.Controllers
             return View();
         }
     */
+
+        private bool UserExists(ApplicationUser currUser)
+        {
+            return _context.ApplicationUser.Any(u => u.ApplicationUser.Equals(currUser));
+        }
 
         private Task<ApplicationUser> GetCurrentUserAsync()
         {
