@@ -8,6 +8,9 @@ using IdeallySpeaking.Models;
 using Microsoft.AspNetCore.Identity;
 using IdeallySpeaking.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,11 +20,16 @@ namespace IdeallySpeaking.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
+        private IHostingEnvironment _environment;
 
-        public ApplicationUserController(UserManager<ApplicationUser> userManager, ApplicationDbContext context)
+        public ApplicationUserController(
+            UserManager<ApplicationUser> userManager, 
+            ApplicationDbContext context,
+            IHostingEnvironment environment)
         {
             _userManager = userManager;
             _context = context;
+            _environment = environment;
         }
 
         // GET: /ApplicationUser/Profile
@@ -54,13 +62,13 @@ namespace IdeallySpeaking.Controllers
             {
                 return NotFound();
             }
-            return View(user);
+            return View();
         }
 
         // POST: /Applicationuser/Profile
         // Next: Add Binds from ApplicationUser.cs
         [HttpPost]
-        public async Task<IActionResult> Profile([Bind("ApplicationUserId,UserName,Url,BadgeList")] ApplicationUser user)
+        public async Task<IActionResult> Profile([Bind("ApplicationUserId,UserName,Url,BadgeList,Avatar")] ApplicationUser user)
         {
             if (ModelState.IsValid)
             {
@@ -113,14 +121,13 @@ namespace IdeallySpeaking.Controllers
         }
 
 
-        /*
-        IMPORTANT - Possible For Avatar Upload [in: ProfileController.cs]
-        
+        /* Possible For Avatar Upload [in: ApplicationUserController.cs] */
+
         // GET: /Account/Profile/Avatar
         [AllowAnonymous]
         public ActionResult Avatar()
         {
-            return View();
+            return View("Profile");
         }
 
         // POST: /Account/Profile/Avatar
@@ -139,10 +146,11 @@ namespace IdeallySpeaking.Controllers
                         await file.CopyToAsync(fileStream);
                     }
                 }
+                await _context.SaveChangesAsync();
             }
-            return View();
+            return View("Profile");
         }
-    */
+    
 
         private bool UserExists(ApplicationUser currUser)
         {

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Http;
 
 namespace IdeallySpeaking.Models
 {
@@ -27,7 +28,13 @@ namespace IdeallySpeaking.Models
 
         public DateTime JoinDate { get; private set; }
 
-        public string Url { get; set; }        
+        public string Url { get; set; }
+
+        /*  The property 'ApplicationUser.Avatar is of an interface type ('IFormFile').
+         *  If it is a navigation property, manually configure the relationship for
+            this property by casting it to a mapped entity type, otherwise ignore
+            the property from the model. */
+        //public IFormFile Avatar { get; set; }
 
         [InverseProperty("Author")]
         public List<Article> AuthoredArticles { get; }
