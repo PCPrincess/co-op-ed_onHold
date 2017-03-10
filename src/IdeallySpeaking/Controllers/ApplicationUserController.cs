@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using IdeallySpeaking.Services;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,29 +22,18 @@ namespace IdeallySpeaking.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
         private IHostingEnvironment _environment;
+        private ProfileService _profile;
 
         public ApplicationUserController(
             UserManager<ApplicationUser> userManager, 
             ApplicationDbContext context,
-            IHostingEnvironment environment)
+            IHostingEnvironment environment,
+            ProfileService profile)
         {
             _userManager = userManager;
             _context = context;
             _environment = environment;
-        }
-
-        // GET: /ApplicationUser/Profile
-        [HttpGet]
-        [AllowAnonymous]
-        public async Task<IActionResult> Profile()
-        {
-            var user = await GetCurrentUserAsync();
-            if (user == null) 
-            {
-                return View("Error");
-            }
-            
-            return View();
+            _profile = profile;
         }
 
         // GET: /ApplicationUser/Profile
@@ -53,7 +43,7 @@ namespace IdeallySpeaking.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return View("Error");
             }
 
             var user = await _context.ApplicationUser
