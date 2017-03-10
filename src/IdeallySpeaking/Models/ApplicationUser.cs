@@ -22,19 +22,7 @@ namespace IdeallySpeaking.Models
         [RegularExpression(@"^[a-zA-Z0-9\s]*$", ErrorMessage = "Last name must be alpha characters only.")]
         public string LastName { get; set; }
 
-        public string FullName { get { return (FirstName + " " + LastName); } }
-
-        public new string UserName { get; set; }
-
-        public DateTime JoinDate { get; private set; }
-
-        public string Url { get; set; }
-
-        /*  The property 'ApplicationUser.Avatar is of an interface type ('IFormFile').
-         *  If it is a navigation property, manually configure the relationship for
-            this property by casting it to a mapped entity type, otherwise ignore
-            the property from the model. */
-        //public IFormFile Avatar { get; set; }
+        public string FullName { get { return (FirstName + " " + LastName); } }      
 
         [InverseProperty("Author")]
         public List<Article> AuthoredArticles { get; }
