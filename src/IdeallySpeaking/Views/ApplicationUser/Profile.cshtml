@@ -6,7 +6,56 @@
     ViewData["Title"] = $"{@Model.UserName}'s Profile";
 }
 
-<h2>@ViewData["Title"]</h2>
 
-@Html.DisplayFor(model => model.Url);
-@Html.DisplayFor(model => model.Avatar);
+@if (Model.UserName == "")
+{
+    <p> Please choose a user name below.</p>
+}
+else if (Model.UserName == null)
+{
+    <p> You may choose a user name below.</p>
+}
+else
+{
+    <h2><span class="badge badge-info">@ViewData["Title"]</span></h2>
+}
+
+@Html.DisplayFor(model => model.UserName);
+@Html.DisplayFor(model => model.JoinDate);
+@Html.DisplayFor(model => model.Link);
+<hr />
+<p>
+    @Html.DisplayFor(model => model.Avatar);
+</p>
+<p>
+    @Html.DisplayFor(model => model.Signature);
+</p>
+
+
+
+<form>
+    <div class="form-group">
+        <label for="UserName">User Name</label>
+        <input type="text" class="form-control" id="UserName" placeholder="Enter User Name">
+        <small id="UserName" class="form-text text-muted">Choose a community user name.</small>
+    </div>
+    <div class="form-group">
+        <label for="Link">URL</label>
+        <input type="url" class="form-control" id="Link" placeholder="Enter an URL preceded by http://">
+    </div>
+    <div class="form-group">
+        <label for="Signature">Signature</label>
+        <textarea class="form-control" id="Signature" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="Avatar">File Upload</label>
+        <input type="file" class="form-control-file" id="Avatar">
+        <small id="Avatar" class="form-text text-muted">Upload an avatar here.</small>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+
+<a asp-controller="Account" asp-action="Register">Register as a new user?</a>
