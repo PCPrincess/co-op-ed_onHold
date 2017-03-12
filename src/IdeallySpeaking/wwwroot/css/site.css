@@ -46,9 +46,10 @@ a {
 /* Info: The Colors Used by Bootstrap For
     info >   background-color: #5bc0de;
     danger > background-color: #d9534f;
+    warning > background-color: 
 */
 
-.color-a {
+.color-theme {
     color: hsl(225, 20%, 50%);
 }
 
@@ -139,9 +140,10 @@ a {
 
 .vert-divider {
     height: inherit;
-    width: 1px;
-    background-color: white;
-    background-image: linear-gradient(to bottom, lightgray, white);
+    width: .75px;
+    background-image: linear-gradient(to bottom, hsl(225, 20%, 50%), lightgray, hsl(225, 20%, 50%));
+    margin: -5px 1rem;
+    
 }
 
 /* Hover */
