@@ -8,19 +8,23 @@ using System.Threading.Tasks;
 
 namespace IdeallySpeaking.Models.ApplicationUserViewModels
 {
-    [Authorize]
+    
     public class ProfileViewModel
     {
         [RegularExpression(@"^[a-zA-Z0-9\s]*$", ErrorMessage = "Last name must be alpha characters only.")]
         [MinLength(3)]
-        [MaxLength(16)]
+        [MaxLength(16)]        
         public string UserName { get; set; }
 
         [Display(Name = "Joined")]
         public DateTime JoinDate { get; private set; }
 
         [Url]
-        public string Url { get; set; }
+        [Display(Name = "Personal Link")]
+        public string Link { get; set; }
+
+        [MaxLength(180, ErrorMessage = "Signatures may have a maximum of 180 characters.")]
+        public string Signature { get; set; }
 
         public IFormFile Avatar { get; set; }
 

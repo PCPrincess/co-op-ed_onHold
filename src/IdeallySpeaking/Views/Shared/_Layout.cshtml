@@ -50,7 +50,8 @@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-reboot.css" />
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
-        <link rel="stylesheet" href="~/css/font-awesome.css" />        
+        <link rel="stylesheet" href="~/css/font-awesome.css" />
+        <link rel="stylesheet" href="~/css/octicons.css" />
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-reboot.css" />
@@ -59,6 +60,7 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/font-awesome.css" />
+        <link rel="stylesheet" href="~/css/octicons.css" />
     </environment>
 </head>
 <body>
@@ -71,24 +73,25 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item active raleway">
-                        <a class="nav-link" asp-controller="Home" asp-action="Index"><img src="~/images/EssentialFlat_Color/home-1.png" height="24" width="24" /> Home<span class="sr-only">(current)</span></a>
+                        <a class="nav-link fa fa-home" asp-controller="Home" asp-action="Index">@*<img src="~/images/EssentialFlat_Color/home-1.png" height="24" width="24" />*@ <span class="raleway">Home</span><span class="sr-only">Home</span></a>
                     </li>
                     <li class="nav-item raleway">
-                        <a class="nav-link" asp-area="" asp-controller="Articles" asp-action="FullArticle"><img src="~/images/EssentialFlat_Color/newspaper.png" height="24" width="24" /> Article(constructing)</a>
+                        <a class="nav-link fa fa-newspaper-o" asp-area="" asp-controller="Articles" asp-action="FullArticle">@*<img src="~/images/EssentialFlat_Color/newspaper.png" height="24" width="24" />*@ <span class="raleway">Article</span></a>
                     </li>
                     <li class="nav-item raleway">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact"><img src="~/images/EssentialFlat_Color/id-card-3.png" height="24" width="24" /> The "Who"</a>
+                        <a class="nav-link fa fa-id-badge" asp-area="" asp-controller="Home" asp-action="Contact">@*<img src="~/images/EssentialFlat_Color/id-card-3.png" height="24" width="24" />*@ <span class="raleway">The "Who"</span></a>
+                    </li>                    
+                    <li class="nav-item raleway">
+                        <a class="nav-link fa fa-bookmark-o" asp-controller="" asp-action=""><span class="raleway"> Bookmark</span></a>
                     </li>
                     <li class="nav-item raleway">
-                        <a class="nav-link" asp-controller="ApplicationUser" asp-action="Profile"><img src="~/images/EssentialFlat_Color/notebook-4.png" height="24" width="24" /> Profile(constructing)</a>
+                        <a class="nav-link fa fa-user-o" asp-controller="ApplicationUser" asp-action="Profile">@*<img src="~/images/EssentialFlat_Color/notebook-4.png" height="24" width="24" />*@ <span class="raleway">Profile</span></a>
                     </li>
                     @await Html.PartialAsync("_LoginPartial")
-                    <li class="nav-item raleway">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Supporters"><img src="~/images/EssentialFlat_Color/gift.png" height="24" width="24" /> Support!</a>
-                    </li>
-                    <li class="nav-item dropdown raleway">
-                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            More
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fa" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="raleway">Issues</span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="#">Democratic Socialism</a>
@@ -96,10 +99,40 @@
                             <a class="dropdown-item" href="#">Prison Radio</a>
                         </div>
                     </li>
+                    <li class="nav-item raleway">
+                        <a class="nav-link fa" asp-controller="" asp-action=""><span class="raleway"></span></a>
+                    </li>
+                    <li class="nav-item raleway">
+                        <a class="nav-link fa fa-paypal" asp-area="" asp-controller="Home" asp-action="Supporters">@*<img src="~/images/EssentialFlat_Color/gift.png" height="24" width="24" />*@<span class="raleway"> Donate</span></a>
+                    </li>                    
                 </ul>
+                <div class="vert-divider"></div>
             </div>
         </nav>
     </div>
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link active fa fa-facebook-square color-theme" href="#"></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link fa fa-twitter-square color-theme" href="#"></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link fa fa-share-alt-square color-theme" href="#"></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link fa fa-pinterest-square color-theme" href="#"></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link fa fa-calendar color-theme" href="#"></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link  fa fa-at color-theme" href="#"></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link color-theme" href="#"></a>
+        </li>
+    </ul>
     
     <br />
     <div class="container body-content">
@@ -137,12 +170,12 @@
             </ul>
             <ul class="nav">
                 <li class="nav-item pt-2 pr-2 pl-4">
-                    <a href="https://www.linkedin.com/in/lori-overholtzer-19b7311b/"><span class="fa fa-linkedin fa-2x fa-fw" style="color: white;"></span></a></li>
+                    <a href="https://www.linkedin.com/in/lori-overholtzer-19b7311b/"><span class="fa fa-linkedin fa-2x fa-fw color-white"></span></a></li>
                 <li class="nav-item pt-2 pr-2">
-                    <a href="http://twitter.com/SpeakingIdeally"><span class="fa fa-twitter fa-2x fa-fw" style="color: white;"></span></a>                    
+                    <a href="http://twitter.com/SpeakingIdeally"><span class="fa fa-twitter fa-2x fa-fw color-white"></span></a>                    
                 </li>
                 <li class="nav-item pt-2 pr-2">
-                    <a href="http://facebook.com/ideallyspeakingdotnet"><span class="fa fa-facebook-official fa-2x fa-fw" style="color: white;"></span></a>
+                    <a href="http://facebook.com/ideallyspeakingdotnet"><span class="fa fa-facebook-official fa-2x fa-fw color-white"></span></a>
                 </li>
             </ul>
             <ul class="nav">

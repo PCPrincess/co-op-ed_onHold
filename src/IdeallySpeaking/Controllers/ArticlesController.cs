@@ -22,8 +22,8 @@ namespace IdeallySpeaking.Controllers
             _userManager = userManager;
         }
 
-        // GET: Articles
-        public async Task<IActionResult> Index(string searchString)
+        // GET: Articles/Search
+        public async Task<IActionResult> Search(string searchString)
         {
             var articles = from a in _context.Articles
                            select a;
@@ -31,6 +31,8 @@ namespace IdeallySpeaking.Controllers
             {
                 articles = articles.Where(s => s.Headline.Contains(searchString));
             }
+            List<Article> art = await _context.Articles.ToListAsync();
+            
             return View(await _context.Articles.ToListAsync());
         }
 

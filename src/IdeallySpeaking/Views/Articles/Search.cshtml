@@ -9,11 +9,11 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Article Search</title>
 </head>
 <body>
-    <p><a asp-action="Create">Create New</a></p>
-    <form asp-controller="Articles" asp-action="Index" method="get">
+    <p>Search for an Article by Headline</p>
+    <form asp-controller="Articles" asp-action="Search" method="get">
         <p>
             Title: <input type="text" name="searchString">
             <input type="submit" value="Filter" />
@@ -22,23 +22,8 @@
 
 <table class="table">
     <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Headline)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Content)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Teaser)
-                </th>                
-                <th>
-                    @Html.DisplayNameFor(model => model.Date)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Author)
-                </th>
-            <th></th>
+        <tr>               
+            <th>Search Results</th>
         </tr>
     </thead>
     <tbody>
@@ -47,22 +32,31 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Headline)
             </td>
+        </tr>
+        <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Content)
             </td>
+        </tr>
+        <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Teaser)
-            </td>            
+            </td>
+        </tr>
+        <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
+        </tr>
+        <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Author)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ArticleId">Edit</a> |
+        </tr>
+        <tr>
+            <td>                
                 <a asp-action="Details" asp-route-id="@item.ArticleId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ArticleId">Delete</a>
+                <a asp-controller="Home" asp-action="Index">Back Home</a>
             </td>
         </tr>
 }

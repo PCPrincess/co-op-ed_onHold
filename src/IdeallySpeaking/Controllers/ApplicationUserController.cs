@@ -21,19 +21,16 @@ namespace IdeallySpeaking.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
-        private IHostingEnvironment _environment;
-        private ProfileService _profile;
+        private IHostingEnvironment _environment;        
 
         public ApplicationUserController(
             UserManager<ApplicationUser> userManager, 
             ApplicationDbContext context,
-            IHostingEnvironment environment,
-            ProfileService profile)
+            IHostingEnvironment environment)
         {
             _userManager = userManager;
             _context = context;
-            _environment = environment;
-            _profile = profile;
+            _environment = environment;            
         }
 
         // GET: /ApplicationUser/Profile
@@ -126,18 +123,26 @@ namespace IdeallySpeaking.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Avatar(ICollection<IFormFile> files)
         {
-            var uploads = Path.Combine(_environment.WebRootPath, "uploads");
-            foreach (var file in files)
+            var currUser = await GetCurrentUserAsync();
+            if (!UserExists(currUser))
             {
-                if (file.Length > 0)
-                {
-                    using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
-                    {
-                        await file.CopyToAsync(fileStream);
-                    }
-                }
-                await _context.SaveChangesAsync();
+                return View("Profile");
             }
+            else
+            {
+                var uploads = Path.Combine(_environment.WebRootPath, "uploads");
+                foreach (var file in files)
+                {
+                    if (file.Length > 0)
+                    {
+                        using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
+                        {
+                            await file.CopyToAsync(fileStream);
+                        }
+                    }
+                    await _context.SaveChangesAsync();
+                }
+            }            
             return View("Profile");
         }
     
