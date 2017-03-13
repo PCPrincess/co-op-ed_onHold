@@ -22,9 +22,11 @@ namespace IdeallySpeaking.Models
 
         public int ArticleId { get; set; }
 
-        public int ApplicationUserId { get; set; }
+        public Article Article { get; set; }
 
         public ApplicationUser ApplicationUser { get; set; }
+
+        public List<Comment> UserCommentList { get; set; }
 
         public int Rating { get; set; }        
 
