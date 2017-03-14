@@ -44,7 +44,7 @@ namespace IdeallySpeaking.Controllers
             }
 
             var user = await _context.ApplicationUser
-                .SingleOrDefaultAsync(m => m.ApplicationUserId == id);
+                .SingleOrDefaultAsync(m => m.ApplicationUser.ApplicationUserId == id);
             if (user == null)
             {
                 return NotFound();
@@ -55,7 +55,7 @@ namespace IdeallySpeaking.Controllers
         // POST: /Applicationuser/Profile
         // Next: Add Binds from ApplicationUser.cs
         [HttpPost]
-        public async Task<IActionResult> Profile([Bind("ApplicationUserId,UserName,Url,BadgeList,Avatar")] ApplicationUser user)
+        public async Task<IActionResult> Profile([Bind("UserName,Url,BadgeList,Avatar")] ApplicationUser user)
         {
             if (ModelState.IsValid)
             {
@@ -76,7 +76,7 @@ namespace IdeallySpeaking.Controllers
         // POST: /ApplicationUser/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ApplicationUserId,UserName,Url,BadgeList,Avatar")] ApplicationUser user)
+        public async Task<IActionResult> Edit(int id, [Bind("UserName,Url,BadgeList,Avatar")] ApplicationUser user)
         {
             if (id != user.ApplicationUserId)
             {

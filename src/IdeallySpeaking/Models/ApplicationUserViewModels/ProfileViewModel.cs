@@ -11,7 +11,7 @@ namespace IdeallySpeaking.Models.ApplicationUserViewModels
     
     public class ProfileViewModel
     {
-        [RegularExpression(@"^[a-zA-Z0-9\s]*$", ErrorMessage = "Last name must be alpha characters only.")]
+        [RegularExpression(@"^[a-zA-Z]+[_]?\s*$", ErrorMessage = "Username can contain alphabetical characters and may contain an underscore.")]
         [MinLength(3)]
         [MaxLength(16)]        
         public string UserName { get; set; }
