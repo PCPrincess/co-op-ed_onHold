@@ -9,16 +9,19 @@ using IdeallySpeaking.Data;
 using IdeallySpeaking.Models;
 using IdeallySpeaking.Models.CommentViewModels;
 using Microsoft.AspNetCore.Identity;
+using static IdeallySpeaking.Models.CommentViewModels.CommentsRatingViewModel;
 
 namespace IdeallySpeaking.Controllers
 {
     public class CommentsController : Controller
     {
-        private readonly ApplicationDbContext _context;                
+        private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public CommentsController(ApplicationDbContext context)
+        public CommentsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
-            _context = context;            
+            _context = context;
+            _userManager = userManager;
         }
 
         // GET: Comments/id
@@ -35,7 +38,7 @@ namespace IdeallySpeaking.Controllers
             IQueryable<Comment> comments = from c in _context.ApplicationUser
                                            .Include(i => i.ArticleId == id)
                                            select c;
-
+            // FIX ABOVE IQUERYABLE: Change to Article.ArticleId
             return await comments.ToListAsync();
         }
 
@@ -67,6 +70,7 @@ namespace IdeallySpeaking.Controllers
         {
             if (ModelState.IsValid)
             {
+                comment.Rating = new CommentsRating(comment){ };
                 _context.Add(comment);
 
                 await _context.SaveChangesAsync();
@@ -155,8 +159,9 @@ namespace IdeallySpeaking.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.ApplicationUser.Add(reply);
-                //_context.UsersComments(user).Add(reply);
+                reply.Rating = new CommentsRating(reply) { };
+                _context.Add(reply);
+
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Reply");
             }
@@ -212,9 +217,19 @@ namespace IdeallySpeaking.Controllers
             return await comments.ToListAsync();
         }
 
+        /*  NEED: Rating Method
+         *        Populate UserCommentsList Method
+         */
+
+        // Helper Methods
         private bool CommentExists(int id)
         {
             return _context.ApplicationUser.Any(e => e.CommentId == id);
+        }
+
+        private Task<ApplicationUser> GetCurrentUserAsync()
+        {
+            return _userManager.GetUserAsync(HttpContext.User);
         }
 
     }

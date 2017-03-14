@@ -19,7 +19,7 @@ namespace IdeallySpeaking.Models
         public string FirstName { get; set; }
 
         [Display(Name = "Last name")]
-        [RegularExpression(@"^[a-zA-Z0-9\s]*$", ErrorMessage = "Last name must be alpha characters only.")]
+        [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "Last name must be alpha characters only.")]
         public string LastName { get; set; }
 
         public string FullName { get { return (FirstName + " " + LastName); } }      

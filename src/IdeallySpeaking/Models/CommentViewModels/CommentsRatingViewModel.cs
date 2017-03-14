@@ -24,8 +24,12 @@ namespace IdeallySpeaking.Models.CommentViewModels
             public void RatingDown(Comment comment)
             {
                 comment.Rating -= 1;
-            }            
+            }
 
+            public static implicit operator int(CommentsRating v)
+            {
+                throw new NotImplementedException();
+            }
         } 
         
     }
