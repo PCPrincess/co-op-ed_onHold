@@ -25,23 +25,18 @@ namespace IdeallySpeaking.Models
 
         public ApplicationUser Author { get; set; }
 
-        public class ArticleCommentsList
-        {
-            public ArticleCommentsList(Article article)
-            {
-                this.ArticleCommentsListId = article.ArticleId;
-            }
+        public IList<Comment> ArticleCommentsList { get; set; } 
 
-            public void AddCommentToList(Comment comment)
-            {                
-                ArtCommList.Add(comment);
-            }
-
-            public int ArticleCommentsListId { get; set; }
-
-            public IList<Comment> ArtCommList { get; set; }
-
+        public void AddCommentToList(Comment comment)
+        {                
+            ArticleCommentsList.Add(comment);
         }
+
+            
+
+            
+
+       
 
     }
 }

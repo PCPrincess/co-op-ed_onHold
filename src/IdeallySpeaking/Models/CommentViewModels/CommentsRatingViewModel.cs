@@ -7,7 +7,7 @@ namespace IdeallySpeaking.Models.CommentViewModels
 {
     public class CommentsRatingViewModel
     {
-        public int Rating { get; set; }        
+        public static int Rating { get; set; }        
 
         public class CommentsRating
         {
