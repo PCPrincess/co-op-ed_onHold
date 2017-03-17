@@ -67,10 +67,13 @@ namespace IdeallySpeaking.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ArticleId, Headline, Content, Teaser, Date, Author")] Article article)
+        public async Task<IActionResult> Create([Bind("Headline, Content, Teaser, Date, Author")] Article article)
         {
             if (ModelState.IsValid)
             {
+                var tease = article.Teaser;
+                _context.Entry(article).Property("Teaser").CurrentValue = tease;                    
+
                 _context.Add(article);
                 
                 await _context.SaveChangesAsync();
@@ -101,7 +104,7 @@ namespace IdeallySpeaking.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ArticleId,Headline,Content,Teaser,Date,Author")] Article article)
+        public async Task<IActionResult> Edit(int id, [Bind("Headline,Content,Teaser,Date,Author")] Article article)
         {
             if (id != article.ArticleId)
             {
