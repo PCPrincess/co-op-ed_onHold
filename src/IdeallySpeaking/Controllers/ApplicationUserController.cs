@@ -102,7 +102,7 @@ namespace IdeallySpeaking.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Profile");
+                return RedirectToAction(nameof(Profile), "ApplicationUser");
             }
             return View(user);
         }

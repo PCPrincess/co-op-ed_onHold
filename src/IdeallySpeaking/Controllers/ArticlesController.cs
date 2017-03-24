@@ -129,7 +129,7 @@ namespace IdeallySpeaking.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(FullArticle), "Articles");
             }
             return View(article);
         }
@@ -160,7 +160,7 @@ namespace IdeallySpeaking.Controllers
             var article = await _context.Articles.SingleOrDefaultAsync(m => m.ArticleId == id);
             _context.Articles.Remove(article);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return View(nameof(HomeController), "Index");
         }
 
         private bool ArticleExists(int id)
