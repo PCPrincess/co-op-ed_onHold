@@ -5,8 +5,7 @@
 }
 
 body {
-    padding-top: 20px;
-    padding-bottom: 20px;    
+    padding-top: 20px;        
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
@@ -32,7 +31,7 @@ textarea {
 
 /* OVERRIDES */
 
-.navbar-inverse .navbar-nav .nav-link { /* Not Yet Changed */
+.navbar-inverse .navbar-nav .nav-link {
     color: white;
     color: rgba(255, 255, 255, 0.75);
 }
@@ -42,12 +41,12 @@ textarea {
     color: rgba(255, 255, 255, 0.95);
 }
 
-.navbar-inverse .navbar-nav .nav-link.disabled { /* Not Yet Changed */
+.navbar-inverse .navbar-nav .nav-link.disabled { 
     color: white;
     color: rgba(255, 255, 255, 0.65);
 }
 
-.nav-link.disabled { /* Not Yet Changed */
+.nav-link.disabled { 
     color: #636c72;
     cursor: not-allowed;
 }
@@ -113,7 +112,7 @@ a {
 .pcprincess-footer {
     background-color: #667399;
     background-color: hsl(225, 20%, 50%);
-    height: 150px;
+    height: 170px;
     width: 100%;
     padding: .5rem;
 }

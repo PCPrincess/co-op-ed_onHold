@@ -36,9 +36,9 @@ namespace IdeallySpeaking.Controllers
         private async Task<List<Comment>> GetAllCommentsAsync(int id)
         {
             IQueryable<Comment> comments = from c in _context.ApplicationUser
-                                           .Include(i => i.ArticleId == id)
+                                           .Include(i => i.Article.ArticleId == id)
                                            select c;
-            // FIX ABOVE IQUERYABLE: Change to Article.ArticleId
+            
             return await comments.ToListAsync();
         }
 
@@ -129,7 +129,7 @@ namespace IdeallySpeaking.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexPartial");
             }
             return View(comment);
         }
@@ -198,7 +198,7 @@ namespace IdeallySpeaking.Controllers
             var comment = await _context.ApplicationUser.SingleOrDefaultAsync(m => m.CommentId == id);
             _context.ApplicationUser.Remove(comment);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexPartial");
         }        
 
         // GET: Comments/PopularCommentsList/5
