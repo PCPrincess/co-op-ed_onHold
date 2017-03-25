@@ -7,81 +7,68 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using IdeallySpeaking.Data;
 using IdeallySpeaking.Models;
-using IdeallySpeaking.Models.CommentViewModels;
-using Microsoft.AspNetCore.Identity;
-using static IdeallySpeaking.Models.CommentViewModels.CommentsRatingViewModel;
 
 namespace IdeallySpeaking.Controllers
 {
     public class CommentsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<ApplicationUser> _userManager;
 
-        public CommentsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public CommentsController(ApplicationDbContext context)
         {
-            _context = context;
-            _userManager = userManager;
+            _context = context;    
         }
 
         // GET: Comments/id
-        // All Comments for an Article w/ArticleId = id
-        // For Display w/"Index" PartialView @ FullArticle
         [Route("ArticleComments")]
         public async Task<IActionResult> IndexPartial(int id)
         {
-            var items = await GetAllCommentsAsync(id);
-            return PartialView(items);
-        }
-        private async Task<List<Comment>> GetAllCommentsAsync(int id)
-        {
-            IQueryable<Comment> comments = from c in _context.ApplicationUser
-                                           .Include(i => i.Article.ArticleId == id)
-                                           select c;
-            
-            return await comments.ToListAsync();
+            var applicationDbContext = _context.ApplicationUser.Include(c => c.ArticleId == id);
+            return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Comments/SingleComment/id
-        // Single Comment for an Article w/Current CommentId
-        // SingleCommentPartial 
-        public async Task<IActionResult> SingleComment(int id)
+        // GET: Comments/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
-            /*if (id == null)
+            if (id == null)
             {
                 return NotFound();
-            }*/
+            }
+
             var comment = await _context.ApplicationUser
-                .SingleOrDefaultAsync(c => c.CommentId == id);
-            /*if (comment == null)
+                .Include(c => c.ArticleId) 
+                .SingleOrDefaultAsync(m => m.CommentId == id);
+            if (comment == null)
             {
                 return NotFound();
-            }*/
-            ViewData["Request"] = "GET";
+            }
 
             return View(comment);
         }
 
+        // GET: Comments/Create
+        public IActionResult Create()
+        {
+            ViewData["ArticleId"] = new SelectList(_context.Articles, "ArticleId", "ArticleId");
+            return View();
+        }
+
         // POST: Comments/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [ActionName("Create")]
-        public async Task<IActionResult> CreatePartial([Bind("CommentId, CommentDate, Title, CommentContent,ArticleId, ApplicationUserId, Rating")] Comment comment)
+        public async Task<IActionResult> Create([Bind("CommentId,CommentDate,Title,CommentContent,ArticleId,ApplicationUserId,Rating")] Comment comment)
         {
             if (ModelState.IsValid)
             {
-                comment.Rating = new CommentsRating(comment){ };
                 _context.Add(comment);
-
                 await _context.SaveChangesAsync();
-
-                var id = comment.CommentId;
-                var returnUrl = "http://ideallyspeaking.net/articles/fullarticle/" + id;
-
-                return Redirect(returnUrl);
+                return RedirectToAction("Index");
             }
-            return PartialView();
-        } 
+            ViewData["ArticleId"] = new SelectList(_context.Articles, "ArticleId", "ArticleId", comment.ArticleId);
+            return View(comment);
+        }
 
         // GET: Comments/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -96,6 +83,7 @@ namespace IdeallySpeaking.Controllers
             {
                 return NotFound();
             }
+            ViewData["ArticleId"] = new SelectList(_context.Articles, "ArticleId", "ArticleId", comment.ArticleId);
             return View(comment);
         }
 
@@ -129,48 +117,11 @@ namespace IdeallySpeaking.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("IndexPartial");
+                return RedirectToAction("Index");
             }
+            ViewData["ArticleId"] = new SelectList(_context.Articles, "ArticleId", "ArticleId", comment.ArticleId);
             return View(comment);
         }
-
-        // GET: Comment/Reply/?
-        public async Task<IActionResult> Reply(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var reply = await _context.ApplicationUser
-                .SingleOrDefaultAsync(m => m.CommentId == id);
-            if (reply == null)
-            {
-                return NotFound();
-            }
-
-            return View(reply);
-        }
-
-        // POST: Comment/Reply/?
-        [HttpPost, ActionName("Post Reply")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Reply([Bind("CommentId, CommentDate, Title, CommentContent,ArticleId, ApplicationUserId, Rating")] Comment reply)
-        {
-            if (ModelState.IsValid)
-            {
-                reply.Rating = new CommentsRating(reply) { };
-                _context.Add(reply);
-
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Reply");
-            }
-            return PartialView(reply);
-            
-        }
-
-        // Researching the Below HTMLHelperPartialExtension
-        // public static Task<IHtmlContent> PartialAsync(this IHtmlHelper htmlHelper, string partialViewName, object model);
 
         // GET: Comments/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -181,6 +132,7 @@ namespace IdeallySpeaking.Controllers
             }
 
             var comment = await _context.ApplicationUser
+                .Include(c => c.ArticleId)
                 .SingleOrDefaultAsync(m => m.CommentId == id);
             if (comment == null)
             {
@@ -198,39 +150,12 @@ namespace IdeallySpeaking.Controllers
             var comment = await _context.ApplicationUser.SingleOrDefaultAsync(m => m.CommentId == id);
             _context.ApplicationUser.Remove(comment);
             await _context.SaveChangesAsync();
-            return RedirectToAction("IndexPartial");
-        }        
-
-        // GET: Comments/PopularCommentsList/5
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> PopularCommentsList(int num)
-        {
-            var items = await GetPopularItemsAsync(num);
-            return View(items); //
+            return RedirectToAction("Index");
         }
 
-        private async Task<List<Comment>> GetPopularItemsAsync(int num)
-        {             
-            IQueryable<Comment> comments = from c in _context.ApplicationUser
-            .OrderByDescending(r => r.Rating).Take(num)
-                                           select c;            
-            return await comments.ToListAsync();
-        }
-
-        /*  NEED: Rating Method
-         *        Populate UserCommentsList Method
-         */
-
-        // Helper Methods
         private bool CommentExists(int id)
         {
             return _context.ApplicationUser.Any(e => e.CommentId == id);
         }
-
-        private Task<ApplicationUser> GetCurrentUserAsync()
-        {
-            return _userManager.GetUserAsync(HttpContext.User);
-        }
-
     }
 }
