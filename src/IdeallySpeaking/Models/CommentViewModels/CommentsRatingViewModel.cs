@@ -7,23 +7,30 @@ namespace IdeallySpeaking.Models.CommentViewModels
 {
     public class CommentsRatingViewModel
     {
-        public static int Rating { get; set; }        
-
+        
         public class CommentsRating
         {
-            public CommentsRating(Comment comment)
+            public int Rating { get; private set; }
+
+            public CommentsRating()
             {
-                comment.Rating = 0;   
+                var rating = 0;
+                Rating = rating;
             }
 
-            public void RatingUp(Comment comment)
+            public void RatingUp()
             {
-                comment.Rating += 1; 
+                Rating += 1; 
             }
 
-            public void RatingDown(Comment comment)
+            public void RatingDown()
             {
-                comment.Rating -= 1;
+                Rating -= 1;
+            }
+
+            public int GetRating
+            {
+                get { return Rating; }
             }
 
             public static implicit operator int(CommentsRating v)

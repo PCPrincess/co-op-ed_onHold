@@ -36,7 +36,7 @@ namespace IdeallySpeaking.Controllers
         // GET: /ApplicationUser/Profile
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> Profile(int? id)
+       /* public async Task<IActionResult> Profile(int? id)
         {
             if (id == null)
             {
@@ -50,7 +50,7 @@ namespace IdeallySpeaking.Controllers
                 return NotFound();
             }
             return View();
-        }
+        } */
 
         // POST: /Applicationuser/Profile
         // Next: Add Binds from ApplicationUser.cs
@@ -76,7 +76,7 @@ namespace IdeallySpeaking.Controllers
         // POST: /ApplicationUser/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserName,Url,BadgeList,Avatar")] ApplicationUser user)
+      /*  public async Task<IActionResult> Edit(int id, [Bind("UserName,Url,BadgeList,Avatar")] ApplicationUser user)
         {
             if (id != user.ApplicationUserId)
             {
@@ -105,7 +105,7 @@ namespace IdeallySpeaking.Controllers
                 return RedirectToAction(nameof(Profile), "ApplicationUser");
             }
             return View(user);
-        }
+        } */
 
 
         /* Possible For Avatar Upload [in: ApplicationUserController.cs] */
@@ -121,7 +121,7 @@ namespace IdeallySpeaking.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Avatar(ICollection<IFormFile> files)
+       /* public async Task<IActionResult> Avatar(ICollection<IFormFile> files)
         {
             var currUser = await GetCurrentUserAsync();
             if (!UserExists(currUser))
@@ -144,13 +144,13 @@ namespace IdeallySpeaking.Controllers
                 }
             }            
             return View("Profile");
-        }
+        } */
     
 
-        private bool UserExists(ApplicationUser currUser)
+       /* private bool UserExists(ApplicationUser currUser)
         {
             return _context.ApplicationUser.Any(u => u.ApplicationUser.Equals(currUser));
-        }
+        } */
 
         private Task<ApplicationUser> GetCurrentUserAsync()
         {
