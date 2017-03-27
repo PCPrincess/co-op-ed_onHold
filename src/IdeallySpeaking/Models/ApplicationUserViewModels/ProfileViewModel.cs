@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,15 +27,31 @@ namespace IdeallySpeaking.Models.ApplicationUserViewModels
         [MaxLength(180, ErrorMessage = "Signatures may have a maximum of 180 characters.")]
         public string Signature { get; set; }
 
+        [StringLength(50, ErrorMessage = "Location may have a maximum of 50 characters.")]
+        public string Location { get; set; }
+
         public IFormFile Avatar { get; set; }
+
+        [Display(Name = "Facebook")]
+        [Url]
+        public string Facebook { get; set; }
+
+        [Display(Name = "Twitter")]
+        [Url]
+        public string Twitter { get; set; }
 
         public List<Badge> BadgeList { get; set; }
 
-        
+        public List<Comment> UserCommentList { get; }
+
+        [InverseProperty("Author")]
+        public List<Article> AuthoredArticles { get; }
 
         
 
-        
+
+
+
 
     }
 }
