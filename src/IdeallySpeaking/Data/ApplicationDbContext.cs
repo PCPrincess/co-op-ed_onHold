@@ -26,5 +26,7 @@ namespace IdeallySpeaking.Data
         public DbSet<IdeallySpeaking.Models.Article> Articles { get; set; }
 
         public DbSet<IdeallySpeaking.Models.Comment> Comments { get; set; }
+
+        public DbSet<IdeallySpeaking.Models.ApplicationUser> ApplicationUser { get; set; }
     }
 }
