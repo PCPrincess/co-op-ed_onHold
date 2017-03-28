@@ -13,9 +13,7 @@ namespace IdeallySpeaking.Models
 
         public string Path { get; set; }
 
-        public string Name { get; set; }
-
-        public int ApplicationUserId { get; set; }
+        public string Name { get; set; }        
 
         public ApplicationUser ApplicationUser { get; set; }
 
@@ -23,11 +21,9 @@ namespace IdeallySpeaking.Models
         {
             public UserBadgeList(ApplicationUser applicationUser, Badge badge)
             {
-                badge.ApplicationUserId = applicationUser.ApplicationUserId;
-                BadgeList.Add(badge);
+                applicationUser.BadgeList.Add(badge);                
             }
-
-            public IList<Badge> BadgeList { get; set; }
+            
         }
     }
 }

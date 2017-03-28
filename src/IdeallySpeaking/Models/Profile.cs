@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace IdeallySpeaking.Models.ApplicationUserViewModels
 {
     
-    public class ProfileViewModel
+    public class Profile
     {
         [RegularExpression(@"^[a-zA-Z]+[_]?\s*$", ErrorMessage = "Username can contain alphabetical characters and may contain an underscore.")]
         [MinLength(3)]
@@ -40,12 +40,14 @@ namespace IdeallySpeaking.Models.ApplicationUserViewModels
         [Url]
         public string Twitter { get; set; }
 
+        public ApplicationUser ApplicationUser { get; set; }
+
         public List<Badge> BadgeList { get; set; }
 
-        public List<Comment> UserCommentList { get; }
+        public List<Comment> UserCommentList { get; private set; }
 
         [InverseProperty("Author")]
-        public List<Article> AuthoredArticles { get; }
+        public List<Article> AuthoredArticles { get; private set; }
 
         
 

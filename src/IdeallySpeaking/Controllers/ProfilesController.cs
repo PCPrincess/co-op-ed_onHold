@@ -17,13 +17,13 @@ using IdeallySpeaking.Services;
 
 namespace IdeallySpeaking.Controllers
 {    
-    public class ApplicationUserController : Controller
+    public class ProfilesController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
         private IHostingEnvironment _environment;        
 
-        public ApplicationUserController(
+        public ProfilesController(
             UserManager<ApplicationUser> userManager, 
             ApplicationDbContext context,
             IHostingEnvironment environment)
@@ -36,7 +36,7 @@ namespace IdeallySpeaking.Controllers
         // GET: /ApplicationUser/Profile
         [HttpGet]
         [AllowAnonymous]
-       /* public async Task<IActionResult> Profile(int? id)
+        public async Task<IActionResult> Profile(int? id)
         {
             if (id == null)
             {
@@ -44,13 +44,13 @@ namespace IdeallySpeaking.Controllers
             }
 
             var user = await _context.ApplicationUser
-                .SingleOrDefaultAsync(m => m.ApplicationUser.ApplicationUserId == id);
+                .SingleOrDefaultAsync(m => m.ApplicationUserId == id);
             if (user == null)
             {
                 return NotFound();
             }
             return View();
-        } */
+        } 
 
         // POST: /Applicationuser/Profile
         // Next: Add Binds from ApplicationUser.cs
