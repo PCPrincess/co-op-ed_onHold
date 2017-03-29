@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace IdeallySpeaking.Models.ApplicationUserViewModels
+namespace IdeallySpeaking.Models
 {
     
     public class Profile
