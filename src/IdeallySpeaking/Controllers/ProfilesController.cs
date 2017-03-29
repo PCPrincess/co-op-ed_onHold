@@ -17,13 +17,13 @@ using IdeallySpeaking.Services;
 
 namespace IdeallySpeaking.Controllers
 {    
-    public class ApplicationUserController : Controller
+    public class ProfilesController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
         private IHostingEnvironment _environment;        
 
-        public ApplicationUserController(
+        public ProfilesController(
             UserManager<ApplicationUser> userManager, 
             ApplicationDbContext context,
             IHostingEnvironment environment)
@@ -33,38 +33,38 @@ namespace IdeallySpeaking.Controllers
             _environment = environment;            
         }
 
-        // GET: /ApplicationUser/Profile
+        // GET: /Profiles/Profile
         [HttpGet]
         [AllowAnonymous]
-       /* public async Task<IActionResult> Profile(int? id)
+        public async Task<IActionResult> Profile(int? id)
         {
             if (id == null)
             {
                 return View("Error");
             }
 
-            var user = await _context.ApplicationUser
-                .SingleOrDefaultAsync(m => m.ApplicationUser.ApplicationUserId == id);
+            var user = await _context.Profiles
+                .SingleOrDefaultAsync(p => p.ApplicationUser.ApplicationUserId == id);
             if (user == null)
             {
                 return NotFound();
             }
             return View();
-        } */
+        } 
 
-        // POST: /Applicationuser/Profile
-        // Next: Add Binds from ApplicationUser.cs
+        // POST: /Profile/Profile
+        // Next: Add Binds from Profile.cs
         [HttpPost]
-        public async Task<IActionResult> Profile([Bind("UserName,Url,BadgeList,Avatar")] ApplicationUser user)
+        public async Task<IActionResult> Profile([Bind("UserName,Url,BadgeList,Avatar")] Profile userProfile)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(user);
+                _context.Add(userProfile);
 
                 await _context.SaveChangesAsync();
             }            
 
-            return View(user);
+            return View(userProfile);
         }   
 
         // GET: /ApplicationUser/Edit
@@ -73,12 +73,12 @@ namespace IdeallySpeaking.Controllers
             return View();
         }
 
-        // POST: /ApplicationUser/Edit
+        // POST: /Profile/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-      /*  public async Task<IActionResult> Edit(int id, [Bind("UserName,Url,BadgeList,Avatar")] ApplicationUser user)
+      /*  public async Task<IActionResult> Edit(int id, [Bind("UserName,Url,BadgeList,Avatar")] Profile userProfile)
         {
-            if (id != user.ApplicationUserId)
+            if (id != userProfile.ApplicationUser.ApplicationUserId)
             {
                 return NotFound();
             }
@@ -87,7 +87,7 @@ namespace IdeallySpeaking.Controllers
             {
                 try
                 {
-                    _context.Update(user);
+                    _context.Update(userProfile);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -102,22 +102,22 @@ namespace IdeallySpeaking.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Profile), "ApplicationUser");
+                return RedirectToAction(nameof(Profile), "Profile");
             }
             return View(user);
         } */
 
 
-        /* Possible For Avatar Upload [in: ApplicationUserController.cs] */
+        /* Possible For Avatar Upload [in: Profile.cs] */
 
-        // GET: /Account/Profile/Avatar
+        // GET: Profile/Avatar
         [AllowAnonymous]
         public ActionResult Avatar()
         {
             return View("Profile");
         }
 
-        // POST: /Account/Profile/Avatar
+        // POST: Profile/Avatar
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]

@@ -23,10 +23,16 @@ namespace IdeallySpeaking.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
+        public DbSet<IdeallySpeaking.Models.ApplicationUser> ApplicationUsers { get; set; }
+
+        public DbSet<IdeallySpeaking.Models.Profile> Profiles { get; set; }
+
         public DbSet<IdeallySpeaking.Models.Article> Articles { get; set; }
 
         public DbSet<IdeallySpeaking.Models.Comment> Comments { get; set; }
 
-        public DbSet<IdeallySpeaking.Models.ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<IdeallySpeaking.Models.Badge> Badges { get; set; }
+
+        
     }
 }

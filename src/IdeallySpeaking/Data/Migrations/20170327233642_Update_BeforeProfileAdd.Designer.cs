@@ -8,9 +8,10 @@ using IdeallySpeaking.Data;
 namespace IdeallySpeaking.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170327233642_Update_BeforeProfileAdd")]
+    partial class Update_BeforeProfileAdd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -265,18 +266,18 @@ namespace IdeallySpeaking.Data.Migrations
             modelBuilder.Entity("IdeallySpeaking.Models.Badge", b =>
                 {
                     b.HasOne("IdeallySpeaking.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany("BadgeList")
+                        .WithOne("BadgeList")
                         .HasForeignKey("ApplicationUserId1");
                 });
 
             modelBuilder.Entity("IdeallySpeaking.Models.Comment", b =>
                 {
                     b.HasOne("IdeallySpeaking.Models.ApplicationUser")
-                        .WithMany("UserCommentList")
+                        .WithOne("UserCommentList")
                         .HasForeignKey("ApplicationUserId1");
 
                     b.HasOne("IdeallySpeaking.Models.Article")
-                        .WithMany("ArticleCommentsList")
+                        .WithOne("ArticleCommentsList")
                         .HasForeignKey("ArticleId")
                         .OnDelete(DeleteBehavior.Cascade);
 

@@ -22,7 +22,9 @@ namespace IdeallySpeaking.Models
         [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "Last name must be alpha characters only.")]
         public string LastName { get; set; }
 
-        public string FullName { get { return (FirstName + " " + LastName); } }      
+        public string FullName { get { return (FirstName + " " + LastName); } } 
+        
+        public Profile Profile { get; set; }
 
         [InverseProperty("Author")]
         public List<Article> AuthoredArticles { get; }
