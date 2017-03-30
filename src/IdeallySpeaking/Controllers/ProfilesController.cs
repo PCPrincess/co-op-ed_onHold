@@ -16,21 +16,21 @@ using IdeallySpeaking.Services;
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace IdeallySpeaking.Controllers
-{    
+{
     public class ProfilesController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
-        private IHostingEnvironment _environment;        
+        private IHostingEnvironment _environment;
 
         public ProfilesController(
-            UserManager<ApplicationUser> userManager, 
+            UserManager<ApplicationUser> userManager,
             ApplicationDbContext context,
             IHostingEnvironment environment)
         {
             _userManager = userManager;
             _context = context;
-            _environment = environment;            
+            _environment = environment;
         }
 
         // GET: /Profiles/Profile
@@ -50,7 +50,7 @@ namespace IdeallySpeaking.Controllers
                 return NotFound();
             }
             return View();
-        } 
+        }
 
         // POST: /Profile/Profile
         // Next: Add Binds from Profile.cs
@@ -62,10 +62,10 @@ namespace IdeallySpeaking.Controllers
                 _context.Add(userProfile);
 
                 await _context.SaveChangesAsync();
-            }            
+            }
 
             return View(userProfile);
-        }   
+        }
 
         // GET: /ApplicationUser/Edit
         public IActionResult Edit()
@@ -76,43 +76,43 @@ namespace IdeallySpeaking.Controllers
         // POST: /Profile/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-      /*  public async Task<IActionResult> Edit(int id, [Bind("UserName,Url,BadgeList,Avatar")] Profile userProfile)
-        {
-            if (id != userProfile.ApplicationUser.ApplicationUserId)
-            {
-                return NotFound();
-            }
+        /*  public async Task<IActionResult> Edit(int id, [Bind("UserName,Url,BadgeList,Avatar")] Profile userProfile)
+          {
+              if (id != userProfile.ApplicationUser.ApplicationUserId)
+              {
+                  return NotFound();
+              }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(userProfile);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    var currUser = await _userManager.FindByNameAsync(user.UserName);
-                    if (!UserExists(currUser))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Profile), "Profile");
-            }
-            return View(user);
-        } */
+              if (ModelState.IsValid)
+              {
+                  try
+                  {
+                      _context.Update(userProfile);
+                      await _context.SaveChangesAsync();
+                  }
+                  catch (DbUpdateConcurrencyException)
+                  {
+                      var currUser = await _userManager.FindByNameAsync(user.UserName);
+                      if (!UserExists(currUser))
+                      {
+                          return NotFound();
+                      }
+                      else
+                      {
+                          throw;
+                      }
+                  }
+                  return RedirectToAction(nameof(Profile), "Profile");
+              }
+              return View(user);
+          } */
 
 
         /* Possible For Avatar Upload [in: Profile.cs] */
 
         // GET: Profile/Avatar
         [AllowAnonymous]
-        public ActionResult Avatar()
+        public IActionResult Avatar()
         {
             return View("Profile");
         }
@@ -121,40 +121,47 @@ namespace IdeallySpeaking.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-       /* public async Task<IActionResult> Avatar(ICollection<IFormFile> files)
-        {
-            var currUser = await GetCurrentUserAsync();
-            if (!UserExists(currUser))
-            {
-                return View("Profile");
-            }
-            else
-            {
-                var uploads = Path.Combine(_environment.WebRootPath, "uploads");
-                foreach (var file in files)
-                {
-                    if (file.Length > 0)
-                    {
-                        using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
-                        {
-                            await file.CopyToAsync(fileStream);
-                        }
-                    }
-                    await _context.SaveChangesAsync();
-                }
-            }            
-            return View("Profile");
-        } */
-    
+        /* public async Task<IActionResult> Avatar(ICollection<IFormFile> files)
+         {
+             var currUser = await GetCurrentUserAsync();
+             if (!UserExists(currUser))
+             {
+                 return View("Profile");
+             }
+             else
+             {
+                 var uploads = Path.Combine(_environment.WebRootPath, "uploads");
+                 foreach (var file in files)
+                 {
+                     if (file.Length > 0)
+                     {
+                         using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
+                         {
+                             await file.CopyToAsync(fileStream);
+                         }
+                     }
+                     await _context.SaveChangesAsync();
+                 }
+             }            
+             return View("Profile");
+         } */
 
-       /* private bool UserExists(ApplicationUser currUser)
-        {
-            return _context.ApplicationUser.Any(u => u.ApplicationUser.Equals(currUser));
-        } */
+
+        /*public async Task<IActionResult> ListOfUsers()
+          {
+              List<ApplicationUser> users = await AllUsersList.UserList.ToListAsync();
+              AllUsersList.UserTotal = users.Count();
+              return View(users);
+          }*/
+        private bool UserExists(ApplicationUser currUser)
+         {
+             return _context.ApplicationUsers.Any(u => u.ApplicationUserId.Equals(currUser));
+         } 
 
         private Task<ApplicationUser> GetCurrentUserAsync()
         {
             return _userManager.GetUserAsync(HttpContext.User);
         }
+
     }
 }
