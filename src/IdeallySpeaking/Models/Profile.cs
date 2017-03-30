@@ -12,6 +12,8 @@ namespace IdeallySpeaking.Models
     
     public class Profile
     {
+        public int ProfileId { get; set; }
+
         [RegularExpression(@"^[a-zA-Z]+[_]?\s*$", ErrorMessage = "Username can contain alphabetical characters and may contain an underscore.")]
         [MinLength(3)]
         [MaxLength(16)]        
@@ -30,6 +32,7 @@ namespace IdeallySpeaking.Models
         [StringLength(50, ErrorMessage = "Location may have a maximum of 50 characters.")]
         public string Location { get; set; }
 
+        [NotMapped]
         public IFormFile Avatar { get; set; }
 
         [Display(Name = "Facebook")]
@@ -45,8 +48,7 @@ namespace IdeallySpeaking.Models
         public List<Badge> BadgeList { get; set; }
 
         public List<Comment> UserCommentList { get; private set; }
-
-        [InverseProperty("Author")]
+        
         public List<Article> AuthoredArticles { get; private set; }
 
         

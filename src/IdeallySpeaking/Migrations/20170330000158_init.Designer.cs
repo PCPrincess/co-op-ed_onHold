@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using IdeallySpeaking.Data;
 
-namespace IdeallySpeaking.Data.Migrations
+namespace IdeallySpeaking.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170122173845_Migration001")]
-    partial class Migration001
+    [Migration("20170330000158_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,8 +25,6 @@ namespace IdeallySpeaking.Data.Migrations
 
                     b.Property<int>("ApplicationUserId");
 
-                    b.Property<byte[]>("Avatar");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
@@ -36,8 +34,6 @@ namespace IdeallySpeaking.Data.Migrations
                     b.Property<bool>("EmailConfirmed");
 
                     b.Property<string>("FirstName");
-
-                    b.Property<DateTime>("JoinDate");
 
                     b.Property<string>("LastName");
 
@@ -61,8 +57,6 @@ namespace IdeallySpeaking.Data.Migrations
 
                     b.Property<bool>("TwoFactorEnabled");
 
-                    b.Property<string>("Url");
-
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
 
@@ -83,11 +77,7 @@ namespace IdeallySpeaking.Data.Migrations
                     b.Property<int>("ArticleId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<byte[]>("ArticlePhoto");
-
                     b.Property<string>("AuthorId");
-
-                    b.Property<int>("AuthorUserId");
 
                     b.Property<string>("Content");
 
@@ -95,14 +85,39 @@ namespace IdeallySpeaking.Data.Migrations
 
                     b.Property<string>("Headline");
 
-                    b.Property<string>("Teaser")
-                        .HasMaxLength(240);
+                    b.Property<int?>("ProfileId");
 
                     b.HasKey("ArticleId");
 
                     b.HasIndex("AuthorId");
 
+                    b.HasIndex("ProfileId");
+
                     b.ToTable("Articles");
+                });
+
+            modelBuilder.Entity("IdeallySpeaking.Models.Badge", b =>
+                {
+                    b.Property<int>("BadgeId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ApplicationUserId");
+
+                    b.Property<string>("Caption");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Path");
+
+                    b.Property<int?>("ProfileId");
+
+                    b.HasKey("BadgeId");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("ProfileId");
+
+                    b.ToTable("Badges");
                 });
 
             modelBuilder.Entity("IdeallySpeaking.Models.Comment", b =>
@@ -122,11 +137,11 @@ namespace IdeallySpeaking.Data.Migrations
 
                     b.Property<DateTime>("CommentDate");
 
-                    b.Property<int>("Minus");
+                    b.Property<int?>("CommentId1");
 
-                    b.Property<int>("Plus");
+                    b.Property<int?>("ProfileId");
 
-                    b.Property<int?>("ReplyCommentId");
+                    b.Property<int>("Rating");
 
                     b.Property<string>("Title")
                         .HasMaxLength(100);
@@ -137,9 +152,43 @@ namespace IdeallySpeaking.Data.Migrations
 
                     b.HasIndex("ArticleId");
 
-                    b.HasIndex("ReplyCommentId");
+                    b.HasIndex("CommentId1");
 
-                    b.ToTable("Comment");
+                    b.HasIndex("ProfileId");
+
+                    b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("IdeallySpeaking.Models.Profile", b =>
+                {
+                    b.Property<int>("ProfileId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ApplicationUserId");
+
+                    b.Property<string>("Facebook");
+
+                    b.Property<DateTime>("JoinDate");
+
+                    b.Property<string>("Link");
+
+                    b.Property<string>("Location")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Signature")
+                        .HasMaxLength(180);
+
+                    b.Property<string>("Twitter");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(16);
+
+                    b.HasKey("ProfileId");
+
+                    b.HasIndex("ApplicationUserId")
+                        .IsUnique();
+
+                    b.ToTable("Profiles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
@@ -252,24 +301,50 @@ namespace IdeallySpeaking.Data.Migrations
             modelBuilder.Entity("IdeallySpeaking.Models.Article", b =>
                 {
                     b.HasOne("IdeallySpeaking.Models.ApplicationUser", "Author")
-                        .WithMany()
+                        .WithMany("AuthoredArticles")
                         .HasForeignKey("AuthorId");
+
+                    b.HasOne("IdeallySpeaking.Models.Profile")
+                        .WithMany("AuthoredArticles")
+                        .HasForeignKey("ProfileId");
+                });
+
+            modelBuilder.Entity("IdeallySpeaking.Models.Badge", b =>
+                {
+                    b.HasOne("IdeallySpeaking.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany("BadgeList")
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("IdeallySpeaking.Models.Profile")
+                        .WithMany("BadgeList")
+                        .HasForeignKey("ProfileId");
                 });
 
             modelBuilder.Entity("IdeallySpeaking.Models.Comment", b =>
                 {
-                    b.HasOne("IdeallySpeaking.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany()
+                    b.HasOne("IdeallySpeaking.Models.ApplicationUser")
+                        .WithMany("UserCommentList")
                         .HasForeignKey("ApplicationUserId1");
 
                     b.HasOne("IdeallySpeaking.Models.Article")
-                        .WithMany("CommentList")
+                        .WithMany("ArticleCommentsList")
                         .HasForeignKey("ArticleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("IdeallySpeaking.Models.Comment", "Reply")
-                        .WithMany()
-                        .HasForeignKey("ReplyCommentId");
+                    b.HasOne("IdeallySpeaking.Models.Comment")
+                        .WithMany("UserCommentList")
+                        .HasForeignKey("CommentId1");
+
+                    b.HasOne("IdeallySpeaking.Models.Profile")
+                        .WithMany("UserCommentList")
+                        .HasForeignKey("ProfileId");
+                });
+
+            modelBuilder.Entity("IdeallySpeaking.Models.Profile", b =>
+                {
+                    b.HasOne("IdeallySpeaking.Models.ApplicationUser", "ApplicationUser")
+                        .WithOne("Profile")
+                        .HasForeignKey("IdeallySpeaking.Models.Profile", "ApplicationUserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

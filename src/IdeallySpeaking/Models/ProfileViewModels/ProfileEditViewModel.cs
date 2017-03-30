@@ -10,6 +10,8 @@ namespace IdeallySpeaking.Models.ApplicationUserViewModels
 {
     public class ProfileEditViewModel
     {
+        public int ProfileId { get; private set; }
+
         [Display(Name = "Edit UserName")]
         [RegularExpression(@"^[a-zA-Z]+[_]?\s*$", ErrorMessage = "Username can contain alphabetical characters and may contain an underscore.")]
         [MinLength(3)]
