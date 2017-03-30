@@ -105,10 +105,7 @@ namespace IdeallySpeaking.Controllers
                   return RedirectToAction(nameof(Profile), "Profile");
               }
               return View(userProfile);
-          }
-
-
-        /* Possible For Avatar Upload [in: Profile.cs] */
+          }              
 
         // GET: Profile/Avatar
         [AllowAnonymous]
@@ -121,7 +118,7 @@ namespace IdeallySpeaking.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        /* public async Task<IActionResult> Avatar(ICollection<IFormFile> files)
+         public async Task<IActionResult> Avatar(ICollection<IFormFile> files)
          {
              var currUser = await GetCurrentUserAsync();
              if (!UserExists(currUser))
@@ -144,7 +141,7 @@ namespace IdeallySpeaking.Controllers
                  }
              }            
              return View("Profile");
-         } */
+         }
 
 
         public async Task<IActionResult> ListOfUsers()

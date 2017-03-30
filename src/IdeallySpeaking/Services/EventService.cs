@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace IdeallySpeaking.Services
 {
-    public class EventService
+    public class EventService : IEventSchedule
     {
         private readonly EventViewModel _model;
+        public int idForEvent = 0;
         public EventService(EventViewModel model)
         {
             _model = model;
@@ -20,6 +21,17 @@ namespace IdeallySpeaking.Services
             var endDate = _model.EventDate.Day;
 
             return (startDate - endDate);
+        }
+
+        public Task ScheduleEvent()
+        {
+            // Add a Task to 'Bind' input from a Form(?) to a
+            // _model for all EventViewModel Properties
+            {
+                _model.EventId = ++idForEvent;
+                // (Cont. Here)
+            }
+            return Task.FromResult(0);
         }
     }
 }
