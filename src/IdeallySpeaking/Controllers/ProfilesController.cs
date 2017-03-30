@@ -55,7 +55,7 @@ namespace IdeallySpeaking.Controllers
         // POST: /Profile/Profile
         // Next: Add Binds from Profile.cs
         [HttpPost]
-        public async Task<IActionResult> Profile([Bind("UserName,Url,BadgeList,Avatar")] Profile userProfile)
+        public async Task<IActionResult> Profile([Bind("UserName, Link, Signature, Location, Avatar, Facebook, Twitter")] Profile userProfile)
         {
             if (ModelState.IsValid)
             {
@@ -76,7 +76,7 @@ namespace IdeallySpeaking.Controllers
         // POST: /Profile/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        /*  public async Task<IActionResult> Edit(int id, [Bind("UserName,Url,BadgeList,Avatar")] Profile userProfile)
+          public async Task<IActionResult> Edit(int id, [Bind("UserName, Link, Signature, Location, Avatar, Facebook, Twitter")] Profile userProfile)
           {
               if (id != userProfile.ApplicationUser.ApplicationUserId)
               {
@@ -92,7 +92,7 @@ namespace IdeallySpeaking.Controllers
                   }
                   catch (DbUpdateConcurrencyException)
                   {
-                      var currUser = await _userManager.FindByNameAsync(user.UserName);
+                      var currUser = await _userManager.FindByNameAsync(userProfile.UserName);
                       if (!UserExists(currUser))
                       {
                           return NotFound();
@@ -104,8 +104,8 @@ namespace IdeallySpeaking.Controllers
                   }
                   return RedirectToAction(nameof(Profile), "Profile");
               }
-              return View(user);
-          } */
+              return View(userProfile);
+          }
 
 
         /* Possible For Avatar Upload [in: Profile.cs] */
@@ -147,12 +147,20 @@ namespace IdeallySpeaking.Controllers
          } */
 
 
-        /*public async Task<IActionResult> ListOfUsers()
-          {
-              List<ApplicationUser> users = await AllUsersList.UserList.ToListAsync();
-              AllUsersList.UserTotal = users.Count();
-              return View(users);
-          }*/
+        public async Task<IActionResult> ListOfUsers()
+        {
+            List<ApplicationUser> users = await _context.ApplicationUsers.ToListAsync();            
+            return View(users);
+        }
+
+        public async Task<IActionResult> CountOfUsers()
+        {
+            List<ApplicationUser> users = await _context.ApplicationUsers.ToListAsync();
+            var userCount = users.Count();
+            return View(userCount);
+        }
+
+
         private bool UserExists(ApplicationUser currUser)
          {
              return _context.ApplicationUsers.Any(u => u.ApplicationUserId.Equals(currUser));
