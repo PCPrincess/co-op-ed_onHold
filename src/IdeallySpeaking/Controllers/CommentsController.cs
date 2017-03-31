@@ -64,8 +64,10 @@ namespace IdeallySpeaking.Controllers
         {
             if (ModelState.IsValid)
             {
-                comment.Rating = new CommentsRating() { };
+                comment.Rating = new CommentsRating() { };                
+
                 _context.Add(comment);
+
                 await _context.SaveChangesAsync();
 
                 ViewBag["CurrentArticleId"] = comment.ArticleId;                
