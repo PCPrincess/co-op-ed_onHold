@@ -72,7 +72,7 @@ namespace IdeallySpeaking.Controllers
             if (ModelState.IsValid)
             {
                 var tease = article.Teaser;
-                _context.Entry(article).Property("Teaser").CurrentValue = tease;                    
+                _context.Entry(article).Property("Teaser").CurrentValue = tease; 
 
                 _context.Add(article);
                 

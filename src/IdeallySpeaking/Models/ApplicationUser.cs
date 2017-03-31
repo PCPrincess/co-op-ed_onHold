@@ -29,9 +29,19 @@ namespace IdeallySpeaking.Models
         [InverseProperty("Author")]
         public List<Article> AuthoredArticles { get; }
 
-        public List<Comment> UserCommentList { get; }
+        public void AddArticleToList(Article article)
+        {
+            AuthoredArticles.Add(article);
+        }
+
+        public List<Comment> UserCommentList { get; }        
 
         public List<Badge> BadgeList { get; set; }
+
+        public void AddBadgeToList(Badge badge)
+        {
+            BadgeList.Add(badge);
+        }
 
     }
 }

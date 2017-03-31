@@ -25,6 +25,11 @@ namespace IdeallySpeaking.Models
         public int ApplicationUserId { get; set; } 
 
         public List<Comment> UserCommentList { get; set; }
+       
+        public void AddCommentToList(Comment comment)
+        {
+            UserCommentList.Add(comment);
+        }
 
         public int Rating { get; set; }        
 
