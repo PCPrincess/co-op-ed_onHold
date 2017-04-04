@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,19 +9,24 @@ namespace IdeallySpeaking.Models
 {
     public class Badge
     {
-        public int BadgeId { get; set; }        
+        public int BadgeId { get; set; }
 
+        [MinLength(3)]
+        [MaxLength(150)]
         public string Caption { get; set; }
 
-        public string Path { get; set; }
+        [Url]
+        public string ImagePath { get; set; }
 
-        public string Name { get; set; } 
-        
+        [StringLength(50, ErrorMessage = "Name may have a maximum of 40 characters.")]
+        public string Name { get; set; }
+
+        [NotMapped]
         public Dictionary<Badge, string> BadgeAndImage { get; set; }
-
+        
         public void AddBadgeAndImage(Badge badge, string imgUrl)
         {
-            BadgeAndImage.Add(badge, imgUrl);
+            BadgeAndImage.Add(badge, ImagePath);
         }
 
         public void RemoveBadgeAndImage(Badge badge)
