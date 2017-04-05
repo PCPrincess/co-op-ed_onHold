@@ -10,19 +10,22 @@ namespace IdeallySpeaking.Models
     {
         public int ArticleId { get; set; }
 
+        [StringLength(125, ErrorMessage = "Headline may have a maximum of 125 characters.")]
         public string Headline { get; set; }
 
         [Display(Name = "Article Content")]
         public string Content { get; set; }
         
-        public string Teaser
+        public string Teaser { get { return UseTeaser(); } }
+       
+        public string UseTeaser()
         {
-            get { return Content.ArticleShortener(100); }
+            return Content.ArticleShortener(100);
         }
         
         [DataType(DataType.Date)]
-        public DateTime Date { get; set; } 
-
+        public DateTime Date { get; set; }
+        
         public ApplicationUser Author { get; set; }
 
         public IList<Comment> ArticleCommentsList { get; set; } 
