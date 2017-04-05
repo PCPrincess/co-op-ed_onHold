@@ -2,20 +2,10 @@
     ViewData["Title"] = "Error";
 }
 
-<h2 class="text-danger">Error.</h2>
 <h3 class="text-danger">An error occurred while processing your request.</h3>
 
-<h3>Development Mode</h3>
 <p>
-    <ul>
-        <li>Articles and Profile Pages: Pages w/Items reliant on ID(s) are in testing,
-            and therefore, won't display properly (yet).
-        </li>
-        <li>
-            Profile Page: Did you include an Id?
-        </li>
-    </ul>
-    
+    @ViewData["Error"]
 </p>
 
 

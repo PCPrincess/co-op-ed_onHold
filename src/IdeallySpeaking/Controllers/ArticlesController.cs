@@ -44,9 +44,7 @@ namespace IdeallySpeaking.Controllers
                 return NotFound();
             }*/
 
-            var article = await _context.Articles
-                //.Include(a => a.CommentList)
-                //Including due to its being a 'List' or 'Collection'
+            var article = await _context.Articles                
                 .SingleOrDefaultAsync(m => m.ArticleId == id);
             /*if (article == null)
             {

@@ -8,9 +8,10 @@ using IdeallySpeaking.Data;
 namespace IdeallySpeaking.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170405010845_MVCRunThrough_1")]
+    partial class MVCRunThrough_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -86,6 +87,8 @@ namespace IdeallySpeaking.Migrations
                         .HasMaxLength(125);
 
                     b.Property<int?>("ProfileId");
+
+                    b.Property<string>("Teaser");
 
                     b.HasKey("ArticleId");
 
