@@ -18,7 +18,9 @@
     <Content Remove="wwwroot/images\Miscellaneous\The-Background.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Properties\PublishProfiles\IdeallySpeaking - FTP.pubxml" />
     <None Remove="Properties\PublishProfiles\IdeallySpeaking - Web Deploy.pubxml" />
+    <None Remove="Publish.txt" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="wwwroot\images\Article_Images\barack-obama_Example.jpg" />
@@ -56,6 +58,7 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0-msbuild2-final" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 </Project>
