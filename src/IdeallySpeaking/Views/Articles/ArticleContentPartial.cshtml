@@ -6,6 +6,19 @@
 }
 
 <p>@Html.DisplayFor(model => model.Content)</p>
-<br />
-<a href="#">Original Article</a> 
 
+<span class="">
+    <a href="https://twitter.com/intent/tweet" class="twitter-share-button"
+       data-text="Tweeted From IdeallySpeaking.net"
+       data-url="" data-counturl="" data-count=""
+       data-via="SpeakingIdeally"
+       data-size="Large"
+       data-dnt="">Tweet This</a>
+</span>
+<p class="mb-1">
+    @* @Model.Author *@
+    <a asp-action="Create" asp-controller="CommentsController">Reply to Article</a>  |
+    <span id="bookmark">
+        <a href="#" class="">Bookmark <span>this article</span></a>
+    </span>
+</p>

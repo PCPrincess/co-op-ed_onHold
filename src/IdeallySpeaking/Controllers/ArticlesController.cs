@@ -75,10 +75,10 @@ namespace IdeallySpeaking.Controllers
                 _context.Add(article);
                 
                 await _context.SaveChangesAsync();
-
+                //ViewData["CurrentReader"] = GetCurrentUserAsync();
                 return RedirectToAction("FullArticle");                
             }
-            ViewData["CurrentReader"] = GetCurrentUserAsync();
+            
             return View(article);
         }        
 
