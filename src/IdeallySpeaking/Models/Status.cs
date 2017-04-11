@@ -15,24 +15,37 @@ namespace IdeallySpeaking.Models
         }
 
         public DateTime DateSet { get; set; }
-        public string Description { get; set; }
+        public string Description { get; set; }               
 
-        public bool IsOnTimeOut { get; set; }
-        public bool IsEightySixed { get; set; }               
-
-        public struct UserStatus
+        public class UserStatus
         {
-            string Default;
-            string OnTimeOut;
-            string EightySixed;
+            // create objects for IsOnTimeOut and IsEightySixed to use in DetermineStatus
+            
 
-            public UserStatus(string _default, string _onTimeOut, string _eightySixed) :this()
+            public UserStatus()
             {
-                this.Default = _default;
-                this.OnTimeOut = _onTimeOut;
-                this.EightySixed = _eightySixed;
+                this.DetermineStatus();
             }
 
+            public bool IsOnTimeOut { get; private set; }
+            public bool IsEightySixed { get; private set; }
+
+            public string DetermineStatus()
+            {
+                if (IsOnTimeOut)
+                {
+                    return "OnTimeOut";                       
+                }
+                else if (IsEightySixed)
+                {
+                    return "EightySixed";
+                }
+                else
+                {
+                    return "Default";
+                }
+
+            }   
             
         } 
            

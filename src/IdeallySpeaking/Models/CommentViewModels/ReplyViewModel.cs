@@ -5,12 +5,19 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace IdeallySpeaking.Models.CommentViewModels
-{
+{    
     public class ReplyViewModel
-    { 
+    {
+        private Status _status;
+
         [MinLength(2)]
         [MaxLength(600)]
         public Comment Reply { get; set; }
         //Action Method - Determination of 'Reply' versus 'Comment' can be set via controller based on LINK use.
+
+        /* public bool CanReply
+        {
+            Add This After Finishing Status.cs
+        } */
     }
 }
