@@ -7,46 +7,51 @@ namespace IdeallySpeaking.Models
 {
     public class Status
     {
-        private string _statusName;
+        private UserStatus _userStatus;
 
-        public Status(string statusName)
+        public Status(UserStatus userStatus)
         {
-            _statusName = statusName;
-        }
-
-        public DateTime DateSet { get; set; }
-        public string Description { get; set; }               
+            _userStatus = userStatus;
+        }                    
 
         public class UserStatus
         {
-            // create objects for IsOnTimeOut and IsEightySixed to use in DetermineStatus
-            
+            public DateTime statusDate;
 
-            public UserStatus()
+            public UserStatus(ApplicationUser appUser)
             {
-                this.DetermineStatus();
+                this.ApplicationUserStatus(appUser);
+                statusDate = appUser.StatusChangeDate;
             }
 
-            public bool IsOnTimeOut { get; private set; }
-            public bool IsEightySixed { get; private set; }
-
-            public string DetermineStatus()
+            public DateTime CurrentDate
             {
-                if (IsOnTimeOut)
+                get { return DateTime.Now; }
+            }
+
+            public ApplicationUser ApplicationUser { get; set; }
+
+            public bool ApplicationUserStatus(ApplicationUser applicationUser)
+            {
+                if (applicationUser.IsOnTimeOut)
                 {
-                    return "OnTimeOut";                       
+                    return true;
                 }
-                else if (IsEightySixed)
+                else if (applicationUser.IsEightySixed)
                 {
-                    return "EightySixed";
+                    return true;
                 }
                 else
                 {
-                    return "Default";
+                    return false;
                 }
+            }
 
-            }   
-            
+            public int PostStatus()
+            {
+                return (CurrentDate.Day - statusDate.Day);
+            }
+
         } 
            
     }
