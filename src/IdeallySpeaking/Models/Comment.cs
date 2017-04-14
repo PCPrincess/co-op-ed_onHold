@@ -32,11 +32,9 @@ namespace IdeallySpeaking.Models
         }
 
         public int Rating { get; set; }
-
-        /* public bool CanPost
-        {
-            Add This After Finishing Status.cs
-        } */
+        
+        public bool CanPost { get; set; }
+        
 
     }
 }
