@@ -16,17 +16,22 @@ namespace IdeallySpeaking.Models
 
         public class UserStatus
         {
-            public DateTime statusDate;
+            public DateTime statusDate;            
 
             public UserStatus(ApplicationUser appUser)
             {
-                this.ApplicationUserStatus(appUser);
-                statusDate = appUser.StatusChangeDate;
+                this.ApplicationUserStatus(appUser);                
             }
-
+            
             public DateTime CurrentDate
             {
                 get { return DateTime.Now; }
+            }
+
+            public int GetNumDays(int numDays)
+            {
+                PostStatus(ref numDays);
+                return numDays;
             }
 
             public ApplicationUser ApplicationUser { get; set; }
@@ -47,9 +52,21 @@ namespace IdeallySpeaking.Models
                 }
             }
 
-            public int PostStatus()
+            // May Want To Put in Controller
+            public void PostStatus(ref int numDays)
             {
-                return (CurrentDate.Day - statusDate.Day);
+                try
+                {                    
+                    numDays = CurrentDate.Day - statusDate.Day;                    
+                }
+                catch(Exception e)
+                {
+                    if (numDays < 0)
+                    {
+                        e = new Exception("The number of days passed should always be positive.");
+                    }
+                }                
+                
             }
 
         } 
