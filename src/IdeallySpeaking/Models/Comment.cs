@@ -31,7 +31,12 @@ namespace IdeallySpeaking.Models
             UserCommentList.Add(comment);
         }
 
-        public int Rating { get; set; }        
+        public int Rating { get; set; }
+
+        /* public bool CanPost
+        {
+            Add This After Finishing Status.cs
+        } */
 
     }
 }

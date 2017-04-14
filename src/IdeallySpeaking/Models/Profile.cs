@@ -49,12 +49,7 @@ namespace IdeallySpeaking.Models
 
         public List<Comment> UserCommentList { get; private set; }
         
-        public List<Article> AuthoredArticles { get; private set; }
-
-        
-
-
-
+        public List<Article> AuthoredArticles { get; private set; }  
 
 
     }

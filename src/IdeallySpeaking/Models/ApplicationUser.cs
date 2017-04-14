@@ -26,6 +26,12 @@ namespace IdeallySpeaking.Models
         
         public Profile Profile { get; set; }
 
+        public bool IsOnTimeOut { get; private set; }
+
+        public bool IsEightySixed { get; private set; }
+
+        public DateTime StatusChangeDate { get; set; }
+
         [InverseProperty("Author")]
         public List<Article> AuthoredArticles { get; }
 
