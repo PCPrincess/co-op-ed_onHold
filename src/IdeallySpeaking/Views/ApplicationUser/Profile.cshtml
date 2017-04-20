@@ -1,4 +1,4 @@
-﻿@model IdeallySpeaking.Models.ApplicationUserViewModels.ProfileViewModel
+﻿@model IdeallySpeaking.Models.ApplicationUserViewModels.ProfileEditViewModel
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -21,7 +21,7 @@ else
 }
 
 @Html.DisplayFor(model => model.UserName);
-@Html.DisplayFor(model => model.JoinDate);
+@Html.DisplayFor(model => model.Location);
 @Html.DisplayFor(model => model.Link);
 <hr />
 <p>
@@ -30,6 +30,11 @@ else
 <p>
     @Html.DisplayFor(model => model.Signature);
 </p>
+
+<ul class="">
+    <li class="">@Html.DisplayFor(model => model.Facebook)</li>
+    <li class="">@Html.DisplayFor(model => model.Twitter)</li>
+</ul>
 
 
 
@@ -46,14 +51,24 @@ else
     <div class="form-group">
         <label for="Signature">Signature</label>
         <textarea class="form-control" id="Signature" rows="3"></textarea>
-    </div>
-    <div class="form-group">
-        <label for="Avatar">File Upload</label>
-        <input type="file" class="form-control-file" id="Avatar">
-        <small id="Avatar" class="form-text text-muted">Upload an avatar here.</small>
-    </div>
+    </div>    
     
     <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<form method="post" enctype="multipart/form-data" asp-controller="Profiles" asp-action="UploadAvatar">
+    <div class="form-group">
+        <div class="col-md-10">
+            <label for="Avatar">Image Upload</label>
+            <input type="file" class="form-control-file" id="Avatar">
+            <small id="Avatar" class="form-text text-muted">Upload an avatar image from your computer.</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type="submit" value="Upload" />
+        </div>
+    </div>
 </form>
 
 

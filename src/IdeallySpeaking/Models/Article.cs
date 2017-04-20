@@ -15,7 +15,9 @@ namespace IdeallySpeaking.Models
 
         [Display(Name = "Article Content")]
         public string Content { get; set; }
-        
+
+        public byte[] ArticlePhoto { get; set; }        
+
         public string Teaser { get { return UseTeaser(); } }
        
         public string UseTeaser()
