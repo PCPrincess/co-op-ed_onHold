@@ -32,6 +32,11 @@ namespace IdeallySpeaking.Models.ApplicationUserViewModels
 
         [Display(Name = "Upload New Avatar")]
         public IFormFile Avatar { get; set; }
+        // When 'Editing' (uploading) we use IFormFile.
+        // To then store the Image in the database, the image must
+        // be 'given' to a byte array (profile)
+
+        public string AvatarImagePath { get; set; }
 
         [Display(Name = "Facebook")]
         [Url]

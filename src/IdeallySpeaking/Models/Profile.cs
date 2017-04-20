@@ -33,7 +33,7 @@ namespace IdeallySpeaking.Models
         public string Location { get; set; }
 
         [NotMapped]
-        public IFormFile Avatar { get; set; }
+        public byte[] Avatar { get; set; }
 
         [Display(Name = "Facebook")]
         [Url]

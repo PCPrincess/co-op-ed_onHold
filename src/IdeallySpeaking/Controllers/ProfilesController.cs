@@ -115,10 +115,9 @@ namespace IdeallySpeaking.Controllers
         }
 
         // POST: Profile/Avatar
-        [HttpPost]
-        [AllowAnonymous]
+        [HttpPost]        
         [ValidateAntiForgeryToken]
-         public async Task<IActionResult> Avatar(ICollection<IFormFile> files)
+         public async Task<IActionResult> UploadAvatar(IFormFile file)
          {
              var currUser = await GetCurrentUserAsync();
              if (!UserExists(currUser))
@@ -127,20 +126,25 @@ namespace IdeallySpeaking.Controllers
              }
              else
              {
-                 var uploads = Path.Combine(_environment.WebRootPath, "uploads");
-                 foreach (var file in files)
-                 {
-                     if (file.Length > 0)
-                     {
-                         using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
-                         {
-                             await file.CopyToAsync(fileStream);
-                         }
-                     }
-                     await _context.SaveChangesAsync();
-                 }
-             }            
-             return View("Profile");
+                var filePath = Path.GetTempFileName();                
+                
+                if (file.Length > 0)
+                {
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+                }
+                await _context.SaveChangesAsync();
+
+                using (var memoryStream = new MemoryStream())
+                {
+                    await file.CopyToAsync(memoryStream);
+                    currUser.Profile.Avatar = memoryStream.ToArray();
+                }
+
+            }
+            return View("Profile");
          }
 
 
