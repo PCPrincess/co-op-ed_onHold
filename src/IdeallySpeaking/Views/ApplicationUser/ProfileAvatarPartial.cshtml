@@ -1,0 +1,25 @@
+﻿@model  ProfileEditViewModel
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+
+}
+
+
+<form method="post" enctype="multipart/form-data" asp-controller="Profiles" asp-action="UploadAvatar">
+    <div class="form-group">
+        <div class="col-md-10">
+            <label for="Avatar">Image Upload</label>
+            <input type="file" class="form-control-file" id="Avatar">
+            <small id="Avatar" class="form-text text-muted">Upload an avatar image from your computer.</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type="submit" value="Upload" />
+        </div>
+    </div>
+</form>
