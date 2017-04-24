@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using IdeallySpeaking.Data;
 using IdeallySpeaking.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace IdeallySpeaking.Controllers
 {
@@ -160,6 +162,31 @@ namespace IdeallySpeaking.Controllers
             _context.Articles.Remove(article);
             await _context.SaveChangesAsync();
             return View(nameof(HomeController), "Index");
+        }
+
+        // POST: Articles/ArticlePhoto
+        [HttpPost]
+        public async Task<IActionResult> ArticlePhoto(IFormFile file)
+        {
+            var filePath = Path.GetTempFileName();
+            var article = new Article();
+
+            if (file.Length > 0)
+            {
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+            }
+            await _context.SaveChangesAsync();
+
+            using (var memoryStream = new MemoryStream())
+            {
+                await file.CopyToAsync(memoryStream);
+                article.ArticlePhoto = memoryStream.ToArray();
+            }
+
+            return View();
         }
 
         private bool ArticleExists(int id)
