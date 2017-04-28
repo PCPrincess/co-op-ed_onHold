@@ -1,0 +1,23 @@
+﻿@model IdeallySpeaking.Models.BadgeViewModels.BadgeImageViewModel
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+
+<form method="post" enctype="multipart/form-data" asp-controller="Badges" asp-action="BadgeImage">
+    <div class="form-group">
+        <div class="col-md-10">
+            <label for="BadgeImage">Image Upload</label>
+            <input type="file" class="form-control-file" id="BadgeImage">
+            <small id="BadgeImage" class="form-text text-muted">Upload a Image from your Computer for the Badge.</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type="submit" value="Upload" />
+        </div>
+    </div>
+</form>
