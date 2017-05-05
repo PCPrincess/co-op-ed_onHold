@@ -105,7 +105,7 @@ namespace IdeallySpeaking.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Headline,Content,Teaser,Date,Author")] Article article)
+        public async Task<IActionResult> Edit(int id, [Bind("Headline,Content,Teaser,Date")] Article article)
         {
             if (id != article.ArticleId)
             {
@@ -116,6 +116,8 @@ namespace IdeallySpeaking.Controllers
             {
                 try
                 {
+                    var tease = article.Teaser;
+                    _context.Entry(article).Property("Teaser").CurrentValue = tease;
                     _context.Update(article);
                     await _context.SaveChangesAsync();
                 }

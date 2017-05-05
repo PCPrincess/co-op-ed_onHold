@@ -7,14 +7,11 @@
 
 <p>@Html.DisplayFor(model => model.Content)</p>
 
-<span class="">
-    <a href="https://twitter.com/intent/tweet" class="twitter-share-button"
-       data-text="Tweeted From IdeallySpeaking.net"
-       data-url="" data-counturl="" data-count=""
-       data-via="SpeakingIdeally"
-       data-size="Large"
-       data-dnt="">Tweet This</a>
-</span>
+<p class="mb-2">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-show-count="false">Tweet</a>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</p>
+
 <p class="mb-1">
     @* @Model.Author *@
     <a asp-action="Create" asp-controller="CommentsController">Reply to Article</a>  |
