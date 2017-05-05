@@ -12,6 +12,7 @@
     <title>Article Search</title>
 </head>
 <body>
+    <a id="top"></a>
     <p>Search for an Article by Headline</p>
     <form asp-controller="Articles" asp-action="Search" method="get">
         <p>
@@ -56,11 +57,18 @@
         <tr>
             <td>                
                 <a asp-action="Details" asp-route-id="@item.ArticleId">Details</a> |
-                <a asp-controller="Articles" asp-action="FullArticle">Back Home</a>
+                <a asp-controller="Articles" asp-action="FullArticle">Back To Articles</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+    <div>
+        <br />
+        <p class="">
+            <a href="#top" class="btn-sm btn-bracketed">Back to Top</a>  |
+            <a asp-controller="Home" asp-action="Index" class="btn-sm btn-bracketed">Home</a>
+        </p>
+    </div>
 </body>
 </html>
