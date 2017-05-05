@@ -14,6 +14,16 @@ namespace IdeallySpeaking.Models
 
             public class CalendarBadge
             { // Sender Object Class
+
+                public string SetBadgeLocale(string locale)
+                {
+                    this.BadgeLocale = locale;
+                    return BadgeLocale;
+                }
+
+                public string BadgeLocale { get; set; }
+                
+
                 public event EventHandler PeriodOfTimeReached; // Event (message)
 
                 protected virtual void OnPeriodOfTimeReached(EventArgs e)
@@ -33,9 +43,10 @@ namespace IdeallySpeaking.Models
                 // Example RECEIVER METHOD:
                 // static void c_PeriodOfTimeReached(object sender, EventArgs e)
                 // {
-                //   // Do Something:
-                //   _context.ApplicationUser.UserBadgeList.Add(CalendarBadge);
+                //   // Do Something:  
                 // }
+                
+                // Note: Re-Read Events and Event-Handling Section in Spec!  
 
             }
 
@@ -50,7 +61,7 @@ namespace IdeallySpeaking.Models
 
             }
 
-            public class Star10Badge
+            public class Star10Badge // Temp Name
             { // Sender Object Class
                 public event EventHandler TenStarsReached; // Event (message)
 
