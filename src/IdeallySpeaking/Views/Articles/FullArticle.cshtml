@@ -40,27 +40,36 @@
 
 <a href="#">First Post</a>  &raquo  <a href="#">Last Post</a>  &raquo  <a asp-controller="Comments" asp-action="PopularCommentsList">Popular Comments</a>  &raquo  <a href="#">My Posts</a>
 
-<table class="table table-striped table-bordered">
-    <thead><tr> </tr></thead>
-    <tbody>
-        <tr>            
-            <td>
-                @*
-                @foreach (var item in Model)
+@* // Each Comment
+    @foreach (var item in Model)
+    { *@
+    <div class="media">
+        <a class="d-flex align-self-start mr-3" href="#">
+            <img class="" src="~/images/Miscellaneous/Placeholder.png" alt="Generic placeholder image">
+        </a>
+            <div class="media-body">
+                <h5 class="mt-0">Top-aligned media</h5>
+                @{ var reply =  new ReplyViewModel(); }
+                @if (reply.ArticleId.Equals(Model.ArticleId))
                 {
+                    @Html.Partial("ReplyPartial.cshtml")
+                }
+                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+            </div>
+    </div>
+@*    @Html.Partial("IndexPartial", item);
+    }*@
 
-                    @Html.Partial("IndexPartial", item);
-                }*@                 
-                <div class="btn-group mb-2" role="group" aria-label="Pages">
-                    <button type="button" class="btn btn-secondary">1</button>
-                    <button type="button" class="btn btn-secondary">2</button>
-                    <button type="button" class="btn btn-secondary">3</button>
-                    <button type="button" class="btn btn-secondary">4</button>
-                </div>
-            </td>            
-        </tr>
-    </tbody>
-</table>
+
+                
+<div class="btn-group mb-2" role="group" aria-label="Pages">
+    <button type="button" class="btn btn-secondary">1</button>
+    <button type="button" class="btn btn-secondary">2</button>
+    <button type="button" class="btn btn-secondary">3</button>
+    <button type="button" class="btn btn-secondary">4</button>
+</div>
+            
 <div class="">
     <a id="commentHere"></a>
     @Html.Partial((string)ViewData["PartialURL"])    

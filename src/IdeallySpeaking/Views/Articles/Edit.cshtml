@@ -1,7 +1,8 @@
 @model IdeallySpeaking.Models.Article
 
 @{
-    Layout = null;
+    Layout = "_Layout";
+    ViewData["Title"] = "Edit Article";
 }
 
 <!DOCTYPE html>
@@ -29,31 +30,17 @@
         <div class="form-group">
             <label asp-for="Content" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Content" class="form-control" />
+                <textarea asp-for="Content" class="form-control" rows="4"></textarea>
                 <span asp-validation-for="Content" class="text-danger"></span>
             </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Teaser" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Teaser" class="form-control" />
-                <span asp-validation-for="Teaser" class="text-danger"></span>
-            </div>
-        </div>        
+        </div>                
         <div class="form-group">
             <label asp-for="Date" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="Date" class="form-control" />
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Author" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Author" class="form-control" />
-                <span asp-validation-for="Author" class="text-danger"></span>
-            </div>
-        </div>
+        </div>        
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
