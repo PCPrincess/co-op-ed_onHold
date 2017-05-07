@@ -31,7 +31,9 @@ namespace IdeallySpeaking.Data
 
         public DbSet<IdeallySpeaking.Models.Comment> Comments { get; set; }
 
-        public DbSet<IdeallySpeaking.Models.Badge> Badges { get; set; } 
+        public DbSet<IdeallySpeaking.Models.Badge> Badges { get; set; }
+        
+        public DbSet<IdeallySpeaking.Models.EventViewModels.EventViewModel> Events { get; set; }
         
     }
 }
