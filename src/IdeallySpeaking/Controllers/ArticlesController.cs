@@ -56,6 +56,24 @@ namespace IdeallySpeaking.Controllers
             return View(article);
         }
 
+        // GET: Event/Details/5
+        public async Task<IActionResult> ArticleDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var details = await _context.Articles
+                .SingleOrDefaultAsync(m => m.ArticleId == id);
+            if (details == null)
+            {
+                return NotFound();
+            }
+
+            return View(details);
+        }
+
         // GET: Articles/Create
         public IActionResult Create()
         {
