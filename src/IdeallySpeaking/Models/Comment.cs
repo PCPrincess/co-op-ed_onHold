@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using static IdeallySpeaking.Models.CommentViewModels.CommentsRatingViewModel;
 
 namespace IdeallySpeaking.Models
 {
@@ -31,7 +32,7 @@ namespace IdeallySpeaking.Models
             UserCommentList.Add(comment);
         }
 
-        public int Rating { get; set; }
+        public CommentsRating CommentsRating { get; set; }
         
         public bool CanPost { get; set; }
         
