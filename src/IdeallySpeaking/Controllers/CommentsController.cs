@@ -64,7 +64,7 @@ namespace IdeallySpeaking.Controllers
         {
             if (ModelState.IsValid)
             {
-                comment.Rating = new CommentsRating() { };                
+                comment.CommentsRating = new CommentsRating() { };                
 
                 _context.Add(comment);
 
@@ -169,7 +169,7 @@ namespace IdeallySpeaking.Controllers
         private async Task<List<Comment>> GetPopularItemsAsync(int num)
         {
             IQueryable<Comment> comments = from c in _context.Comments
-            .OrderByDescending(r => r.Rating).Take(num)
+            .OrderByDescending(r => r.CommentsRating.Rating).Take(num)
                                            select c;
             return await comments.ToListAsync();
         }
@@ -214,7 +214,7 @@ namespace IdeallySpeaking.Controllers
         {
             if (ModelState.IsValid)
             {
-                reply.Rating = new CommentsRating() { };
+                reply.CommentsRating = new CommentsRating() { };
                 _context.Add(reply);
                 await _context.SaveChangesAsync();
 

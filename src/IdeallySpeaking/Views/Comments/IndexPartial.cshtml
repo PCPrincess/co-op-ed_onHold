@@ -5,9 +5,8 @@
 }
 
             
-@Model.CommentDate                     
-            
 @Model.Title
+<span class="small">@Model.CommentDate</span> 
 @Model.CommentContent                        
             
 <hr />                           
@@ -15,11 +14,10 @@
 <a asp-action="Delete" asp-route-id="@Model.CommentId">Delete</a>
             
             
-@Model.Rating
+@Model.CommentsRating.Rating
 @* Add CommentsRatingViewModel Properties (RatingUp, Down, etc.)
     AND HTML/CSS to make it sparkle!
-    NOTE: Do we need a new Partial for CommentsRatingViewModel ?
-    If so, we'd display it here.*@
+*@
             
         
 
