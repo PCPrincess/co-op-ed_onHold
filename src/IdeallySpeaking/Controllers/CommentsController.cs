@@ -207,7 +207,7 @@ namespace IdeallySpeaking.Controllers
             return View();
         }
 
-        // POST: Comment/Reply/?
+        // POST: Comment/Reply/
         [HttpPost, ActionName("Post Reply")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Reply([Bind("CommentId, CommentDate, Title, CommentContent,ArticleId, ApplicationUserId, Rating")] Comment reply)
@@ -226,6 +226,31 @@ namespace IdeallySpeaking.Controllers
 
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RateUp(CommentsRating rating)
+        {
+            if (ModelState.IsValid)
+            {
+                rating.RatingUp();
+                _context.Add(rating);
+                await _context.SaveChangesAsync();
+            }
+            return View("FullArticle");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RateDown(CommentsRating rating)
+        {
+            if (ModelState.IsValid)
+            {
+                rating.RatingDown();
+                _context.Add(rating);
+                await _context.SaveChangesAsync();
+            }
+            return View("FullArticle");
+        }
 
 
         private bool CommentExists(int id)

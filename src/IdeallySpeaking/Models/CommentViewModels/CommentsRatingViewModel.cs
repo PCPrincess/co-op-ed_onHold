@@ -12,10 +12,11 @@ namespace IdeallySpeaking.Models.CommentViewModels
         {
             public int Rating { get; private set; }
 
+            private readonly int _rating = 0;
+
             public CommentsRating()
             {
-                var rating = 0;
-                Rating = rating;
+                Rating = _rating;
             }
 
             public void RatingUp()
