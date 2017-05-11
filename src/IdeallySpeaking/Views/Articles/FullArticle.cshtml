@@ -1,11 +1,12 @@
 @model IdeallySpeaking.Models.Article
 @using Microsoft.AspNetCore.Identity
+@using IdeallySpeaking.Models.CommentViewModels
+
 
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Full Article";
     ViewData["PartialURL"] = "~/Views/Comments/CreatePartial.cshtml";
-    var last = 0; var idNum = "";
 }
 @* Check Facebook Meta Tags At: https://developers.facebook.com/tools/debug/  *@
 
@@ -39,38 +40,9 @@
 </p>
 <hr />
 
-<a href="#idNum">First Post</a>  &raquo  <a href="#">Last Post</a>  &raquo  <a asp-controller="Comments" asp-action="PopularCommentsList">Popular Comments</a>  &raquo  <a href="#">My Posts</a>
+<a href="#first">First Post</a>  &raquo  <a href="#last">Last Post</a>  &raquo  <a asp-controller="Comments" asp-action="PopularCommentsList">Popular Comments</a>  &raquo  <a href="#">My Posts</a>
 
-@* // Each Comment **What is the UNDERLYING list? (Needed info to obtain idNum = "last")
-    @foreach (var item in Model)
-    { *@
-    @{last += 1; if (last.Equals(1)) { idNum = "first"; } }
-    <div class="media mt-3">
-        <a class="d-flex align-self-start mr-3" id="@idNum" href="#">
-            <img class="" src="~/images/Miscellaneous/Placeholder.png" alt="Generic placeholder image">
-            @*Use ViewBag from Controller Action Method to 'Grab' Application
-              User Profile Avatar*@
-        </a>
-            <div class="media-body">
-                <h5 class="mt-0">Top-aligned media</h5>
-                
-                @if (true) 
-                {
-                    var reply = new ReplyViewModel();
-                    @Html.Partial("~/Views/Comments/ReplyPartial.cshtml")
-                }
-                @*Goes in 'IF' Statement: reply.ArticleId.Equals(Model.ArticleId) *@
-                else
-                {
-                    @*@Html.Partial("IndexPartial", item);*@
-                }
-
-                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-            </div>
-    </div>
- @* } *@   
-
+@Html.Partial("IndexPartial"); 
 
                 
 <div class="btn-group mb-2" role="group" aria-label="Pages">
