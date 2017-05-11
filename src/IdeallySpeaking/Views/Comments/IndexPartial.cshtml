@@ -6,17 +6,29 @@
 
             
 @Model.Title
-<span class="small">@Model.CommentDate</span> 
-@Model.CommentContent                        
+<span class="small">@Model.CommentDate</span>
+ 
+<p>@Model.CommentContent</p>                        
             
 <hr />                           
 <a asp-action="Edit" asp-route-id="@Model.CommentId">Edit</a> |                 |
 <a asp-action="Delete" asp-route-id="@Model.CommentId">Delete</a>
             
             
-@Model.CommentsRating.Rating
-@* Add CommentsRatingViewModel Properties (RatingUp, Down, etc.)
-    AND HTML/CSS to make it sparkle!
+Current Rating: <span class="badge badge-default">@Model.CommentsRating.Rating</span> 
+
+<form asp-controller="Comments" asp-action="RateUp" asp-route-id="@Model.CommentId" method="post">
+   <button type="submit" asp-for="CommentsRating.RatingUp" class="fa fa-thumbs-up" />
+</form>
+
+<form asp-controller="Comments" asp-action="RateDown" asp-route-id="@Model.CommentId" method="post">
+    <button type="submit" asp-for="CommentsRating.RatingDown" class="fa fa-thumbs-down" />
+</form>
+
+@* 
+    Inline the Rating and RateUp/RateDown Buttons - Possibly use
+    Style="border: 1px solid black" or outline(etc.)" in order to
+    create a parent-wide block for the content.
 *@
             
         
