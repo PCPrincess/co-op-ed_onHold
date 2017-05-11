@@ -56,7 +56,7 @@
                 
                 @if (true) 
                 {
-                    @{ var reply = new ReplyViewModel(); }
+                    var reply = new ReplyViewModel();
                     @Html.Partial("~/Views/Comments/ReplyPartial.cshtml")
                 }
                 @*Goes in 'IF' Statement: reply.ArticleId.Equals(Model.ArticleId) *@
