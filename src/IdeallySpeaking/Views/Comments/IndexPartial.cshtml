@@ -2,34 +2,68 @@
 
 @{
     ViewData["Title"] = "Article Comments";
+    
+    var last = 0; var idNum = "";
+}
+
+
+@foreach (var item in Model.UserCommentList)
+{
+    last += 1;
+    if (last.Equals(1)) { idNum = "first"; }
+    if (last.Equals(Model.UserCommentList.Last())) { idNum = "last"; }
+    <div class="media mt-3">
+        <a class="d-flex align-self-start mr-3" id="@idNum" href="#">
+            <img class="" src="~/images/Miscellaneous/Placeholder.png" alt="Generic placeholder image">
+            @*Use ViewBag from Controller Action Method to 'Grab' Application
+                User Profile Avatar*@
+        </a>
+        <div class="media-body">
+            <h5 class="mt-0">Top-aligned media</h5>
+
+            @if (item.HasReply)
+            {
+
+                @Html.Partial("~/Views/Comments/ReplyPartial.cshtml")
+            }
+            @*Goes in 'IF' Statement: [ReplyExists(int id)] reply.ArticleId.Equals(Model.ArticleId) *@
+            else
+            {
+                @Model.Title
+                <span class="small">@Model.CommentDate</span>
+
+                <p>@Model.CommentContent</p>
+
+                <hr />
+                <a asp-action="Edit" asp-route-id="@Model.CommentId">Edit</a>
+                <a asp-action="Delete" asp-route-id="@Model.CommentId">Delete</a>
+
+
+                <text>Current Rating: </text> <span class="badge badge-default">@Model.CommentsRating.Rating</span>
+
+                <form asp-controller="Comments" asp-action="RateUp" asp-route-id="@Model.CommentId" method="post">
+                    <button type="submit" asp-for="CommentsRating.RatingUp" class="fa fa-thumbs-up" />
+                </form>
+
+                <form asp-controller="Comments" asp-action="RateDown" asp-route-id="@Model.CommentId" method="post">
+                    <button type="submit" asp-for="CommentsRating.RatingDown" class="fa fa-thumbs-down" />
+                </form>
+
+                @*
+                    Inline the Rating and RateUp/RateDown Buttons - Possibly use
+                    Style="border: 1px solid black" or outline(etc.)" in order to
+                    create a parent-wide block for the content.
+                *@
+            }
+
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+            <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        </div>
+    </div>
 }
 
             
-@Model.Title
-<span class="small">@Model.CommentDate</span>
- 
-<p>@Model.CommentContent</p>                        
-            
-<hr />                           
-<a asp-action="Edit" asp-route-id="@Model.CommentId">Edit</a> |                 |
-<a asp-action="Delete" asp-route-id="@Model.CommentId">Delete</a>
-            
-            
-Current Rating: <span class="badge badge-default">@Model.CommentsRating.Rating</span> 
 
-<form asp-controller="Comments" asp-action="RateUp" asp-route-id="@Model.CommentId" method="post">
-   <button type="submit" asp-for="CommentsRating.RatingUp" class="fa fa-thumbs-up" />
-</form>
-
-<form asp-controller="Comments" asp-action="RateDown" asp-route-id="@Model.CommentId" method="post">
-    <button type="submit" asp-for="CommentsRating.RatingDown" class="fa fa-thumbs-down" />
-</form>
-
-@* 
-    Inline the Rating and RateUp/RateDown Buttons - Possibly use
-    Style="border: 1px solid black" or outline(etc.)" in order to
-    create a parent-wide block for the content.
-*@
             
         
 

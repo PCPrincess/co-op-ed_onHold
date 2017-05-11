@@ -66,13 +66,13 @@ namespace IdeallySpeaking.Controllers
             {
                 comment.CommentsRating = new CommentsRating() { };                
 
-                _context.Add(comment);
+                _context.Add(comment);                
 
                 await _context.SaveChangesAsync();
 
                 ViewBag["CurrentArticleId"] = comment.ArticleId;                
 
-                return RedirectToAction("IndexPartial", ViewBag["CurrentArticleId"]);
+                return RedirectToAction("UserCommentsList", ViewBag["CurrentArticleId"]);
             }
             return PartialView(comment);
         }
@@ -178,7 +178,7 @@ namespace IdeallySpeaking.Controllers
         public async Task<IActionResult> UserCommentsList(int id)
         {
             var userComments = await GetUserCommentsAsync(id);
-            return View(userComments);
+            return RedirectToAction("IndexPartial", ViewBag["CurrentArticleId"]);
         }
         private async Task<List<Comment>> GetUserCommentsAsync(int id)
         {
@@ -215,6 +215,7 @@ namespace IdeallySpeaking.Controllers
             if (ModelState.IsValid)
             {
                 reply.CommentsRating = new CommentsRating() { };
+                reply.HasReply = true;
                 _context.Add(reply);
                 await _context.SaveChangesAsync();
 
@@ -256,7 +257,7 @@ namespace IdeallySpeaking.Controllers
         private bool CommentExists(int id)
         {
             return _context.Comments.Any(e => e.CommentId == id);
-        }
+        }        
 
         /* As a Matter of Interest
          * 
