@@ -12,9 +12,8 @@ namespace IdeallySpeaking.Models
         {            
             string boldTagFront = "<b>";
             string boldTagBack = "</b>";
-            string completedString = boldTagFront + boldTagBack;
-            return completedString;  
-                
+            string completedString = boldTagFront + buttonContent + boldTagBack;
+            return completedString;                  
         }        
        
         public static string ReplaceBold(string strIn)

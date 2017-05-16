@@ -1,26 +1,24 @@
 ﻿@model IdeallySpeaking.Models.Comment
+@using static IdeallySpeaking.Models.StringExtensions
+
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+*@            
+
 @{
+        
+}    
 
-}
-
-@*
-
-    @foreach (var index in Model.CommentList) {
-        while (var num < 6) {
-            if (Comment.Rating > current) {
-                tempList.Add(comment);
-            {
-        {
-    }
-
-    foreach (var comm in tempList) {
+   @foreach (var item in ViewBag["PopularComments"]) 
+    {
         <div class="card-block">
-                    <h3 class="card-title">comm.Title/h3>
-                    <p class="card-text">comm.StringChop(25);</p>
+            <div class="card-title">
+                <h3>@item.Title</h3>
+                @item.CommentDate
+                @item.CommentAuthor@
+            </div>                    
+                    <p class="card-text">@item.CommentContent.ArticleShortener(50)</p>
                     <div class="dropdown-divider"></div>
         </div>
     }
-*@
+

@@ -34,7 +34,7 @@ namespace IdeallySpeaking.Models
             BadgeAndImage.Remove(badge);
         }
 
-        public ApplicationUser ApplicationUser { get; set; }
+        public ApplicationUser BadgeOwner { get; set; }
 
         public class UserBadgeList
         {

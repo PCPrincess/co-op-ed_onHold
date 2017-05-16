@@ -1,0 +1,27 @@
+﻿@model IdeallySpeaking.Models.ProfileViewModel.ProfileEditViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    
+}
+
+@*Create and Bind With Controller Action Method*@
+<form>
+    <div class="form-group">
+        <label for="UserName">User Name</label>
+        <input type="text" class="form-control" id="UserName" placeholder="Enter User Name">
+        <small id="UserName" class="form-text text-muted">Choose a community user name.</small>
+    </div>
+    <div class="form-group">
+        <label for="Link">URL</label>
+        <input type="url" class="form-control" id="Link" placeholder="Enter an URL preceded by http://">
+    </div>
+    <div class="form-group">
+        <label for="Signature">Signature</label>
+        <textarea class="form-control" id="Signature" rows="3"></textarea>
+    </div>    
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+

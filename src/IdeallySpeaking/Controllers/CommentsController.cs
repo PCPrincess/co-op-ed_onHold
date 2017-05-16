@@ -9,16 +9,19 @@ using IdeallySpeaking.Data;
 using IdeallySpeaking.Models;
 using System.ComponentModel.DataAnnotations;
 using static IdeallySpeaking.Models.CommentViewModels.CommentsRatingViewModel;
+using Microsoft.AspNetCore.Identity;
 
 namespace IdeallySpeaking.Controllers
 {
     public class CommentsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public CommentsController(ApplicationDbContext context)
+        public CommentsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
-            _context = context;    
+            _context = context;
+            _userManager = userManager;
         }
 
         // GET: Comments/id
@@ -60,17 +63,18 @@ namespace IdeallySpeaking.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("Create")]
-        public async Task<IActionResult> CreatePartial([Bind("CommentId,CommentDate,Title,CommentContent,ArticleId,ApplicationUserId,Rating")] Comment comment)
+        public async Task<IActionResult> CreatePartial([Bind("CommentId, CommentDate, Title, CommentContent, ArticleId, ApplicationUserId, CommentAuthor, Rating")] Comment comment)
         {
             if (ModelState.IsValid)
             {
-                comment.CommentsRating = new CommentsRating() { };                
-
+                comment.CommentsRating = new CommentsRating() { };
+                comment.CommentAuthor = await GetCurrentUserAsync();
                 _context.Add(comment);                
 
                 await _context.SaveChangesAsync();
 
-                ViewBag["CurrentArticleId"] = comment.ArticleId;                
+                ViewBag["CurrentArticleId"] = comment.ArticleId;
+                ViewBag["UserAvatar"] = comment.CommentAuthor.Profile.Avatar;
 
                 return RedirectToAction("UserCommentsList", ViewBag["CurrentArticleId"]);
             }
@@ -98,7 +102,7 @@ namespace IdeallySpeaking.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CommentId,CommentDate,Title,CommentContent,ArticleId,ApplicationUserId,Rating")] Comment comment)
+        public async Task<IActionResult> Edit(int id, [Bind("CommentDate,Title,CommentContent")] Comment comment)
         {
             if (id != comment.CommentId)
             {
@@ -162,8 +166,10 @@ namespace IdeallySpeaking.Controllers
         // GET: Comments/PopularCommentsList/5        
         public async Task<IActionResult> PopularCommentsList(int num)
         {
+            num = 5;
             var items = await GetPopularItemsAsync(num);
-            return View(items); 
+            ViewBag["PopularComments"] = items;
+            return View("PopularCommentsPartial"); 
         }
 
         private async Task<List<Comment>> GetPopularItemsAsync(int num)
@@ -210,16 +216,18 @@ namespace IdeallySpeaking.Controllers
         // POST: Comment/Reply/
         [HttpPost, ActionName("Post Reply")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Reply([Bind("CommentId, CommentDate, Title, CommentContent,ArticleId, ApplicationUserId, Rating")] Comment reply)
+        public async Task<IActionResult> Reply([Bind("CommentId, CommentDate, Title, CommentContent,ArticleId, ApplicationUserId, CommentAuthor, Rating")] Comment reply)
         {
             if (ModelState.IsValid)
             {
                 reply.CommentsRating = new CommentsRating() { };
                 reply.HasReply = true;
+                reply.CommentAuthor = await GetCurrentUserAsync();
                 _context.Add(reply);
                 await _context.SaveChangesAsync();
 
                 ViewBag["CurrentArticleId"] = reply.ArticleId;
+                ViewBag["UserAvatar"] = reply.CommentAuthor.Profile.Avatar;
 
                 return RedirectToAction("IndexPartial", ViewBag["CurrentArticleId"]);
             }
@@ -257,7 +265,12 @@ namespace IdeallySpeaking.Controllers
         private bool CommentExists(int id)
         {
             return _context.Comments.Any(e => e.CommentId == id);
-        }        
+        }
+
+        private Task<ApplicationUser> GetCurrentUserAsync()
+        {
+            return _userManager.GetUserAsync(HttpContext.User);
+        }
 
         /* As a Matter of Interest
          * 
