@@ -1,4 +1,4 @@
-﻿@model IdeallySpeaking.Models.Comment
+﻿@model IdeallySpeaking.Models.CommentViewModels.
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -17,8 +17,9 @@
         </a>
         <div class="media-body">
             <h5 class="mt-0">Media heading</h5>
-            @Model.CommentDate;
-            @Model.CommentContent;
+            @Model.Reply.CommentDate
+            @Model.Reply.CommentContent
+            @Model.Reply.CommentAuthor
         </div>
     </div>            
             
@@ -28,8 +29,45 @@
 else
 {
     <form asp-controller="CommentsController" asp-action="Reply" method="post">
-        <textarea asp-for="Reply"></textarea>
-        <button type="submit">Test</button>
+        <div class="form-horizontal">
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Reply.CommentContent" class="col-sm-2 control-label"></label>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="comment-wrapper">
+                <a class=""><img src="ViewBag["UserAvatar"]" class="comment-avatar" height="44" width="44" /></a>
+                @*~/images/Miscellaneous/Placeholder.png*@
+                <div class="comment-inner-wrapper">
+                    <div class="card">
+                        <div class="card-header p-1">
+                            <div class="btn-group open">
+                                <a class="btn btn-default btn-sm ct-button" href="#">
+                                    <span class="fa fa-font fa-fw"></span>
+                                </a>
+                                <a class="btn btn-default btn-sm ct-button dropdown-toggle" data-toggle="dropdown" href="#"></a>
+                            </div>
+                            <a class="btn btn-default btn-sm ct-button" href="#">
+                                <span class="fa fa-bold fa-fw"></span>
+                            </a>
+                        </div>
+
+                        <div class="card-block">
+                            <textarea asp-for="Reply.CommentContent" class="form-control" rows="8"></textarea>
+                            <span asp-validation-for="Reply.CommentContent" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+                <input type="submit" value="Reply" class="btn btn-default" />
+            </div>
+        </div>        
     </form>
 
 }

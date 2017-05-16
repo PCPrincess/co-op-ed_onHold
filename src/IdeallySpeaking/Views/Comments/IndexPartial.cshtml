@@ -25,12 +25,12 @@
             {
 
                 @Html.Partial("~/Views/Comments/ReplyPartial.cshtml")
-            }
-            @*Goes in 'IF' Statement: [ReplyExists(int id)] reply.ArticleId.Equals(Model.ArticleId) *@
+            }           
             else
             {
                 @Model.Title
                 <span class="small">@Model.CommentDate</span>
+                @Model.CommentAuthor
 
                 <p>@Model.CommentContent</p>
 

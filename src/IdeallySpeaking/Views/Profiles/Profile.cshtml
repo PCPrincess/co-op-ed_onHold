@@ -1,0 +1,45 @@
+﻿@model IdeallySpeaking.Models.Profile
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = $"{@Model.UserName}'s Profile";
+}
+
+@if (Model.UserName == "")
+{
+    <p> Please choose a user name below.</p>
+}
+else if (Model.UserName == null)
+{
+    <p> You may choose a user name below.</p>
+}
+else
+{
+    <h2><span class="badge badge-info">@ViewData["Title"]</span></h2>
+}
+
+@Html.DisplayFor(model => model.UserName);
+@Html.DisplayFor(model => model.Location);
+@Html.DisplayFor(model => model.Link);
+<hr />
+<p>
+    @Html.DisplayFor(model => model.Avatar);
+</p>
+<p>
+    @Html.DisplayFor(model => model.Signature);
+</p>
+
+<ul class="">
+    <li class="">@Html.DisplayFor(model => model.Facebook)</li>
+    <li class="">@Html.DisplayFor(model => model.Twitter)</li>
+</ul>
+
+<div class="card-block">
+    <div class="card-header">$"{@Model.UserName}'s Badges"</div>
+    @*@Html.Partial("BadgesPartial")*@
+</div>
+
+@Html.Partial("ProfileAvatarPartial")
+
+<a asp-controller="Account" asp-action="Register">Register as a new user?</a>

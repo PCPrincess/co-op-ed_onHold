@@ -15,6 +15,7 @@
     <PackageTags>Politics, News, Community, User</PackageTags>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="Views\ApplicationUser\Profile.cshtml" />
     <Content Remove="wwwroot/images\Miscellaneous\The-Background.png" />
   </ItemGroup>
   <ItemGroup>
@@ -60,5 +61,6 @@
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="Views\ApplicationUser\" />
   </ItemGroup>
 </Project>

@@ -95,7 +95,7 @@ namespace IdeallySpeaking.Controllers
                       var currUser = await _userManager.FindByNameAsync(userProfile.UserName);
                       if (!UserExists(currUser))
                       {
-                          return NotFound();
+                          return RedirectToAction("Register", "Account");
                       }
                       else
                       {
