@@ -3,16 +3,36 @@
 }
 
 <div class="row">
+    <div class="alert alert-info alert-dismissible fade show mt-3" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Welcome!</strong> IdeallySpeaking is under development. While we code and test the back-end and database, registrations are not available. 
+          Can you help us reach a Beta release by   <a asp-controller="Home" asp-action="Supporters" class="alert-link btn btn-warning">donating?</a>
+    </div>
+</div>
+
+<div class="row">
     <div class="col-sm-3">
         <div class="card text-center mb-3">
-            <div class="card-header raleway">Current</div>
+            <div class="card-header raleway">Current</div>              
+            <div class="card-block">
+                <img class="img-thumbnail" src="~/images/Article_Images/SRichRussiaTweet.jpg" height="100" width="200">            
+                <p><h5>Newsweek - 2016</h5></p>
+                <p class="card-text">It was closing time at Lou’s City Bar when Seth Rich drained the last of his Bell’s Two Hearted Ales and started walking into the muggy night in a trendy neighborhood of northwest Washington, D.C. At 2:30 a.m. on July 10, the torrid heat that had gripped the city for weeks had eased slightly, with temperatures slipping into the low 70s.</p>
+                <small>By Jeff Stein On 8/20/16 at 4:34 PM</small>
+                <p>
+                    <a href="http://www.newsweek.com/seth-rich-murder-dnc-hack-julian-assange-hillary-clinton-donald-trump-492084?utm_source=internal&utm_campaign=incontent&utm_medium=related3">More</a>
+                </p>
+                <div class="dropdown-divider"></div>
+            </div>
             <div class="card-block">
                 <h6 class="card-title">California Has Rain!</h6>
                 <p class="card-text">Unfortunately, too much rain, too quickly.</p>
-                <a href="#" class="btn btn-secondary">Go somewhere</a>
-            </div>  
+                <a href="#" class="btn btn-secondary">Placeholder</a>
+            </div>
             <div class="card-block">
-                <img class="img-thumbnail" src="~/images/Article_Images/Jerry-Brown_CP.jpg" height="100" width="200">            
+                <img class="img-thumbnail" src="~/images/Article_Images/Jerry-Brown_CP.jpg" height="100" width="200">
                 <p><h6>Governor Asks For Assistance</h6></p>
                 <p class="card-text">Why is it suddenly a political issue for a state to ask for Federal assistance?</p>
                 <div class="dropdown-divider"></div>
