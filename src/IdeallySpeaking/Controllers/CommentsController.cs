@@ -52,7 +52,8 @@ namespace IdeallySpeaking.Controllers
         }
 
         // GET: Comments/Create
-        public IActionResult Create()
+        [Route("Create")]
+        public IActionResult CreatePartial()
         {            
             return View();
         }

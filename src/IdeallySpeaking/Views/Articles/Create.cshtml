@@ -1,4 +1,5 @@
 @model IdeallySpeaking.Models.Article
+@using static IdeallySpeaking.Models.UserTextInput
 
 @{
     Layout = "_Layout";
@@ -16,13 +17,6 @@
                 <input asp-for="Headline" class="form-control" />
                 <span asp-validation-for="Headline" class="text-danger"></span>
             </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Content" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <textarea asp-for="Content" class="form-control" rows="4"></textarea>
-                <span asp-validation-for="Content" class="text-danger"></span>
-            </div>
         </div>               
         <div class="form-group">
             <label asp-for="Date" class="col-md-2 control-label"></label>
@@ -37,13 +31,49 @@
                 <input asp-for="Author" class="form-control" />
                 <span asp-validation-for="Author" class="text-danger"></span>
             </div>
-        </div>        
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+        </div> 
+        <div class="col-sm-8">
+            <div class="comment-wrapper">
+                <a class=""><img src="~/images/Miscellaneous/Placeholder.png" class="comment-avatar" height="44" width="44" /></a>
+                @*ViewBag["UserAvatar"]*@
+                <div class="comment-inner-wrapper">
+                    <div class="card">
+                        <div class="card-header p-1">
+                            <div class="btn-group open">
+                                <a class="btn btn-default btn-sm ct-button" href="#">
+                                    <span class="fa fa-font fa-fw"></span>
+                                </a>
+                                <a class="btn btn-default btn-sm ct-button dropdown-toggle" data-toggle="dropdown" href="#"></a>
+                            </div>
+                            <a class="btn btn-default btn-sm ct-button" href="#">
+                                <span class="fa fa-bold fa-fw"></span>
+                            </a>
+                        </div>
+
+                        <div class="card-block">
+                            <textarea asp-for="Content" class="form-control" rows="8"></textarea>
+                            <span asp-validation-for="Content" class="text-danger"></span>
+                            @{  var tempContent = Model.Content;                                
+                                   SanitizeScript(tempContent); }
+                            @{  ViewBag.Content = Html.Raw("tempContent"); }
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+        @*<div class="form-group">
+            <label asp-for="Content" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <textarea asp-for="Content" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+         </div>*@
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
 </form>
 
 @Html.Partial("ArticlePhotoPartial")
