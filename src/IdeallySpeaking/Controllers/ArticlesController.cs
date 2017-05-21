@@ -17,6 +17,7 @@ namespace IdeallySpeaking.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
+        private UserTextInput _input;
 
         public ArticlesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
@@ -92,6 +93,7 @@ namespace IdeallySpeaking.Controllers
                 var tease = article.Teaser;
                 _context.Entry(article).Property("Teaser").CurrentValue = tease;
                 article.Author = await GetCurrentUserAsync();
+                
                 _context.Add(article);
                 
                 await _context.SaveChangesAsync();
