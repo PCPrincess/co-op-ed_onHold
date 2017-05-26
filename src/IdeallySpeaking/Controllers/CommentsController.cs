@@ -69,14 +69,14 @@ namespace IdeallySpeaking.Controllers
             if (ModelState.IsValid)
             {
                 comment.CommentsRating = new CommentsRating() { };
-                comment.CommentAuthor = await GetCurrentUserAsync();
-                _context.Add(comment);                
-
-                await _context.SaveChangesAsync();
-
+                comment.CommentAuthor = await GetCurrentUserAsync();   
                 ViewBag["CurrentArticleId"] = comment.ArticleId;
                 ViewBag["UserAvatar"] = comment.CommentAuthor.Profile.Avatar;
-
+                comment.CommentContent = ViewBag["CommentContent"];
+                _context.Add(comment);
+                comment.AddCommentToList(comment);
+                await _context.SaveChangesAsync();
+                
                 return RedirectToAction("UserCommentsList", ViewBag["CurrentArticleId"]);
             }
             return PartialView(comment);

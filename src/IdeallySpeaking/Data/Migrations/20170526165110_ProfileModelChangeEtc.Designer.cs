@@ -8,9 +8,10 @@ using IdeallySpeaking.Data;
 namespace IdeallySpeaking.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170526165110_ProfileModelChangeEtc")]
+    partial class ProfileModelChangeEtc
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
