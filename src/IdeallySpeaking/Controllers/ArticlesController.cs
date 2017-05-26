@@ -93,7 +93,8 @@ namespace IdeallySpeaking.Controllers
                 var tease = article.Teaser;
                 _context.Entry(article).Property("Teaser").CurrentValue = tease;
                 article.Author = await GetCurrentUserAsync();
-                
+                // TODO: Test 'Content' to ensure proper use of ViewBag /Html.Raw/SanitizeScript
+                article.Content = ViewBag["Content"];
                 _context.Add(article);
                 
                 await _context.SaveChangesAsync();

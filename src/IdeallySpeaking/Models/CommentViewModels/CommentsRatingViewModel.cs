@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,6 +11,7 @@ namespace IdeallySpeaking.Models.CommentViewModels
         
         public class CommentsRating
         {
+            [Key]
             public int Rating { get; private set; }
 
             private readonly int _rating = 0;

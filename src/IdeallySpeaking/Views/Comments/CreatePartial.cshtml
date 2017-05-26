@@ -6,6 +6,7 @@
 }
 
 @model IdeallySpeaking.Models.Comment
+@using static IdeallySpeaking.Models.UserTextInput
 
 @{
     ViewData["Title"] = "Create Comment";
@@ -60,6 +61,9 @@
                     <div class="card-block">
                         <textarea asp-for="CommentContent" class="form-control" rows="8"></textarea>
                         <span asp-validation-for="CommentContent" class="text-danger"></span>
+                        @{  var tempContent = Model.CommentContent;
+                            SanitizeScript(tempContent); }
+                        @{  ViewBag.CommentContent = Html.Raw("tempContent"); }
                     </div>
                 </div>                
             </div>
