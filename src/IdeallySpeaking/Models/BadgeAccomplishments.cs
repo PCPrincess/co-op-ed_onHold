@@ -6,25 +6,19 @@ using System.Threading.Tasks;
 namespace IdeallySpeaking.Models
 {
     public class BadgeAccomplishments
-    {            
-        public Badge Badge { get; set; }
-
-        public class AccomplishmentTriggers
-        { // Base Class for Sender Object Classes
+    { // Base Class for Sender Object Classes           
+        public Badge Badge { get; set; }   
 
             public class CalendarBadge
-            { // Sender Object Class
-
-                public string SetBadgeLocale(string locale)
+            { // Sender Object Class 
+                
+                public ApplicationUser _user { get; set; }
+                public CalendarBadge(ApplicationUser user)
                 {
-                    this.BadgeLocale = locale;
-                    return BadgeLocale;
+                    user = _user;
                 }
 
-                public string BadgeLocale { get; set; }
-                
-
-                public event EventHandler PeriodOfTimeReached; // Event (message)
+                public event EventHandler PeriodOfTimeReached;   // Event (message)
 
                 protected virtual void OnPeriodOfTimeReached(EventArgs e)
                 {// SENDER METHOD
@@ -45,9 +39,8 @@ namespace IdeallySpeaking.Models
                 // {
                 //   // Do Something:  
                 // }
-                
+                // Then, the actions of the RECEIVER METHOD can be invoked using OnPeriodOfTimeReached
                 // Note: Re-Read Events and Event-Handling Section in Spec!  
-
             }
 
             public class CommentBadge
@@ -58,7 +51,6 @@ namespace IdeallySpeaking.Models
                 {// SENDER METHOD
                     NumCommentsReached?.Invoke(this, e);
                 }
-
             }
 
             public class Star10Badge // Temp Name
@@ -69,9 +61,6 @@ namespace IdeallySpeaking.Models
                 {// SENDER METHOD
                     TenStarsReached?.Invoke(this, e);
                 }
-
             }
-
         }
-    }
 }

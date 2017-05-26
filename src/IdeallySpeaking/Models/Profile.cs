@@ -8,8 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace IdeallySpeaking.Models
-{
-    
+{    
     public class Profile
     {
         public int ProfileId { get; set; }
