@@ -1,5 +1,5 @@
 @model IdeallySpeaking.Models.Article
-@using static IdeallySpeaking.Models.UserTextInput
+
 
 @{
     Layout = "_Layout";
@@ -49,13 +49,9 @@
                                 <span class="fa fa-bold fa-fw"></span>
                             </a>
                         </div>
-
                         <div class="card-block">
-                            <textarea asp-for="Content" class="form-control" rows="8"></textarea>
-                            <span asp-validation-for="Content" class="text-danger"></span>
-                            @{  var tempContent = Model.Content;                                
-                                   SanitizeScript(tempContent); }
-                            @{  ViewBag.Content = Html.Raw("tempContent"); }
+                            <textarea asp-for="Content"  class="form-control" rows="8"></textarea>
+                            <span asp-validation-for="Content" class="text-danger"></span>                            
                         </div>
                     </div>
                 </div>

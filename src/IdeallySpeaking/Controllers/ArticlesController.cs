@@ -10,6 +10,7 @@ using IdeallySpeaking.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using static IdeallySpeaking.Models.UserTextInput;
 
 namespace IdeallySpeaking.Controllers
 {
@@ -17,7 +18,6 @@ namespace IdeallySpeaking.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
-        private UserTextInput _input;
 
         public ArticlesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
@@ -93,15 +93,14 @@ namespace IdeallySpeaking.Controllers
                 var tease = article.Teaser;
                 _context.Entry(article).Property("Teaser").CurrentValue = tease;
                 article.Author = await GetCurrentUserAsync();
-                // TODO: Test 'Content' to ensure proper use of ViewBag /Html.Raw/SanitizeScript
-                article.Content = ViewBag["Content"];
-                _context.Add(article);
-                
-                await _context.SaveChangesAsync();
-                //ViewData["CurrentReader"] = GetCurrentUserAsync();
-                return RedirectToAction("FullArticle");                
-            }
-            
+                // TODO: Continue to Create Methods for Text Input 'buttons' (e.g.  'Bold', below) 
+                // TODO: IDEA!!  How about Html.Raw in ArticleContentPartial View? (handles Content)
+                article.Content = ReplaceBold(article.Content);
+
+                _context.Add(article);                
+                await _context.SaveChangesAsync();              
+                return RedirectToAction("FullArticle", "Articles");                
+            }            
             return View(article);
         }        
 
