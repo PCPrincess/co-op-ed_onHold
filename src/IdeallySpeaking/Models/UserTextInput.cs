@@ -35,11 +35,11 @@ namespace IdeallySpeaking.Models
             }
         }
 
-        public static string SanitizeScript(string strIn)
+        public static string SanitizeScript(string str)
         {
             try
             {
-                return Regex.Replace(strIn, @"<script>", "", RegexOptions.None, TimeSpan.FromSeconds(1.5));
+                return Regex.Replace(str, @"<script>", "", RegexOptions.None, TimeSpan.FromSeconds(1.5));
             }
             catch (RegexMatchTimeoutException) // If timeout occurs
             {
