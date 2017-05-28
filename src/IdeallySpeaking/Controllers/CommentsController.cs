@@ -71,10 +71,10 @@ namespace IdeallySpeaking.Controllers
                 comment.CommentsRating = new CommentsRating() { };
                 comment.CommentAuthor = await GetCurrentUserAsync();   
                 ViewBag["CurrentArticleId"] = comment.ArticleId;
-                ViewBag["UserAvatar"] = comment.CommentAuthor.Profile.Avatar;
-                comment.CommentContent = ViewBag["CommentContent"];
-                _context.Add(comment);
+                ViewBag["UserAvatar"] = comment.CommentAuthor.Profile.Avatar;  
                 comment.AddCommentToList(comment);
+
+                _context.Add(comment);
                 await _context.SaveChangesAsync();
                 
                 return RedirectToAction("UserCommentsList", ViewBag["CurrentArticleId"]);
