@@ -3,14 +3,10 @@
     ToDo: Add FormFields (hidden) for CommentId, ApplicationUserId
 *@
 @{
+    ViewData["Title"] = "Create Comment";
 }
 
 @model IdeallySpeaking.Models.Comment
-@using static IdeallySpeaking.Models.UserTextInput
-
-@{
-    ViewData["Title"] = "Create Comment";
-}
 
 <h5>Create Comment  <span class="badge badge-info">New</span></h5>
 
@@ -60,10 +56,7 @@
 
                     <div class="card-block">
                         <textarea asp-for="CommentContent" class="form-control" rows="8"></textarea>
-                        <span asp-validation-for="CommentContent" class="text-danger"></span>
-                        @{  var tempContent = Model.CommentContent;
-                            SanitizeScript(tempContent); }
-                        @{  ViewBag.CommentContent = Html.Raw("tempContent"); }
+                        <span asp-validation-for="CommentContent" class="text-danger"></span>                       
                     </div>
                 </div>                
             </div>

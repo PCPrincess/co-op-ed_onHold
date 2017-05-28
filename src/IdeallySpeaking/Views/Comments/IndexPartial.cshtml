@@ -1,9 +1,14 @@
 @model IdeallySpeaking.Models.Comment
+@using static IdeallySpeaking.Models.UserTextInput
 
 @{
     ViewData["Title"] = "Article Comments";
-    
+
     var last = 0; var idNum = "";
+
+    string input = Model.CommentContent;
+    string inputHolder = "";
+    inputHolder = Html.Raw(input).ToString();
 }
 
 
@@ -32,7 +37,8 @@
                 <span class="small">@Model.CommentDate</span>
                 @Model.CommentAuthor
 
-                <p>@Model.CommentContent</p>
+                <p>@Html.Display(SanitizeScript(inputHolder)))</p>
+                      @*@Model.CommentContent*@
 
                 <hr />
                 <a asp-action="Edit" asp-route-id="@Model.CommentId">Edit</a>
