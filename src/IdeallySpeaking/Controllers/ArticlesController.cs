@@ -86,18 +86,18 @@ namespace IdeallySpeaking.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Headline, Content, Teaser, Date, Author")] Article article)
+        public async Task<IActionResult> Create([Bind("Headline, Content, Date, Author")] Article article)
         {
             if (ModelState.IsValid)
-            {
-                var tease = article.Teaser;
-                _context.Entry(article).Property("Teaser").CurrentValue = tease;
+            {                
                 article.Author = await GetCurrentUserAsync();
                 // TODO: Continue to Create Methods for Text Input 'buttons' (e.g.  'Bold', below) 
                 // TODO: IDEA!!  How about Html.Raw in ArticleContentPartial View? (handles Content)
                 article.Content = ReplaceBold(article.Content);
 
-                _context.Add(article);                
+                _context.Add(article);
+                var tease = UseTeaser(article.Content);
+                article.Teaser = tease;
                 await _context.SaveChangesAsync();              
                 return RedirectToAction("FullArticle", "Articles");                
             }            
@@ -125,7 +125,7 @@ namespace IdeallySpeaking.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Headline,Content,Teaser,Date")] Article article)
+        public async Task<IActionResult> Edit(int id, [Bind("Headline, Content, Date")] Article article)
         {
             if (id != article.ArticleId)
             {
@@ -219,6 +219,10 @@ namespace IdeallySpeaking.Controllers
         private Task<ApplicationUser> GetCurrentUserAsync()
         {
             return _userManager.GetUserAsync(HttpContext.User);
+        }
+        public string UseTeaser(string input)
+        {
+            return input.ArticleShortener(100);
         }
 
     }
