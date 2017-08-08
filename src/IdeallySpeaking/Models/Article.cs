@@ -18,12 +18,7 @@ namespace IdeallySpeaking.Models
 
         public byte[] ArticlePhoto { get; set; }        
 
-        public string Teaser { get { return UseTeaser(); } }
-       
-        public string UseTeaser()
-        {
-            return Content.ArticleShortener(100);
-        }
+        public string Teaser { get; set; }    
         
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
