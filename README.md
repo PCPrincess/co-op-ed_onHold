@@ -1,4 +1,4 @@
-# IdeallySpeaking0.4
+# Co-Op-Ed
 Down the Rabbit Hole With .NET Core and VS2017
 
 The Motivation: Advance My Skills and Knowledge in Web Development
@@ -14,8 +14,8 @@ I used [Mozilla's MDN](https://developer.mozilla.org/en-US/).
 **Step 4:** Build, Code, Learn, and Amaze Myself
 
 **Current Projects**  
-[IdeallySpeaking- Private Repo](https://github.com/PCPrincess/IdeallySpeaking0.4)  
+[Co-Op-Ed Private Repo](https://github.com/PCPrincess/co-op-ed_onHold)  
 [RepresentApp](https://github.com/PCPrincess/RepresentativeApp)
 
-[IdeallySpeaking.net](http://ideallyspeaking.net) is viewable in its development state.
+[Co-Op-Ed](http://co-op-ed.com) is viewable in its development state.
 Bear in mind that, during local development, pages that require a non-null entry in the database will return a 404.
