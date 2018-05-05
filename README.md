@@ -17,5 +17,4 @@ I used [Mozilla's MDN](https://developer.mozilla.org/en-US/).
 [Co-Op-Ed Private Repo](https://github.com/PCPrincess/co-op-ed_onHold)  
 [RepresentApp](https://github.com/PCPrincess/RepresentativeApp)
 
-[Co-Op-Ed](http://co-op-ed.com) is viewable in its development state.
-Bear in mind that, during local development, pages that require a non-null entry in the database will return a 404.
+
