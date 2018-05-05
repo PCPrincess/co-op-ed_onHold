@@ -1,4 +1,4 @@
-# Co-Op-Ed
+ Co-Op-Ed
 Down the Rabbit Hole With .NET Core and VS2017
 
 The Motivation: Advance My Skills and Knowledge in Web Development
@@ -15,6 +15,8 @@ I used [Mozilla's MDN](https://developer.mozilla.org/en-US/).
 
 **Current Projects**  
 [Co-Op-Ed Private Repo](https://github.com/PCPrincess/co-op-ed_onHold)  
-[RepresentApp](https://github.com/PCPrincess/RepresentativeApp)
+[Grow w/Google Web Application](https://github.com/PCPrincess/MobileWebSpec)
+
+[wittr App - Grow w/Google Phase One](https://github.com/PCPrincess/wittr)  
 
 
